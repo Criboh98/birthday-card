@@ -901,3 +901,87 @@ background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
 }
+
+
+#treasureScene{
+background:
+linear-gradient(
+rgba(0,0,0,.30),
+rgba(0,0,0,.30)
+),
+url("assets/backgrounds/harbor.png");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+}
+
+.sailingShips{
+position:absolute;
+inset:0;
+overflow:hidden;
+z-index:1;
+pointer-events:none;
+}
+
+.sailingShip{
+position:absolute;
+font-size:70px;
+filter:drop-shadow(0 0 12px gold);
+opacity:.85;
+animation:sailAcross 18s linear infinite;
+}
+
+.shipOne{
+bottom:18%;
+left:-10%;
+animation-delay:0s;
+}
+
+.shipTwo{
+bottom:25%;
+left:-15%;
+font-size:85px;
+animation-delay:5s;
+}
+
+.shipThree{
+bottom:12%;
+left:-20%;
+font-size:55px;
+animation-delay:10s;
+}
+
+@keyframes sailAcross{
+
+from{
+transform:translateX(0) translateY(0);
+}
+
+50%{
+transform:translateX(55vw) translateY(-15px);
+}
+
+to{
+transform:translateX(120vw) translateY(0);
+}
+
+}
+
+#treasureScene .endingScroll{
+z-index:5;
+top:8%;
+left:22%;
+right:10%;
+background:rgba(0,0,0,.55);
+padding:28px;
+}
+
+#treasureScene .endingScroll h1{
+font-size:52px;
+}
+
+#treasureScene .birthdayMessage p{
+font-size:22px;
+line-height:1.45;
+}
