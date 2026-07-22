@@ -1,12 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 
+// =========================
+// ELEMENTS
+// =========================
+
 
 const loadingScreen =
 document.getElementById("loadingScreen");
 
+
 const loadingProgress =
 document.getElementById("loadingProgress");
+
 
 const loadingText =
 document.getElementById("loadingText");
@@ -29,10 +35,24 @@ document.querySelectorAll(".scene");
 
 
 
+const messageBox =
+document.getElementById("messageBox");
+
+
+const messageText =
+document.getElementById("messageText");
+
+
+const closeMessage =
+document.getElementById("closeMessage");
+
+
+
+
 
 
 // =========================
-// SCENE CHANGE
+// SCENE SYSTEM
 // =========================
 
 
@@ -50,7 +70,6 @@ scene.classList.add("active");
 
 
 }
-
 
 
 
@@ -120,9 +139,7 @@ loadingScreen.style.display="none";
 },1000);
 
 
-
 },500);
-
 
 
 }
@@ -150,26 +167,46 @@ const quest =
 document.getElementById(id);
 
 
+if(quest){
+
 quest.innerHTML =
 quest.innerHTML.replace("☐","☑");
 
+}
+
 
 }
 
 
 
-function startQuest(id){
 
 
-const quest =
-document.getElementById(id);
+
+// =========================
+// MESSAGE SYSTEM
+// =========================
 
 
-quest.innerHTML =
-quest.innerHTML.replace("☑","☐");
+function showMessage(text){
+
+
+messageText.innerText=text;
+
+
+messageBox.style.display="block";
 
 
 }
+
+
+
+closeMessage.addEventListener("click",()=>{
+
+
+messageBox.style.display="none";
+
+
+});
 
 
 
@@ -180,9 +217,8 @@ quest.innerHTML.replace("☑","☐");
 
 
 // =========================
-// START ADVENTURE
+// START GAME
 // =========================
-
 
 
 startButton.addEventListener("click",()=>{
@@ -203,9 +239,91 @@ document.getElementById("harborScene")
 );
 
 
-
 },1500);
 
+
+
+});
+
+
+
+
+
+
+
+
+
+// =========================
+// HARBOR QUEST
+// =========================
+
+
+
+const crate =
+document.getElementById("crate");
+
+
+const wheel =
+document.getElementById("wheel");
+
+
+const mapClue =
+document.getElementById("mapClue");
+
+
+
+
+
+crate.addEventListener("click",()=>{
+
+
+completeQuest("questHarbor");
+
+
+showMessage(
+
+"📦 Inside the old crate you find a strange pirate symbol. It may be connected to the Lost Map."
+
+);
+
+
+});
+
+
+
+
+
+
+
+wheel.addEventListener("click",()=>{
+
+
+showMessage(
+
+"⚓ The Lily is ready to sail. But the treasure map is still incomplete."
+
+);
+
+
+});
+
+
+
+
+
+
+
+mapClue.addEventListener("click",()=>{
+
+
+completeQuest("questMap");
+
+
+showMessage(
+
+"🗺️ You found a piece of the Lost Map! The path to Treasure Island is becoming clear."
+
+);
 
 
 });
@@ -233,9 +351,7 @@ document.getElementById("crewScene")
 );
 
 
-
 completeQuest("questCrew");
-
 
 
 });
@@ -246,20 +362,12 @@ completeQuest("questCrew");
 
 
 
-
-
-// =========================
-// CREW DIALOGUE
-// =========================
-
-
 const characterName =
 document.getElementById("characterName");
 
 
 const dialogueText =
 document.getElementById("dialogueText");
-
 
 
 
@@ -284,7 +392,7 @@ name:"Mira",
 
 text:
 
-"I prepared the supplies. A good captain always plans ahead."
+"I prepared the supplies. A clever captain always plans ahead."
 
 },
 
@@ -295,7 +403,7 @@ name:"Kaito",
 
 text:
 
-"I found a clue about a lost treasure map hidden somewhere nearby."
+"I found a clue about the lost treasure map."
 
 },
 
@@ -306,7 +414,7 @@ name:"Luna",
 
 text:
 
-"I am ready for adventure! Also... I brought snacks."
+"I am ready for adventure! And I brought snacks."
 
 }
 
@@ -325,7 +433,6 @@ const member =
 crew[id];
 
 
-
 characterName.innerText =
 member.name;
 
@@ -338,9 +445,7 @@ member.text;
 document.querySelectorAll(".crewPortrait")
 .forEach(p=>{
 
-
 p.classList.remove("selected");
-
 
 });
 
@@ -351,6 +456,7 @@ document.getElementById(id)
 
 
 }
+
 
 
 
@@ -386,27 +492,21 @@ showCrew("nova");
 
 
 // =========================
-// TREASURE QUEST BUTTON
+// QUEST BUTTON
 // =========================
 
 
 questButton.addEventListener("click",()=>{
 
 
-completeQuest("questHarbor");
+showMessage(
 
-
-
-alert(
-
-"🗺️ Quest Started!\n\nSearch the harbor for clues about the Lost Map."
+"🗺️ Your first mission: Search the harbor and find the missing piece of the Lost Map."
 
 );
 
 
-
 });
-
 
 
 
