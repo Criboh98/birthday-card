@@ -67,6 +67,8 @@ object-fit:cover;
 
 
 
+
+
 /* =====================
 QUEST PANEL
 ===================== */
@@ -74,31 +76,52 @@ QUEST PANEL
 
 #questPanel {
 
+
 position:absolute;
 
-top:25px;
 
-left:25px;
-
-width:280px;
-
-background:
-
-linear-gradient(#d8b46a,#8b5a20);
+top:20px;
 
 
-border:5px solid #3b2108;
+left:20px;
 
-border-radius:15px;
+
+width:300px;
+
 
 padding:20px;
 
-color:#201000;
+
+background:
+
+linear-gradient(
+
+#d9b46b,
+
+#7b4a18
+
+);
+
+
+
+border:
+
+5px solid #2b1605;
+
+
+
+border-radius:15px;
+
+
+color:#1b0d00;
+
 
 z-index:100;
 
 
-box-shadow:0 10px 30px black;
+box-shadow:
+
+0 10px 30px black;
 
 
 }
@@ -107,20 +130,28 @@ box-shadow:0 10px 30px black;
 
 #questPanel h2 {
 
+
 font-family:"Pirata One";
 
-font-size:35px;
+
+font-size:38px;
+
 
 text-align:center;
+
 
 }
 
 
+
 #questPanel h3 {
+
 
 text-align:center;
 
-font-size:20px;
+
+margin-bottom:10px;
+
 
 }
 
@@ -128,13 +159,19 @@ font-size:20px;
 
 #questPanel ul {
 
+
 list-style:none;
+
 
 font-size:20px;
 
+
 line-height:1.8;
 
+
 }
+
+
 
 
 
@@ -143,21 +180,122 @@ line-height:1.8;
 
 
 /* =====================
-MESSAGE BOX
+INVENTORY
+===================== */
+
+
+#inventoryButton {
+
+
+position:absolute;
+
+
+right:25px;
+
+
+top:25px;
+
+
+z-index:120;
+
+
+}
+
+
+
+#inventoryPanel {
+
+
+display:none;
+
+
+position:absolute;
+
+
+right:25px;
+
+
+top:90px;
+
+
+width:280px;
+
+
+padding:20px;
+
+
+background:
+
+rgba(0,0,0,.9);
+
+
+
+border:
+
+4px solid #d9b45b;
+
+
+border-radius:15px;
+
+
+z-index:120;
+
+
+}
+
+
+
+#inventoryPanel h2 {
+
+
+font-family:"Pirata One";
+
+
+color:#ffd76b;
+
+
+}
+
+
+
+#inventoryList {
+
+
+list-style:none;
+
+
+font-size:22px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+MESSAGE
 ===================== */
 
 
 #messageBox {
 
 
-position:absolute;
-
 display:none;
+
+
+position:absolute;
 
 
 bottom:15%;
 
+
 left:20%;
+
 
 right:20%;
 
@@ -167,9 +305,11 @@ background:
 rgba(0,0,0,.9);
 
 
+
 border:
 
 4px solid #d9b45b;
+
 
 
 border-radius:20px;
@@ -193,17 +333,6 @@ z-index:200;
 
 font-size:28px;
 
-
-}
-
-
-
-#closeMessage {
-
-
-font-size:22px;
-
-margin-top:15px;
 
 }
 
@@ -273,15 +402,17 @@ transform:translateX(-35px);
 
 
 
+
 .stars {
 
 
 position:absolute;
 
+
 inset:0;
 
 
-background-image:
+background:
 
 radial-gradient(white 2px,transparent 2px);
 
@@ -297,11 +428,11 @@ opacity:.5;
 
 
 
-
 .fog {
 
 
 position:absolute;
+
 
 inset:0;
 
@@ -325,6 +456,8 @@ animation:fogMove 12s infinite;
 
 
 }
+
+
 
 
 
@@ -353,8 +486,6 @@ transform:translateX(100%);
 
 
 
-
-
 /* =====================
 SHIP
 ===================== */
@@ -367,9 +498,6 @@ position:absolute;
 
 
 width:500px;
-
-
-max-width:70vw;
 
 
 bottom:15%;
@@ -418,6 +546,7 @@ transform:translateX(-50%);
 
 
 
+
 @keyframes shipFloat {
 
 
@@ -437,13 +566,16 @@ margin-bottom:20px;
 
 
 
+
 /* =====================
 TEXT
 ===================== */
 
 
 .titleBox,
-.harborMessage {
+.harborMessage,
+.mapTitle,
+.islandStory {
 
 
 position:absolute;
@@ -469,7 +601,7 @@ h1 {
 font-family:"Pirata One";
 
 
-font-size:90px;
+font-size:80px;
 
 
 text-shadow:
@@ -483,10 +615,11 @@ text-shadow:
 
 
 
+
 button {
 
 
-margin-top:30px;
+margin-top:25px;
 
 
 padding:15px 45px;
@@ -495,12 +628,21 @@ padding:15px 45px;
 border-radius:50px;
 
 
-border:3px solid #d9b45b;
+border:
+
+3px solid #d9b45b;
 
 
 background:
 
-linear-gradient(#85551f,#351c08);
+linear-gradient(
+
+#85551f,
+
+#351c08
+
+);
+
 
 
 color:white;
@@ -558,20 +700,9 @@ cursor:pointer;
 text-align:center;
 
 
-filter:
-
-drop-shadow(0 10px 10px black);
-
-
 animation:
 
-objectFloat 3s infinite;
-
-
-transition:.3s;
-
-
-z-index:20;
+floatObject 3s infinite;
 
 
 }
@@ -584,58 +715,16 @@ z-index:20;
 display:block;
 
 
+font-size:25px;
+
+
 font-family:"Pirata One";
-
-
-font-size:28px;
 
 
 color:#ffd76b;
 
 
-text-shadow:
-
-0 3px 8px black;
-
-
 }
-
-
-
-.harborObject:hover {
-
-
-transform:
-
-scale(1.25);
-
-
-filter:
-
-drop-shadow(0 0 25px gold);
-
-
-}
-
-
-
-
-@keyframes objectFloat {
-
-
-50% {
-
-
-transform:translateY(-10px);
-
-
-}
-
-
-}
-
-
-
 
 
 
@@ -643,6 +732,7 @@ transform:translateY(-10px);
 
 
 left:20%;
+
 
 bottom:20%;
 
@@ -656,6 +746,7 @@ bottom:20%;
 
 right:25%;
 
+
 bottom:25%;
 
 
@@ -668,12 +759,25 @@ bottom:25%;
 
 left:50%;
 
+
 bottom:35%;
 
 
 }
 
 
+
+@keyframes floatObject {
+
+
+50% {
+
+transform:translateY(-10px);
+
+}
+
+
+}
 
 
 
@@ -688,36 +792,11 @@ CREW
 ===================== */
 
 
-.crewTitle {
-
-
-position:absolute;
-
-top:5%;
-
-width:100%;
-
-text-align:center;
-
-
-}
-
-
-
-.crewTitle h1 {
-
-font-size:75px;
-
-}
-
-
-
-
-
 .crewPortraits {
 
 
 position:absolute;
+
 
 bottom:25%;
 
@@ -738,8 +817,6 @@ gap:40px;
 
 
 
-
-
 .crewPortrait {
 
 
@@ -749,11 +826,7 @@ text-align:center;
 cursor:pointer;
 
 
-transition:.4s;
-
-
 }
-
 
 
 
@@ -762,33 +835,23 @@ transition:.4s;
 
 width:200px;
 
+
 height:230px;
-
-
-background:
-
-linear-gradient(#5b3515,#241205);
-
-
-border:
-
-8px solid #d9b45b;
-
-
-border-radius:15px;
 
 
 padding:10px;
 
 
-box-shadow:
+background:#351c08;
 
-0 15px 30px black;
+
+border:8px solid #d9b45b;
+
+
+border-radius:15px;
 
 
 }
-
-
 
 
 
@@ -808,8 +871,6 @@ object-fit:contain;
 
 
 
-
-
 .crewPortrait h2 {
 
 
@@ -825,17 +886,51 @@ font-size:35px;
 
 
 
-.crewPortrait:hover {
 
 
-transform:
 
-translateY(-20px)
 
-scale(1.08);
+/* =====================
+WORLD MAP
+===================== */
+
+
+.islandButtons {
+
+
+position:absolute;
+
+
+top:45%;
+
+
+width:100%;
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+gap:30px;
 
 
 }
+
+
+
+.islandButtons button:disabled {
+
+
+opacity:.5;
+
+
+cursor:not-allowed;
+
+
+}
+
 
 
 
@@ -845,39 +940,40 @@ scale(1.08);
 
 
 /* =====================
-DIALOGUE
+ENDING
 ===================== */
 
 
-.dialogueBox {
+.endingBox {
 
 
 position:absolute;
 
 
-bottom:3%;
+top:20%;
 
 
-left:10%;
+left:15%;
 
 
-right:10%;
+right:15%;
 
 
 background:
 
-rgba(0,0,0,.85);
+rgba(0,0,0,.8);
+
 
 
 border:
 
-4px solid #d9b45b;
+5px solid #d9b45b;
 
 
-border-radius:20px;
+border-radius:25px;
 
 
-padding:25px;
+padding:40px;
 
 
 text-align:center;
@@ -887,13 +983,20 @@ text-align:center;
 
 
 
-.dialogueBox h2 {
+.endingBox p {
 
 
-font-family:"Pirata One";
+font-size:28px;
 
 
-font-size:42px;
+line-height:1.6;
+
+
+}
+
+
+
+.endingBox h1 {
 
 
 color:#ffd76b;
@@ -901,15 +1004,6 @@ color:#ffd76b;
 
 }
 
-
-
-.dialogueBox p {
-
-
-font-size:26px;
-
-
-}
 
 
 
@@ -922,21 +1016,14 @@ font-size:26px;
 
 h1 {
 
-font-size:55px;
+font-size:50px;
 
 }
 
 
 #questPanel {
 
-width:190px;
-
-}
-
-
-.harborObject {
-
-font-size:45px;
+width:220px;
 
 }
 
@@ -950,7 +1037,7 @@ gap:5px;
 
 .portraitFrame {
 
-width:80px;
+width:90px;
 
 height:120px;
 
