@@ -24,7 +24,7 @@
 
 <h2>📜 The Lily Quest</h2>
 
-<h3 id="questTitle">
+<h3>
 The Lost Map Adventure
 </h3>
 
@@ -35,23 +35,20 @@ The Lost Map Adventure
 ☐ Meet the crew
 </li>
 
-
 <li id="questHarbor">
 ☐ Search the harbor
 </li>
-
 
 <li id="questMap">
 ☐ Find the hidden map
 </li>
 
-
 <li id="questSail">
 ☐ Sail to the island
 </li>
 
-
 </ul>
+
 
 </div>
 
@@ -59,15 +56,42 @@ The Lost Map Adventure
 
 
 
-<!-- LOADING SCREEN -->
+
+
+
+<!-- MESSAGE BOX -->
+
+<div id="messageBox">
+
+<p id="messageText">
+</p>
+
+<button id="closeMessage">
+Close
+</button>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- LOADING -->
 
 <div id="loadingScreen">
 
 <div class="loading-content">
 
-<h1>THE LILY</h1>
+<h1>
+THE LILY
+</h1>
 
-<p>An Original Pirate Adventure</p>
+<p>
+An Original Pirate Adventure
+</p>
 
 
 <div class="loading-bar">
@@ -93,7 +117,10 @@ Preparing the voyage...
 
 
 
+
 <div id="game">
+
+
 
 
 
@@ -120,6 +147,7 @@ src="assets/backgrounds/ocean.png">
 
 <img id="lilyShip"
 src="assets/ship/lily.png">
+
 
 
 
@@ -152,7 +180,6 @@ Created for Captain Eli
 </div>
 
 
-
 </section>
 
 
@@ -163,13 +190,15 @@ Created for Captain Eli
 
 
 
-<!-- HARBOR -->
+<!-- HARBOR WITH INTERACTIONS -->
 
 <section id="harborScene" class="scene">
 
 
 <img class="background"
 src="assets/backgrounds/harbor.png">
+
+
 
 
 
@@ -182,9 +211,8 @@ The Harbor of The Lily
 
 
 <p>
-A new adventure begins...
+Search the harbor for clues...
 </p>
-
 
 
 <button id="meetCrewButton">
@@ -193,6 +221,60 @@ Meet the Crew
 
 
 </div>
+
+
+
+
+
+
+
+<!-- CLICKABLE OBJECTS -->
+
+
+<div class="harborObject crate"
+id="crate">
+
+📦
+
+<span>
+Old Crate
+</span>
+
+</div>
+
+
+
+
+
+<div class="harborObject wheel"
+id="wheel">
+
+⚓
+
+<span>
+Ship Wheel
+</span>
+
+</div>
+
+
+
+
+
+
+<div class="harborObject mapClue"
+id="mapClue">
+
+🗺️
+
+<span>
+Hidden Clue
+</span>
+
+</div>
+
+
+
 
 
 </section>
@@ -236,12 +318,12 @@ Choose your companion.
 
 
 
+
 <div class="crewPortraits">
 
 
 
 <div class="crewPortrait" id="nova">
-
 
 <div class="portraitFrame">
 
@@ -249,14 +331,11 @@ Choose your companion.
 
 </div>
 
-
 <h2>
 Captain Nova
 </h2>
 
-
 </div>
-
 
 
 
@@ -271,11 +350,9 @@ Captain Nova
 
 </div>
 
-
 <h2>
 Mira
 </h2>
-
 
 </div>
 
@@ -293,11 +370,9 @@ Mira
 
 </div>
 
-
 <h2>
 Kaito
 </h2>
-
 
 </div>
 
@@ -315,11 +390,9 @@ Kaito
 
 </div>
 
-
 <h2>
 Luna
 </h2>
-
 
 </div>
 
@@ -360,8 +433,8 @@ Welcome aboard, Captain Eli.
 </button>
 
 
-</div>
 
+</div>
 
 
 
@@ -379,6 +452,7 @@ Welcome aboard, Captain Eli.
 
 <!-- ISLAND -->
 
+
 <section id="islandScene" class="scene">
 
 
@@ -394,11 +468,7 @@ src="assets/backgrounds/treasure-island.png">
 
 
 
-
-<!-- TREASURE -->
-
 <section id="treasureScene" class="scene">
-
 
 </section>
 
@@ -407,13 +477,7 @@ src="assets/backgrounds/treasure-island.png">
 
 
 
-
-
-
-<!-- LETTER -->
-
 <section id="letterScene" class="scene">
-
 
 </section>
 
