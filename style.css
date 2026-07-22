@@ -1,18 +1,21 @@
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
 
 
 body {
 
-    overflow:hidden;
-    background:#000;
+overflow:hidden;
 
-    color:white;
+background:black;
 
-    font-family:"IM Fell English", serif;
+color:white;
+
+font-family:"IM Fell English", serif;
 
 }
 
@@ -20,8 +23,9 @@ body {
 
 #game {
 
-    width:100vw;
-    height:100vh;
+width:100vw;
+
+height:100vh;
 
 }
 
@@ -29,13 +33,13 @@ body {
 
 .scene {
 
-    position:absolute;
+position:absolute;
 
-    inset:0;
+inset:0;
 
-    display:none;
+display:none;
 
-    overflow:hidden;
+overflow:hidden;
 
 }
 
@@ -43,7 +47,7 @@ body {
 
 .scene.active {
 
-    display:block;
+display:block;
 
 }
 
@@ -52,86 +56,11 @@ body {
 
 .background {
 
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-}
-
-
-
-
-
-/* =========================
-LOADING
-========================= */
-
-
-#loadingScreen {
-
-position:fixed;
-
-inset:0;
-
-z-index:1000;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:
-
-radial-gradient(circle,#23415c,#02050a);
-
-}
-
-
-
-.loading-content {
-
-text-align:center;
-
-}
-
-
-
-.loading-content h1 {
-
-font-family:"Pirata One";
-
-font-size:80px;
-
-}
-
-
-
-.loading-bar {
-
-width:300px;
-
-height:20px;
-
-border:3px solid #d9b45b;
-
-margin:25px auto;
-
-background:#111;
-
-}
-
-
-
-#loadingProgress {
+width:100%;
 
 height:100%;
 
-width:0%;
-
-background:#ffd76b;
+object-fit:cover;
 
 }
 
@@ -139,9 +68,108 @@ background:#ffd76b;
 
 
 
-/* =========================
-INTRO WORLD
-========================= */
+
+
+/* =====================
+QUEST PANEL
+===================== */
+
+
+#questPanel {
+
+position:absolute;
+
+top:25px;
+
+left:25px;
+
+width:270px;
+
+
+background:
+
+linear-gradient(
+
+#d8b46a,
+
+#8b5a20
+
+);
+
+
+border:
+
+5px solid #3b2108;
+
+
+border-radius:15px;
+
+
+padding:20px;
+
+
+color:#201000;
+
+
+z-index:50;
+
+
+box-shadow:
+
+0 10px 30px black;
+
+
+}
+
+
+
+#questPanel h2 {
+
+font-family:"Pirata One";
+
+font-size:35px;
+
+text-align:center;
+
+color:#2b1600;
+
+}
+
+
+
+#questPanel h3 {
+
+font-size:22px;
+
+text-align:center;
+
+margin:10px 0;
+
+}
+
+
+
+#questPanel ul {
+
+list-style:none;
+
+font-size:20px;
+
+line-height:1.8;
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+INTRO
+===================== */
 
 
 .sky,
@@ -169,11 +197,13 @@ animation:oceanMove 8s infinite alternate;
 
 @keyframes oceanMove {
 
+
 from {
 
 transform:translateX(0);
 
 }
+
 
 to {
 
@@ -181,7 +211,9 @@ transform:translateX(-35px);
 
 }
 
+
 }
+
 
 
 
@@ -192,9 +224,11 @@ position:absolute;
 
 inset:0;
 
+
 background-image:
 
 radial-gradient(white 2px,transparent 2px);
+
 
 background-size:90px 90px;
 
@@ -211,6 +245,7 @@ opacity:.5;
 position:absolute;
 
 inset:0;
+
 
 background:
 
@@ -229,11 +264,13 @@ transparent
 
 animation:fogMove 12s infinite;
 
+
 }
 
 
 
 @keyframes fogMove {
+
 
 from {
 
@@ -248,6 +285,7 @@ transform:translateX(100%);
 
 }
 
+
 }
 
 
@@ -255,33 +293,47 @@ transform:translateX(100%);
 
 
 
-/* =========================
+
+
+/* =====================
 SHIP
-========================= */
+===================== */
 
 
 #lilyShip {
 
+
 position:absolute;
+
 
 width:500px;
 
+
 max-width:70vw;
 
+
 bottom:15%;
+
 
 left:-600px;
 
 
+
 animation:
 
+
 shipEnter 5s forwards,
+
+
 shipFloat 4s infinite 5s;
+
 
 
 filter:
 
 drop-shadow(0 0 25px gold);
+
+
 
 }
 
@@ -327,21 +379,28 @@ margin-bottom:20px;
 
 
 
-/* =========================
+/* =====================
 TEXT
-========================= */
+===================== */
+
 
 
 .titleBox,
 .harborMessage {
 
+
 position:absolute;
+
 
 top:15%;
 
+
 width:100%;
 
+
 text-align:center;
+
+
 
 }
 
@@ -349,43 +408,66 @@ text-align:center;
 
 h1 {
 
+
 font-family:"Pirata One";
 
+
 font-size:90px;
+
 
 text-shadow:
 
 0 5px 20px black;
 
+
 }
+
+
 
 
 
 button {
 
-margin-top:25px;
+
+margin-top:30px;
+
 
 padding:15px 45px;
 
+
 border-radius:50px;
+
 
 border:3px solid #d9b45b;
 
 
+
 background:
 
-linear-gradient(#85551f,#351c08);
+linear-gradient(
+
+#85551f,
+
+#351c08
+
+);
+
 
 
 color:white;
 
+
 font-family:"Pirata One";
+
 
 font-size:28px;
 
+
 cursor:pointer;
 
+
 transition:.3s;
+
 
 }
 
@@ -393,7 +475,9 @@ transition:.3s;
 
 button:hover {
 
+
 transform:scale(1.1);
+
 
 }
 
@@ -401,29 +485,40 @@ transform:scale(1.1);
 
 
 
-/* =========================
-RPG CREW SCREEN
-========================= */
 
+
+
+/* =====================
+CREW RPG
+===================== */
 
 
 .crewTitle {
 
+
 position:absolute;
+
 
 top:5%;
 
+
 width:100%;
+
 
 text-align:center;
 
+
+
 }
+
 
 
 
 .crewTitle h1 {
 
+
 font-size:75px;
+
 
 }
 
@@ -436,13 +531,18 @@ font-size:75px;
 
 position:absolute;
 
+
 bottom:25%;
+
 
 width:100%;
 
+
 display:flex;
 
+
 justify-content:center;
+
 
 gap:40px;
 
@@ -451,58 +551,21 @@ gap:40px;
 
 
 
+
+
 .crewPortrait {
 
 
 text-align:center;
 
+
 cursor:pointer;
+
 
 transition:.4s;
 
 
-animation:
-
-portraitAppear 1s forwards;
-
-
-opacity:0;
-
-
 }
-
-
-
-.crewPortrait:nth-child(1){
-
-animation-delay:.5s;
-
-}
-
-
-
-.crewPortrait:nth-child(2){
-
-animation-delay:1s;
-
-}
-
-
-
-.crewPortrait:nth-child(3){
-
-animation-delay:1.5s;
-
-}
-
-
-
-.crewPortrait:nth-child(4){
-
-animation-delay:2s;
-
-}
-
 
 
 
@@ -511,10 +574,12 @@ animation-delay:2s;
 
 width:200px;
 
+
 height:230px;
 
 
 background:
+
 
 linear-gradient(
 
@@ -523,6 +588,7 @@ linear-gradient(
 #241205
 
 );
+
 
 
 border:
@@ -546,12 +612,15 @@ box-shadow:
 
 
 
+
 .portraitFrame img {
 
 
 width:100%;
 
+
 height:100%;
+
 
 object-fit:contain;
 
@@ -560,10 +629,12 @@ object-fit:contain;
 
 
 
+
 .crewPortrait h2 {
 
 
 font-family:"Pirata One";
+
 
 font-size:35px;
 
@@ -577,14 +648,13 @@ text-shadow:
 
 
 
-
-
 .crewPortrait:hover {
 
 
 transform:
 
 translateY(-20px)
+
 scale(1.08);
 
 
@@ -608,40 +678,12 @@ box-shadow:
 
 
 
-@keyframes portraitAppear {
-
-
-from {
-
-opacity:0;
-
-transform:translateY(100px);
-
-}
 
 
 
-to {
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-
-}
-
-
-
-
-
-
-
-/* =========================
+/* =====================
 DIALOGUE
-========================= */
-
+===================== */
 
 
 .dialogueBox {
@@ -649,10 +691,12 @@ DIALOGUE
 
 position:absolute;
 
+
 bottom:3%;
 
 
 left:10%;
+
 
 right:10%;
 
@@ -662,9 +706,11 @@ background:
 rgba(0,0,0,.85);
 
 
+
 border:
 
 4px solid #d9b45b;
+
 
 
 border-radius:20px;
@@ -709,12 +755,23 @@ font-size:26px;
 
 
 
+
 @media(max-width:700px){
 
 
 h1 {
 
 font-size:55px;
+
+}
+
+
+
+#questPanel {
+
+width:180px;
+
+font-size:14px;
 
 }
 
