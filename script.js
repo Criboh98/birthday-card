@@ -1,5 +1,4 @@
-const message = `
-Grattis på födelsedagen! ❤️
+const birthdayMessage = `Grattis på födelsedagen! ❤️
 
 Det här kortet kommer lite i förväg eftersom jag reser bort och inte ville riskera att missa din dag.
 
@@ -9,43 +8,64 @@ Jag kommer alltid att heja på dig och hoppas att du hittar det du söker.
 
 Och du vet ju… du är il mio cielo in una stanza. 💙
 
-Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.
-`;
+Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.`;
+
+
+
+let letterPosition = 0;
 
 
 
 function openTreasure(){
 
 
-    // hide intro
-
-    document.getElementById("intro")
-    .classList.remove("active");
+    let chest = document.querySelector(".chest");
 
 
-
-    // show treasure
-
-    document.getElementById("treasure")
-    .classList.add("active");
+    chest.classList.add("open");
 
 
 
     setTimeout(()=>{
 
 
-        document.getElementById("treasure")
+        document
+        .getElementById("intro")
         .classList.remove("active");
 
 
-        document.getElementById("letterScene")
+
+        document
+        .getElementById("treasure")
         .classList.add("active");
 
 
-        typeWriter();
+
+    },800);
 
 
-    },3000);
+
+
+    setTimeout(()=>{
+
+
+        document
+        .getElementById("treasure")
+        .classList.remove("active");
+
+
+
+        document
+        .getElementById("letterScene")
+        .classList.add("active");
+
+
+
+        startTyping();
+
+
+
+    },3500);
 
 
 
@@ -54,41 +74,57 @@ function openTreasure(){
 
 
 
-let index = 0;
 
 
-function typeWriter(){
+
+function startTyping(){
 
 
-    let text =
+    let textBox =
     document.getElementById("letterText");
 
 
-    if(index < message.length){
+
+    if(letterPosition < birthdayMessage.length){
 
 
-        text.innerHTML += message.charAt(index);
+
+        textBox.innerHTML += 
+        birthdayMessage.charAt(letterPosition);
 
 
-        index++;
+
+        letterPosition++;
 
 
-        setTimeout(typeWriter,35);
+
+        setTimeout(
+            startTyping,
+            40
+        );
+
 
 
     }
-
 
     else{
 
 
-        setTimeout(showEnding,4000);
+        setTimeout(()=>{
+
+
+            showEnding();
+
+
+        },5000);
 
 
     }
 
 
 }
+
+
 
 
 
@@ -97,12 +133,16 @@ function typeWriter(){
 function showEnding(){
 
 
-    document.getElementById("letterScene")
+    document
+    .getElementById("letterScene")
     .classList.remove("active");
 
 
-    document.getElementById("ending")
+
+    document
+    .getElementById("ending")
     .classList.add("active");
+
 
 
 }
