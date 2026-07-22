@@ -6,7 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Birthday Treasure 🏴‍☠️</title>
+<title>Captain Eli's Grand Line Adventure 🏴‍☠️</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Pirata+One&display=swap" rel="stylesheet">
+
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,7 +20,7 @@
 <body>
 
 
-<!-- SKY ELEMENTS -->
+<!-- SKY -->
 
 <div class="stars">
 ⭐ ✨ ⭐ ✨ ⭐ ✨ ⭐
@@ -28,59 +32,67 @@
 </div>
 
 
-<div class="cloud cloud-one">
+<div class="cloud cloud1">
 ☁️
 </div>
 
 
-<div class="cloud cloud-two">
+<div class="cloud cloud2">
 ☁️
 </div>
 
 
 
-
-<!-- INTRO -->
-
-
-<section id="intro" class="scene active">
+<!-- SCENE 1 -->
 
 
-<div class="pirate-title">
+<section id="port" class="scene active">
+
+
+<div class="pirate-background pirate-one">
+🏴‍☠️
+</div>
+
+
+<div class="pirate-background pirate-two">
+⚔️
+</div>
+
+
 
 <h1>
-🏴‍☠️
+Captain Eli
 </h1>
 
 
 <h2>
-A Birthday Treasure Awaits...
+Welcome to the Grand Line...
 </h2>
 
 
 <p>
-A small adventure has been prepared for you.
+A mysterious treasure has been waiting beyond the ocean.
 </p>
-
-
-</div>
-
-
-
-<div class="chest" onclick="openTreasure()">
-
-
-<div class="chest-box">
-📦
-</div>
 
 
 <p>
-✨ Tap the treasure ✨
+Your adventure begins now.
 </p>
 
 
+
+<div class="ship-port">
+⛵
 </div>
+
+
+
+<button onclick="startAdventure()">
+
+⚓ Start Adventure
+
+</button>
+
 
 
 </section>
@@ -89,35 +101,116 @@ A small adventure has been prepared for you.
 
 
 
-<!-- TREASURE REVEAL -->
+
+<!-- SCENE 2 -->
 
 
-<section id="treasure" class="scene">
+<section id="mapScene" class="scene">
 
 
-<div class="gold-glow"></div>
+<h2>
+🗺️ The Grand Line Map
+</h2>
+
+
+<p>
+Every dream has a path.
+Choose your route, Captain Eli.
+</p>
+
+
+
+<div class="map">
+
+
+<div class="route storm"
+onclick="chooseRoute('storm')">
+
+🌪️
+<br>
+
+Storm Island
+
+</div>
+
+
+
+<div class="route paradise"
+onclick="chooseRoute('paradise')">
+
+🌴
+<br>
+
+Paradise Island
+
+</div>
+
+
+
+<div class="route dream"
+onclick="chooseRoute('dream')">
+
+⭐
+<br>
+
+Dream Island
+
+</div>
+
+
+
+</div>
+
+
+
+<p id="routeMessage"></p>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- SCENE 3 -->
+
+
+<section id="treasureScene" class="scene">
+
+
+<div class="sunset">
+
+☀️
+
+</div>
 
 
 <h1>
-✨ Treasure Found ✨
+Treasure Island
 </h1>
 
 
-<div class="coins">
-💰 💎 💰
-</div>
+<p>
+The compass has found the hidden treasure...
+</p>
 
 
-<div class="scroll-animation">
 
-📜
+<div class="treasure-chest"
+onclick="openChest()">
+
+📦
 
 </div>
 
 
 <p>
-A message from across the ocean...
+✨ Open the treasure ✨
 </p>
+
 
 
 </section>
@@ -127,7 +220,10 @@ A message from across the ocean...
 
 
 
-<!-- LETTER -->
+
+
+
+<!-- SCENE 4 -->
 
 
 <section id="letterScene" class="scene">
@@ -137,14 +233,16 @@ A message from across the ocean...
 
 
 <h2>
-💙 A Message From The Heart 💙
+💙 A Letter From Your Crew 💙
 </h2>
+
 
 
 <p id="letterText"></p>
 
 
 </div>
+
 
 
 </section>
@@ -154,19 +252,26 @@ A message from across the ocean...
 
 
 
-<!-- ENDING -->
 
 
-<section id="ending" class="scene">
+
+<!-- SCENE 5 -->
 
 
-<div class="compass">
-🧭
+<section id="endingScene" class="scene">
+
+
+<div class="final-ship">
+
+⛵
+
 </div>
 
 
-<div class="ship">
-⛵
+<div class="compass">
+
+🧭
+
 </div>
 
 
@@ -177,43 +282,50 @@ Your Journey Continues...
 
 
 
-<p class="ending-text">
+<p>
+
 
 Every person has their own ocean to cross.
 
+
 <br><br>
+
 
 Some search for treasure.
 
+<br>
+
 Some search for dreams.
 
-Some search for a place where they belong.
+<br>
+
+Some search for where they belong.
+
 
 <br><br>
 
-Keep building your own adventure.
 
-Keep following your own horizon.
+Keep building your own One Piece.
+
+
+<br><br>
+
+
+Your adventure is only beginning.
+
 
 <br><br>
 
-May you find the treasure you are searching for.
-
-<br><br>
 
 🏴‍☠️❤️
+
 
 </p>
 
 
-<div class="confetti">
-
-✨ ⭐ ✨ 💙 ✨ ⭐ ✨
-
-</div>
-
 
 </section>
+
 
 
 
@@ -224,9 +336,10 @@ May you find the treasure you are searching for.
 
 <div class="ocean">
 
-🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🌊🌊🌊🌊🌊🌊🌊🌊🌊
 
 </div>
+
 
 
 
