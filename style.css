@@ -1,292 +1,255 @@
-*{
-box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
-body{
+body {
 
-margin:0;
-overflow:hidden;
+    overflow: hidden;
+    background: #000;
 
-font-family:'IM Fell English',serif;
+    font-family: "IM Fell English", serif;
 
-color:white;
-
-background:#001d3d;
-
-text-align:center;
-
-}
-
-
-
-.screen{
-
-display:none;
-
-height:100vh;
-
-width:100%;
-
-position:relative;
-
-overflow:hidden;
+    color: white;
 
 }
 
 
 
-.screen.active{
+#game {
 
-display:block;
-
-animation:fade 1.5s;
-
-}
-
-
-
-@keyframes fade{
-
-from{
-opacity:0;
-}
-
-to{
-opacity:1;
-}
+    width: 100vw;
+    height: 100vh;
 
 }
 
 
 
+/* =========================
+LOADING SCREEN
+========================= */
 
 
-h1,h2{
+#loadingScreen {
 
-font-family:'Pirata One',cursive;
+    position: fixed;
 
-text-shadow:
+    inset: 0;
 
-3px 3px 10px black;
+    background:
+    radial-gradient(circle,#20395a,#050914);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:999;
+
+}
+
+
+.loading-content {
+
+    text-align:center;
+
+}
+
+
+.loading-content h1 {
+
+    font-family:"Pirata One";
+
+    font-size:80px;
+
+    letter-spacing:5px;
+
+}
+
+
+.loading-content p {
+
+    font-size:24px;
 
 }
 
 
 
-h1{
+.loading-bar {
 
-font-size:70px;
+    width:300px;
 
-}
+    height:20px;
 
+    border:2px solid #d8b35a;
 
+    margin:30px auto;
 
-h2{
-
-font-size:45px;
-
-}
-
-
-
-p{
-
-font-size:24px;
+    background:#111;
 
 }
 
 
 
+#loadingProgress {
 
+    width:0%;
 
+    height:100%;
 
+    background:
+    linear-gradient(
+    90deg,
+    #d9b35a,
+    #fff2a6
+    );
 
-button{
-
-
-font-family:'Pirata One',cursive;
-
-font-size:28px;
-
-padding:15px 40px;
-
-border-radius:20px;
-
-border:3px solid #8b5a2b;
-
-background:#f4c95d;
-
-color:#3b210e;
-
-cursor:pointer;
-
-transition:.3s;
-
-
-}
-
-
-
-button:hover{
-
-transform:scale(1.1);
+    transition:width .3s;
 
 }
 
 
 
 
-
-/*
-INTRO
-*/
-
-
-.darkOcean{
+/* =========================
+SCENES
+========================= */
 
 
-height:100%;
+.scene {
+
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    overflow:hidden;
+
+}
 
 
-background:
+.scene.active {
 
-linear-gradient(
-
-#020617,
-
-#003049,
-
-#0077b6
-
-);
-
+    display:block;
 
 }
 
 
 
-.moon{
-
-font-size:120px;
-
-padding-top:50px;
-
-animation:pulse 4s infinite;
-
-}
+/* =========================
+INTRO WORLD
+========================= */
 
 
+.sky {
 
-@keyframes pulse{
+    position:absolute;
 
-50%{
+    width:100%;
 
-transform:scale(1.1);
+    height:100%;
 
-}
+    object-fit:cover;
+
+    animation:skyMove 30s infinite alternate;
 
 }
 
 
 
+.ocean {
 
-.shipSilhouette img{
+    position:absolute;
 
+    bottom:0;
 
-width:500px;
+    width:100%;
 
+    height:55%;
 
-animation:sailFloat 4s infinite;
+    object-fit:cover;
 
-
-}
-
-
-
-@keyframes sailFloat{
-
-
-50%{
-
-transform:translateY(-25px);
-
-}
-
+    animation:oceanMove 8s infinite alternate;
 
 }
 
 
 
 
+@keyframes skyMove {
 
+    from {
+        transform:scale(1);
+    }
 
-/*
-WANTED
-*/
-
-
-
-.poster{
-
-
-background:
-
-linear-gradient(
-
-#fff0c4,
-
-#c99b55
-
-);
-
-
-color:#3b210e;
-
-
-width:400px;
-
-
-margin:auto;
-
-
-padding:50px;
-
-
-margin-top:80px;
-
-
-border-radius:15px;
-
-
-box-shadow:
-
-0 0 50px black;
-
-
-animation:drop 1.5s;
-
+    to {
+        transform:scale(1.08);
+    }
 
 }
 
 
 
-@keyframes drop{
+@keyframes oceanMove {
 
+    from {
 
-from{
+        transform:translateX(0);
 
-transform:translateY(-600px);
+    }
+
+    to {
+
+        transform:translateX(-40px);
+
+    }
 
 }
 
 
-to{
 
-transform:translateY(0);
+
+/* =========================
+STARS
+========================= */
+
+
+.stars {
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    radial-gradient(
+    white 2px,
+    transparent 2px
+    );
+
+    background-size:80px 80px;
+
+    opacity:.6;
+
+    animation:starsMove 8s infinite linear;
 
 }
 
+
+
+@keyframes starsMove {
+
+    from {
+        transform:translateY(0);
+    }
+
+    to {
+        transform:translateY(80px);
+    }
 
 }
 
@@ -294,149 +257,46 @@ transform:translateY(0);
 
 
 
+/* =========================
+FOG
+========================= */
 
 
-/*
-PORT
-*/
+.fog {
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.2),
+    transparent
+    );
 
 
-.background{
-
-position:absolute;
-
-width:100%;
-
-height:100%;
-
-z-index:-1;
-
-}
-
-
-
-.portImage{
-
-width:100%;
-
-height:100%;
-
-object-fit:cover;
-
-filter:brightness(.7);
+    animation:fogMove 12s infinite;
 
 }
 
 
 
-.crew{
+@keyframes fogMove {
 
+    from {
 
-display:flex;
+        transform:translateX(-100%);
 
-justify-content:center;
+    }
 
-gap:30px;
+    to {
 
+        transform:translateX(100%);
 
-}
-
-
-
-.character{
-
-
-cursor:pointer;
-
-transition:.4s;
-
-
-}
-
-
-
-.character img{
-
-
-height:220px;
-
-
-animation:breathe 3s infinite;
-
-
-}
-
-
-
-.character:hover{
-
-
-transform:scale(1.15);
-
-
-}
-
-
-
-@keyframes breathe{
-
-
-50%{
-
-transform:translateY(-15px);
-
-}
-
-}
-
-
-
-
-.objects{
-
-
-margin:40px;
-
-
-}
-
-
-
-.objects button{
-
-
-margin:10px;
-
-font-size:45px;
-
-
-}
-
-
-
-
-#dialogue{
-
-
-background:
-
-rgba(0,0,0,.6);
-
-
-padding:20px;
-
-
-width:70%;
-
-
-margin:auto;
-
-
-border-radius:20px;
-
-
-color:#ffd166;
-
+    }
 
 }
 
@@ -444,115 +304,79 @@ color:#ffd166;
 
 
 
+/* =========================
+THE LILY SHIP
+========================= */
 
 
+#lilyShip {
+
+    position:absolute;
+
+    width:500px;
+
+    max-width:70vw;
+
+    bottom:18%;
+
+    left:-600px;
 
 
-/*
-GAME
-*/
+    animation:
+
+    sailIn 6s forwards,
+    floatShip 4s infinite 6s;
 
 
+    filter:
 
-#seaGame{
-
-
-position:relative;
-
-height:400px;
-
-background:
-
-linear-gradient(
-
-#0077b6,
-
-#00b4d8
-
-);
-
-
-margin:30px;
-
-
-border-radius:30px;
-
-
-overflow:hidden;
-
-
-}
-
-
-
-#playerShip{
-
-
-position:absolute;
-
-width:150px;
-
-bottom:40px;
-
-left:30px;
-
-
-animation:sailFloat 3s infinite;
-
-
-}
-
-
-
-#treasureIsland{
-
-
-position:absolute;
-
-right:80px;
-
-bottom:50px;
-
-
-font-size:100px;
-
+    drop-shadow(
+    0 0 25px rgba(255,210,100,.8)
+    );
 
 }
 
 
 
 
+@keyframes sailIn {
 
 
+    from {
 
-/*
-TREASURE
-*/
+        left:-600px;
 
-
-.chest{
+    }
 
 
-font-size:150px;
+    to {
 
-cursor:pointer;
+        left:50%;
 
+        transform:translateX(-50%);
 
-animation:shake 2s infinite;
-
-
-}
-
-
-
-@keyframes shake{
-
-
-50%{
-
-transform:rotate(10deg);
+    }
 
 }
+
+
+
+
+@keyframes floatShip {
+
+
+    0%,100% {
+
+        margin-bottom:0;
+
+    }
+
+
+    50% {
+
+        margin-bottom:25px;
+
+    }
 
 }
 
@@ -560,44 +384,58 @@ transform:rotate(10deg);
 
 
 
+/* =========================
+TITLE
+========================= */
 
 
-/*
-LETTER
-*/
+.titleBox {
+
+    position:absolute;
+
+    top:12%;
+
+    width:100%;
+
+    text-align:center;
+
+    animation:fadeTitle 4s forwards;
+
+}
 
 
-.paper{
+
+.titleBox h1 {
 
 
-background:
+    font-family:"Pirata One";
 
-linear-gradient(
+    font-size:110px;
 
-#fff4c2,
+    letter-spacing:8px;
 
-#d9b26c
+    text-shadow:
 
-);
+    0 5px 20px black;
 
-
-color:#3b210e;
-
-
-max-width:800px;
+}
 
 
-margin:80px auto;
 
 
-padding:40px;
+.titleBox h2 {
+
+    font-size:35px;
+
+}
 
 
-border-radius:20px;
 
+.titleBox p {
 
-box-shadow:0 0 40px black;
+    font-size:25px;
 
+    margin-top:15px;
 
 }
 
@@ -605,68 +443,52 @@ box-shadow:0 0 40px black;
 
 
 
-/*
-ENDING
-*/
+button {
 
 
-#ending{
+    margin-top:40px;
+
+    padding:18px 45px;
+
+    border-radius:50px;
+
+    border:3px solid #d8b35a;
 
 
-background:
+    background:
 
-linear-gradient(
+    linear-gradient(
+    #7c5525,
+    #3d2410
+    );
 
-#ffb703,
 
-#023047
+    color:white;
 
-);
+    font-family:"Pirata One";
+
+    font-size:28px;
+
+    cursor:pointer;
+
+
+    box-shadow:
+
+    0 0 20px rgba(255,200,80,.5);
+
+
+    transition:.3s;
 
 
 }
 
 
 
-.finalShip{
+button:hover {
 
+    transform:scale(1.1);
 
-width:600px;
-
-
-margin-top:80px;
-
-
-animation:finalSail 12s infinite;
-
-
-}
-
-
-
-@keyframes finalSail{
-
-
-0%{
-
-transform:translateX(-600px);
-
-}
-
-
-50%{
-
-transform:translateX(0);
-
-}
-
-
-100%{
-
-transform:translateX(600px);
-
-}
-
+    background:#a87532;
 
 }
 
@@ -674,52 +496,112 @@ transform:translateX(600px);
 
 
 
+@keyframes fadeTitle {
+
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(-40px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+
+
+/* =========================
+HARBOR
+========================= */
+
+
+.background {
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+.harborMessage {
+
+
+    position:absolute;
+
+    top:30%;
+
+    width:100%;
+
+    text-align:center;
+
+
+}
+
+
+
+.harborMessage h1 {
+
+
+    font-family:"Pirata One";
+
+    font-size:80px;
+
+    text-shadow:0 5px 15px black;
+
+}
+
+
+
+
+/* MOBILE */
 
 
 @media(max-width:700px){
 
 
-h1{
+.titleBox h1 {
 
-font-size:45px;
-
-}
-
-
-h2{
-
-font-size:32px;
+    font-size:60px;
 
 }
 
 
-.crew{
+.titleBox h2 {
 
-gap:5px;
-
-}
-
-
-.character img{
-
-height:120px;
+    font-size:22px;
 
 }
 
 
+#lilyShip {
 
-.shipSilhouette img{
+    width:350px;
 
-width:300px;
+}
+
+
+button {
+
+    font-size:22px;
 
 }
 
-
-.finalShip{
-
-width:300px;
-
-}
 
 
 }
