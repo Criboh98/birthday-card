@@ -12,12 +12,207 @@ Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.`;
 
 
 
+let discoveries = 0;
+
 let letterIndex = 0;
 
 
 
+// ======================
+// WANTED POSTER
+// ======================
 
-// START ADVENTURE
+
+function openPort(){
+
+
+document
+.getElementById("wanted")
+.classList.remove("active");
+
+
+document
+.getElementById("port")
+.classList.add("active");
+
+
+}
+
+
+
+
+
+
+// ======================
+// CREW DIALOGUE
+// ======================
+
+
+function talk(person){
+
+
+let dialogue =
+document.getElementById("dialogue");
+
+
+
+if(person === "nova"){
+
+
+dialogue.innerHTML =
+
+"🏴‍☠️ Captain Nova: Every great adventure begins with one brave step.";
+
+
+}
+
+
+
+if(person === "mira"){
+
+
+dialogue.innerHTML =
+
+"🧭 Mira: The ocean is huge, but every dream has a direction.";
+
+
+}
+
+
+
+if(person === "kaito"){
+
+
+dialogue.innerHTML =
+
+"🔨 Kaito: A great ship is built piece by piece... just like a dream.";
+
+
+}
+
+
+
+if(person === "luna"){
+
+
+dialogue.innerHTML =
+
+"🍖 Luna: Never forget to enjoy the journey, Captain!";
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+// ======================
+// PORT OBJECTS
+// ======================
+
+
+function discover(object){
+
+
+let dialogue =
+document.getElementById("dialogue");
+
+
+
+discoveries++;
+
+
+
+if(object === "telescope"){
+
+
+dialogue.innerHTML =
+
+"🔭 You see a mysterious island beyond the waves...";
+
+
+}
+
+
+
+
+if(object === "compass"){
+
+
+dialogue.innerHTML =
+
+"🧭 The compass reacts to your dream...";
+
+
+}
+
+
+
+
+if(object === "chest"){
+
+
+dialogue.innerHTML =
+
+"📦 An old treasure chest. Someone left a message here...";
+
+
+}
+
+
+
+
+if(object === "map"){
+
+
+dialogue.innerHTML =
+
+"🗺️ An ancient map reveals a path through the Grand Line.";
+
+
+}
+
+
+
+
+
+if(discoveries >= 3){
+
+
+document
+.getElementById("startButton")
+.disabled=false;
+
+
+dialogue.innerHTML +=
+
+"<br><br>✨ The crew is ready. The voyage can begin!";
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+// ======================
+// START VOYAGE
+// ======================
+
 
 
 function startAdventure(){
@@ -43,7 +238,10 @@ document
 
 
 
-// ROUTE CHOICE
+
+// ======================
+// GRAND LINE ROUTES
+// ======================
 
 
 function chooseRoute(route){
@@ -54,28 +252,25 @@ document.getElementById("routeMessage");
 
 
 
+if(route==="storm"){
 
-if(route === "storm"){
+
+message.innerHTML =
+
+"🌪️ The storm was too strong! Even legends must choose wisely.";
 
 
-message.innerHTML = `
+}
 
-🌪️ The Storm Route
 
-<br><br>
 
-The waves were too strong!
 
-<br>
+if(route==="paradise"){
 
-Even the greatest captains must choose wisely.
 
-<br><br>
+message.innerHTML =
 
-Try another path ⚓
-
-`;
-
+"🌴 A beautiful island... but your treasure lies somewhere else.";
 
 
 }
@@ -84,52 +279,12 @@ Try another path ⚓
 
 
 
-
-if(route === "paradise"){
-
-
-message.innerHTML = `
-
-🌴 Paradise Island
-
-<br><br>
-
-A beautiful place...
-
-but your treasure is still waiting.
-
-<br><br>
-
-The journey continues.
-
-`;
+if(route==="dream"){
 
 
+message.innerHTML =
 
-}
-
-
-
-
-
-
-
-if(route === "dream"){
-
-
-message.innerHTML = `
-
-⭐ The Dream Route!
-
-<br><br>
-
-The compass begins to glow...
-
-<br>
-
-The Grand Line has revealed your path.
-
-`;
+"⭐ The Dream Route! The compass has found your destiny.";
 
 
 
@@ -141,11 +296,9 @@ document
 .classList.remove("active");
 
 
-
 document
 .getElementById("treasureScene")
 .classList.add("active");
-
 
 
 },2500);
@@ -165,20 +318,16 @@ document
 
 
 
-// OPEN TREASURE
+// ======================
+// TREASURE
+// ======================
 
 
 function openChest(){
 
 
-
 let chest =
-document.querySelector(".treasure-chest");
-
-
-
-chest.style.animation =
-"none";
+document.querySelector(".big-chest");
 
 
 
@@ -192,7 +341,6 @@ setTimeout(()=>{
 document
 .getElementById("treasureScene")
 .classList.remove("active");
-
 
 
 document
@@ -218,7 +366,10 @@ typeLetter();
 
 
 
-// LETTER EFFECT
+// ======================
+// LETTER
+// ======================
+
 
 
 function typeLetter(){
@@ -233,6 +384,7 @@ if(letterIndex < birthdayMessage.length){
 
 
 box.innerHTML +=
+
 birthdayMessage.charAt(letterIndex);
 
 
@@ -240,15 +392,7 @@ birthdayMessage.charAt(letterIndex);
 letterIndex++;
 
 
-
-setTimeout(
-
-typeLetter,
-
-45
-
-);
-
+setTimeout(typeLetter,45);
 
 
 }
@@ -262,33 +406,33 @@ setTimeout(()=>{
 showEnding();
 
 
-},6000);
-
-
-
-}
+},7000);
 
 
 }
 
 
 
+}
 
 
 
 
 
-// END
+
+
+// ======================
+// FINAL SCENE
+// ======================
+
 
 
 function showEnding(){
 
 
-
 document
 .getElementById("letterScene")
 .classList.remove("active");
-
 
 
 document
