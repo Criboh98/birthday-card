@@ -1,458 +1,237 @@
-// ===============================
-// CAPTAIN ELI - THE LILY ADVENTURE
-// ===============================
+document.addEventListener("DOMContentLoaded", () => {
 
 
-const birthdayMessage = `Grattis på födelsedagen! ❤️
+    const loadingScreen =
+    document.getElementById("loadingScreen");
 
-Det här kortet kommer lite i förväg eftersom jag reser bort och inte ville riskera att missa din dag.
 
-Jag hoppas att den lilla presenten kan göra dig glad och hjälpa dig att fortsätta “bygga” din One Piece.
+    const loadingProgress =
+    document.getElementById("loadingProgress");
 
-Jag kommer alltid att heja på dig och hoppas att du hittar det du söker.
 
-Och du vet ju… du är il mio cielo in una stanza. 💙
+    const loadingText =
+    document.getElementById("loadingText");
 
-Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.`;
 
+    const startButton =
+    document.getElementById("startButton");
 
 
-let letterPosition = 0;
+    const meetCrewButton =
+    document.getElementById("meetCrewButton");
 
-let foundThings = 0;
 
-let gameStarted = false;
+    const introScene =
+    document.getElementById("introScene");
 
 
+    const harborScene =
+    document.getElementById("harborScene");
 
 
 
+    let progress = 0;
 
-// ===============================
-// INTRO
-// ===============================
 
 
-function startIntro(){
+    // =========================
+    // LOADING SEQUENCE
+    // =========================
 
 
-let ocean =
-document.getElementById("oceanSound");
+    const loadingMessages = [
 
+        "Preparing the ship...",
 
-let music =
-document.getElementById("adventureMusic");
+        "Raising the sails...",
 
+        "Gathering the crew...",
 
+        "Charting the seas...",
 
-if(ocean){
+        "The Lily is ready..."
 
-ocean.volume=.4;
+    ];
 
-ocean.play();
 
-}
 
+    const loading = setInterval(() => {
 
 
-setTimeout(()=>{
+        progress += 20;
 
 
-document
-.getElementById("intro")
-.classList.remove("active");
+        loadingProgress.style.width =
+        progress + "%";
 
 
 
-document
-.getElementById("wanted")
-.classList.add("active");
+        loadingText.innerText =
+        loadingMessages[
+        Math.floor(progress / 20)-1
+        ];
 
 
 
-},1500);
+        if(progress >= 100){
 
 
+            clearInterval(loading);
 
-}
 
+            setTimeout(()=>{
 
 
+                loadingScreen.style.opacity="0";
 
 
+                setTimeout(()=>{
 
 
-// ===============================
-// WANTED
-// ===============================
+                    loadingScreen.style.display="none";
 
 
-function openPort(){
+                },1000);
 
 
-document
-.getElementById("wanted")
-.classList.remove("active");
+            },800);
 
 
-document
-.getElementById("port")
-.classList.add("active");
+        }
 
 
-}
 
+    },700);
 
 
 
 
 
 
+    // =========================
+    // SCENE SYSTEM
+    // =========================
 
-// ===============================
-// CREW
-// ===============================
 
+    function changeScene(scene){
 
-function talk(person){
 
+        document
+        .querySelectorAll(".scene")
+        .forEach(s=>{
 
-let box =
-document.getElementById("dialogue");
+            s.classList.remove("active");
 
+        });
 
 
-let messages={
 
+        scene.classList.add("active");
 
-nova:
+    }
 
-"🏴‍☠️ Captain Nova: Every dream begins with someone brave enough to chase it.",
 
 
-mira:
 
-"🧭 Mira: The ocean is endless, but every dream has a path.",
 
 
-kaito:
 
-"🔨 Kaito: Great things are built piece by piece.",
+    // =========================
+    // START ADVENTURE
+    // =========================
 
 
-luna:
+    startButton.addEventListener("click",()=>{
 
-"🍖 Luna: The greatest treasures are the memories we make."
 
+        startButton.innerHTML =
+        "⛵ Sailing to Harbor...";
 
 
-};
 
+        setTimeout(()=>{
 
 
-box.innerHTML =
-messages[person];
+            changeScene(harborScene);
 
 
-}
+        },1500);
 
 
 
+    });
 
 
 
 
 
 
-// ===============================
-// OBJECT DISCOVERY
-// ===============================
 
+    // =========================
+    // HARBOR BUTTON
+    // =========================
 
-function discover(item){
 
+    meetCrewButton.addEventListener("click",()=>{
 
-let box =
-document.getElementById("dialogue");
 
+        alert(
+        "🏴‍☠️ The crew awaits...\n\nCaptain Nova, Mira, Kaito and Luna will join the adventure soon!"
+        );
 
-foundThings++;
 
+    });
 
 
 
-if(item==="compass"){
 
 
-box.innerHTML=
 
-"🧭 The compass glows... The Lily has found a direction.";
+    // =========================
+    // LITTLE AMBIENT EFFECTS
+    // =========================
 
 
-}
+    function createSparkle(){
 
 
+        const sparkle =
+        document.createElement("div");
 
 
-if(item==="map"){
+        sparkle.className="sparkle";
 
 
-box.innerHTML=
+        sparkle.style.left =
+        Math.random()*100+"%";
 
-"🗺️ An old map reveals a hidden route through the Grand Line.";
 
+        sparkle.style.top =
+        Math.random()*100+"%";
 
-}
 
 
+        document.body.appendChild(sparkle);
 
 
 
-if(item==="telescope"){
+        setTimeout(()=>{
 
 
-box.innerHTML=
+            sparkle.remove();
 
-"🔭 A mysterious island appears beyond the waves.";
 
+        },3000);
 
-}
 
 
+    }
 
 
 
-if(item==="ship"){
 
+    setInterval(createSparkle,1200);
 
-box.innerHTML=
 
-"⛵ This is The Lily. She is waiting for her captain.";
 
-
-}
-
-
-
-
-}
-
-
-
-
-
-
-
-
-// ===============================
-// START VOYAGE
-// ===============================
-
-
-
-function beginVoyage(){
-
-
-
-document
-.getElementById("port")
-.classList.remove("active");
-
-
-
-document
-.getElementById("game")
-.classList.add("active");
-
-
-
-startGame();
-
-
-}
-
-
-
-
-
-
-
-// ===============================
-// MINI GAME
-// ===============================
-
-
-
-function startGame(){
-
-
-let ship =
-document.getElementById("playerShip");
-
-
-let island =
-document.getElementById("treasureIsland");
-
-
-setTimeout(()=>{
-
-
-document
-.getElementById("game")
-.classList.remove("active");
-
-
-
-document
-.getElementById("treasure")
-.classList.add("active");
-
-
-
-},6000);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// TREASURE
-// ===============================
-
-
-
-function openTreasure(){
-
-
-let sound =
-document.getElementById("treasureSound");
-
-
-if(sound){
-
-sound.play();
-
-}
-
-
-
-
-document.querySelector(".chest")
-.innerHTML="✨💎✨";
-
-
-
-setTimeout(()=>{
-
-
-document
-.getElementById("treasure")
-.classList.remove("active");
-
-
-document
-.getElementById("letter")
-.classList.add("active");
-
-
-
-typeLetter();
-
-
-},2000);
-
-
-
-}
-
-
-
-
-
-
-
-
-// ===============================
-// LETTER
-// ===============================
-
-
-
-function typeLetter(){
-
-
-let text =
-document.getElementById("letterText");
-
-
-
-if(letterPosition < birthdayMessage.length){
-
-
-text.innerHTML +=
-
-birthdayMessage.charAt(letterPosition);
-
-
-
-letterPosition++;
-
-
-setTimeout(typeLetter,45);
-
-
-}
-
-else{
-
-
-setTimeout(()=>{
-
-
-showEnding();
-
-
-},7000);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-// ===============================
-// ENDING
-// ===============================
-
-
-
-function showEnding(){
-
-
-document
-.getElementById("letter")
-.classList.remove("active");
-
-
-
-document
-.getElementById("ending")
-.classList.add("active");
-
-
-}
+});
