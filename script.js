@@ -1,3 +1,8 @@
+// ===============================
+// CAPTAIN ELI - THE LILY ADVENTURE
+// ===============================
+
+
 const birthdayMessage = `Grattis på födelsedagen! ❤️
 
 Det här kortet kommer lite i förväg eftersom jag reser bort och inte ville riskera att missa din dag.
@@ -12,15 +17,74 @@ Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.`;
 
 
 
-let discoveries = 0;
+let letterPosition = 0;
 
-let letterIndex = 0;
+let foundThings = 0;
+
+let gameStarted = false;
 
 
 
-// ======================
-// WANTED POSTER
-// ======================
+
+
+
+// ===============================
+// INTRO
+// ===============================
+
+
+function startIntro(){
+
+
+let ocean =
+document.getElementById("oceanSound");
+
+
+let music =
+document.getElementById("adventureMusic");
+
+
+
+if(ocean){
+
+ocean.volume=.4;
+
+ocean.play();
+
+}
+
+
+
+setTimeout(()=>{
+
+
+document
+.getElementById("intro")
+.classList.remove("active");
+
+
+
+document
+.getElementById("wanted")
+.classList.add("active");
+
+
+
+},1500);
+
+
+
+}
+
+
+
+
+
+
+
+// ===============================
+// WANTED
+// ===============================
 
 
 function openPort(){
@@ -43,65 +107,51 @@ document
 
 
 
-// ======================
-// CREW DIALOGUE
-// ======================
+
+
+// ===============================
+// CREW
+// ===============================
 
 
 function talk(person){
 
 
-let dialogue =
+let box =
 document.getElementById("dialogue");
 
 
 
-if(person === "nova"){
+let messages={
 
 
-dialogue.innerHTML =
+nova:
 
-"🏴‍☠️ Captain Nova: Every great adventure begins with one brave step.";
-
-
-}
+"🏴‍☠️ Captain Nova: Every dream begins with someone brave enough to chase it.",
 
 
+mira:
 
-if(person === "mira"){
-
-
-dialogue.innerHTML =
-
-"🧭 Mira: The ocean is huge, but every dream has a direction.";
+"🧭 Mira: The ocean is endless, but every dream has a path.",
 
 
-}
+kaito:
+
+"🔨 Kaito: Great things are built piece by piece.",
 
 
+luna:
 
-if(person === "kaito"){
-
-
-dialogue.innerHTML =
-
-"🔨 Kaito: A great ship is built piece by piece... just like a dream.";
-
-
-}
+"🍖 Luna: The greatest treasures are the memories we make."
 
 
 
-if(person === "luna"){
+};
 
 
-dialogue.innerHTML =
 
-"🍖 Luna: Never forget to enjoy the journey, Captain!";
-
-
-}
-
+box.innerHTML =
+messages[person];
 
 
 }
@@ -113,42 +163,30 @@ dialogue.innerHTML =
 
 
 
-// ======================
-// PORT OBJECTS
-// ======================
+
+// ===============================
+// OBJECT DISCOVERY
+// ===============================
 
 
-function discover(object){
+function discover(item){
 
 
-let dialogue =
+let box =
 document.getElementById("dialogue");
 
 
-
-discoveries++;
-
-
-
-if(object === "telescope"){
-
-
-dialogue.innerHTML =
-
-"🔭 You see a mysterious island beyond the waves...";
-
-
-}
+foundThings++;
 
 
 
 
-if(object === "compass"){
+if(item==="compass"){
 
 
-dialogue.innerHTML =
+box.innerHTML=
 
-"🧭 The compass reacts to your dream...";
+"🧭 The compass glows... The Lily has found a direction.";
 
 
 }
@@ -156,25 +194,12 @@ dialogue.innerHTML =
 
 
 
-if(object === "chest"){
+if(item==="map"){
 
 
-dialogue.innerHTML =
+box.innerHTML=
 
-"📦 An old treasure chest. Someone left a message here...";
-
-
-}
-
-
-
-
-if(object === "map"){
-
-
-dialogue.innerHTML =
-
-"🗺️ An ancient map reveals a path through the Grand Line.";
+"🗺️ An old map reveals a hidden route through the Grand Line.";
 
 
 }
@@ -183,20 +208,30 @@ dialogue.innerHTML =
 
 
 
-if(discoveries >= 3){
+if(item==="telescope"){
 
 
-document
-.getElementById("startButton")
-.disabled=false;
+box.innerHTML=
 
-
-dialogue.innerHTML +=
-
-"<br><br>✨ The crew is ready. The voyage can begin!";
+"🔭 A mysterious island appears beyond the waves.";
 
 
 }
+
+
+
+
+
+if(item==="ship"){
+
+
+box.innerHTML=
+
+"⛵ This is The Lily. She is waiting for her captain.";
+
+
+}
+
 
 
 
@@ -209,13 +244,14 @@ dialogue.innerHTML +=
 
 
 
-// ======================
+// ===============================
 // START VOYAGE
-// ======================
+// ===============================
 
 
 
-function startAdventure(){
+function beginVoyage(){
+
 
 
 document
@@ -225,52 +261,12 @@ document
 
 
 document
-.getElementById("mapScene")
+.getElementById("game")
 .classList.add("active");
 
 
 
-}
-
-
-
-
-
-
-
-
-// ======================
-// GRAND LINE ROUTES
-// ======================
-
-
-function chooseRoute(route){
-
-
-let message =
-document.getElementById("routeMessage");
-
-
-
-if(route==="storm"){
-
-
-message.innerHTML =
-
-"🌪️ The storm was too strong! Even legends must choose wisely.";
-
-
-}
-
-
-
-
-if(route==="paradise"){
-
-
-message.innerHTML =
-
-"🌴 A beautiful island... but your treasure lies somewhere else.";
+startGame();
 
 
 }
@@ -279,29 +275,41 @@ message.innerHTML =
 
 
 
-if(route==="dream"){
 
 
-message.innerHTML =
+// ===============================
+// MINI GAME
+// ===============================
 
-"⭐ The Dream Route! The compass has found your destiny.";
 
+
+function startGame(){
+
+
+let ship =
+document.getElementById("playerShip");
+
+
+let island =
+document.getElementById("treasureIsland");
 
 
 setTimeout(()=>{
 
 
 document
-.getElementById("mapScene")
+.getElementById("game")
 .classList.remove("active");
 
 
+
 document
-.getElementById("treasureScene")
+.getElementById("treasure")
 .classList.add("active");
 
 
-},2500);
+
+},6000);
 
 
 
@@ -309,29 +317,36 @@ document
 
 
 
-}
 
 
 
 
 
 
-
-
-// ======================
+// ===============================
 // TREASURE
-// ======================
-
-
-function openChest(){
-
-
-let chest =
-document.querySelector(".big-chest");
+// ===============================
 
 
 
-chest.innerHTML="✨📦✨";
+function openTreasure(){
+
+
+let sound =
+document.getElementById("treasureSound");
+
+
+if(sound){
+
+sound.play();
+
+}
+
+
+
+
+document.querySelector(".chest")
+.innerHTML="✨💎✨";
 
 
 
@@ -339,12 +354,12 @@ setTimeout(()=>{
 
 
 document
-.getElementById("treasureScene")
+.getElementById("treasure")
 .classList.remove("active");
 
 
 document
-.getElementById("letterScene")
+.getElementById("letter")
 .classList.add("active");
 
 
@@ -352,8 +367,7 @@ document
 typeLetter();
 
 
-
-},1500);
+},2000);
 
 
 
@@ -366,30 +380,30 @@ typeLetter();
 
 
 
-// ======================
+// ===============================
 // LETTER
-// ======================
+// ===============================
 
 
 
 function typeLetter(){
 
 
-let box =
+let text =
 document.getElementById("letterText");
 
 
 
-if(letterIndex < birthdayMessage.length){
+if(letterPosition < birthdayMessage.length){
 
 
-box.innerHTML +=
+text.innerHTML +=
 
-birthdayMessage.charAt(letterIndex);
+birthdayMessage.charAt(letterPosition);
 
 
 
-letterIndex++;
+letterPosition++;
 
 
 setTimeout(typeLetter,45);
@@ -412,7 +426,6 @@ showEnding();
 }
 
 
-
 }
 
 
@@ -421,9 +434,10 @@ showEnding();
 
 
 
-// ======================
-// FINAL SCENE
-// ======================
+
+// ===============================
+// ENDING
+// ===============================
 
 
 
@@ -431,14 +445,14 @@ function showEnding(){
 
 
 document
-.getElementById("letterScene")
+.getElementById("letter")
 .classList.remove("active");
 
 
-document
-.getElementById("endingScene")
-.classList.add("active");
 
+document
+.getElementById("ending")
+.classList.add("active");
 
 
 }
