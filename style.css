@@ -1,118 +1,159 @@
-/* =====================
-THE LILY
-Captain Eli Adventure
-STYLE PART 1/3
-===================== */
-
-
-/* =====================
-RESET
-===================== */
-
-
-* {
-
+*{
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
 }
 
 
-
-body {
-
+body{
 
 overflow:hidden;
-
-
 background:black;
-
-
 color:white;
-
-
-font-family:"IM Fell English", serif;
-
+font-family:"IM Fell English",serif;
 
 }
 
 
 
-
-
-#game {
-
+#game{
 
 width:100vw;
-
-
 height:100vh;
 
-
 }
 
 
 
-
-
-
-/* =====================
-SCENES
-===================== */
-
-
-.scene {
-
+.scene{
 
 position:absolute;
-
-
 inset:0;
-
-
 display:none;
-
-
 overflow:hidden;
-
 
 }
 
 
 
-.scene.active {
-
+.scene.active{
 
 display:block;
 
+}
+
+
+
+.background,
+.sky,
+.ocean{
+
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
 
 }
 
 
 
+/* =====================
+LOADING
+===================== */
 
 
-.background {
-
+#loadingScreen{
 
 position:absolute;
+inset:0;
+background:
+linear-gradient(#071b30,#000);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+z-index:999;
+
+}
 
 
-width:100%;
 
+.scrollBox,
+.introScroll,
+.storyScroll,
+.endingScroll,
+.letterScroll{
+
+background:
+
+rgba(0,0,0,.78);
+
+border:
+
+5px solid #d9b45b;
+
+border-radius:25px;
+
+padding:35px;
+
+text-align:center;
+
+box-shadow:
+
+0 0 40px black;
+
+}
+
+
+
+.scrollBox h1,
+.introScroll h1,
+.storyScroll h1,
+.endingScroll h1,
+.letterScroll h1{
+
+font-family:"Pirata One";
+
+font-size:70px;
+
+color:#ffd76b;
+
+text-shadow:
+
+0 5px 20px black;
+
+}
+
+
+
+.loadingBar{
+
+width:400px;
+
+height:25px;
+
+border:3px solid #d9b45b;
+
+margin-top:30px;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+
+
+#loadingProgress{
 
 height:100%;
 
+width:0%;
 
-object-fit:cover;
-
+background:#ffd76b;
 
 }
-
-
 
 
 
@@ -125,116 +166,55 @@ QUEST PANEL
 ===================== */
 
 
-#questPanel {
-
+#questPanel{
 
 position:absolute;
 
-
 top:20px;
-
 
 left:20px;
 
+width:310px;
 
-width:330px;
-
-
-padding:25px;
-
+padding:20px;
 
 background:
 
+linear-gradient(#e5c47b,#704013);
 
-linear-gradient(
-
-#e5c27a,
-
-#8a531d
-
-);
-
-
-
-border:
-
-6px solid #2b1605;
-
-
+border:5px solid #2b1605;
 
 border-radius:20px;
 
+color:#180c00;
 
-
-color:#1c0c00;
-
-
-
-z-index:1000;
-
-
-
-box-shadow:
-
-0 10px 40px black;
-
-
+z-index:50;
 
 }
 
 
 
-#questPanel h2 {
-
+#questPanel h2{
 
 font-family:"Pirata One";
 
-
-font-size:42px;
-
+font-size:38px;
 
 text-align:center;
-
-
-color:#241000;
-
-
 
 }
 
 
 
-#questPanel h3 {
-
-
-text-align:center;
-
-
-margin:10px;
-
-
-font-size:20px;
-
-
-}
-
-
-
-#questPanel ul {
-
+#questPanel ul{
 
 list-style:none;
 
-
-font-size:21px;
-
+font-size:20px;
 
 line-height:1.8;
 
-
 }
-
-
 
 
 
@@ -247,125 +227,53 @@ INVENTORY
 ===================== */
 
 
-
-#inventoryButton {
-
+#inventoryButton{
 
 position:absolute;
 
+right:25px;
 
 top:25px;
 
-
-right:25px;
-
-
-z-index:1200;
-
+z-index:60;
 
 }
 
 
 
-
-
-#inventoryPanel {
-
+#inventoryPanel{
 
 display:none;
 
-
 position:absolute;
 
+right:25px;
 
 top:90px;
 
-
-right:25px;
-
-
 width:300px;
-
 
 padding:25px;
 
+background:rgba(0,0,0,.9);
 
-background:
-
-rgba(0,0,0,.9);
-
-
-
-border:
-
-5px solid #d9b45b;
-
-
+border:4px solid #d9b45b;
 
 border-radius:20px;
 
-
-
-z-index:1200;
-
-
-
-box-shadow:
-
-0 0 30px black;
-
+z-index:60;
 
 }
 
 
 
-
-
-#inventoryPanel h2 {
-
+#inventoryPanel h2{
 
 font-family:"Pirata One";
 
-
-font-size:35px;
-
-
 color:#ffd76b;
 
-
 }
-
-
-
-
-
-#inventoryList {
-
-
-list-style:none;
-
-
-font-size:23px;
-
-
-}
-
-
-
-#inventoryList li {
-
-
-padding:10px;
-
-
-border-bottom:
-
-1px solid #d9b45b;
-
-
-}
-
-
 
 
 
@@ -374,290 +282,90 @@ border-bottom:
 
 
 /* =====================
-MESSAGE BOX
+BUTTONS
 ===================== */
 
 
+button{
 
-#messageBox {
+margin:15px;
 
+padding:15px 40px;
 
-display:none;
-
-
-position:absolute;
-
-
-bottom:12%;
-
-
-left:15%;
-
-
-right:15%;
-
-
-padding:35px;
-
-
-background:
-
-rgba(0,0,0,.9);
-
-
-
-border:
-
-5px solid #d9b45b;
-
-
-
-border-radius:25px;
-
-
-
-text-align:center;
-
-
-
-z-index:2000;
-
-
-
-box-shadow:
-
-0 0 40px black;
-
-
-}
-
-
-
-
-
-#messageText {
-
-
-font-size:30px;
-
-
-line-height:1.5;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================
-LOADING SCREEN
-===================== */
-
-
-
-#loadingScreen {
-
-
-position:absolute;
-
-
-inset:0;
-
-
-background:
-
-linear-gradient(
-
-black,
-
-#1a0d00
-
-);
-
-
-
-display:flex;
-
-
-justify-content:center;
-
-
-align-items:center;
-
-
-z-index:9999;
-
-
-}
-
-
-
-
-
-.loading-content {
-
-
-text-align:center;
-
-
-}
-
-
-
-
-
-.loading-content h1 {
-
-
-font-family:"Pirata One";
-
-
-font-size:100px;
-
-
-color:#ffd76b;
-
-
-}
-
-
-
-
-
-.loading-content p {
-
-
-font-size:30px;
-
-
-}
-
-
-
-
-
-.loading-bar {
-
-
-width:400px;
-
-
-height:25px;
-
+border-radius:50px;
 
 border:
 
 3px solid #d9b45b;
 
-
-
-margin:30px auto;
-
-
-
-border-radius:20px;
-
-
-
-overflow:hidden;
-
-
-}
-
-
-
-
-
-#loadingProgress {
-
-
-height:100%;
-
-
-width:0%;
-
-
 background:
 
-linear-gradient(
+linear-gradient(#8a541d,#351b08);
 
-90deg,
+color:white;
 
-#d9b45b,
+font-family:"Pirata One";
 
-#fff2a8
+font-size:28px;
 
-);
+cursor:pointer;
 
-
-
-transition:.5s;
-
+transition:.3s;
 
 }
 
 
 
-#loadingText {
+button:hover{
 
+transform:scale(1.1);
 
-font-size:22px;
+box-shadow:
 
+0 0 20px gold;
 
 }
+
+
+
+button:disabled{
+
+opacity:.4;
+
+}
+
+
+
+
+
+
+
 /* =====================
-INTRO VOYAGE
+INTRO
 ===================== */
 
 
-.sky,
-.ocean {
-
-
-position:absolute;
-
-
-width:100%;
-
-
-height:100%;
-
-
-object-fit:cover;
-
-
-}
-
-
-
-.ocean {
-
+.ocean{
 
 animation:
 
-oceanMove 10s infinite alternate;
-
+waveMove 8s infinite alternate;
 
 }
 
 
 
-@keyframes oceanMove {
+@keyframes waveMove{
 
 
-from {
+from{
 
 transform:translateX(0);
 
 }
 
 
-to {
+to{
 
 transform:translateX(-40px);
 
@@ -668,174 +376,53 @@ transform:translateX(-40px);
 
 
 
-
-
-.stars {
-
+.stars{
 
 position:absolute;
-
 
 inset:0;
 
-
 background:
 
-radial-gradient(
+radial-gradient(white 2px,transparent 2px);
 
-white 2px,
+background-size:100px 100px;
 
-transparent 2px
-
-);
-
-
-
-background-size:
-
-90px 90px;
-
-
-
-opacity:.4;
-
+opacity:.5;
 
 }
 
 
 
-
-
-.fog {
-
+#lilyShip{
 
 position:absolute;
-
-
-inset:0;
-
-
-background:
-
-linear-gradient(
-
-120deg,
-
-transparent,
-
-rgba(255,255,255,.2),
-
-transparent
-
-);
-
-
-
-animation:
-
-fogMove 12s infinite;
-
-
-}
-
-
-
-
-
-@keyframes fogMove {
-
-
-from {
-
-transform:translateX(-100%);
-
-}
-
-
-to {
-
-transform:translateX(100%);
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-/* =====================
-THE LILY SHIP
-===================== */
-
-
-#lilyShip {
-
-
-position:absolute;
-
 
 width:520px;
 
-
 bottom:15%;
-
-
-left:-600px;
-
-
-filter:
-
-drop-shadow(
-
-0 0 30px gold
-
-);
-
-
-
-animation:
-
-shipEnter 5s forwards,
-
-shipFloat 4s infinite 5s;
-
-
-}
-
-
-
-@keyframes shipEnter {
-
-
-from {
-
-left:-600px;
-
-}
-
-
-to {
 
 left:50%;
 
 transform:translateX(-50%);
 
+filter:
+
+drop-shadow(0 0 30px gold);
+
+
+animation:
+
+shipFloat 4s infinite;
+
 }
 
 
-}
+
+@keyframes shipFloat{
 
 
-
-@keyframes shipFloat {
-
-
-50% {
+50%{
 
 margin-bottom:25px;
 
@@ -850,124 +437,40 @@ margin-bottom:25px;
 
 
 
-
 /* =====================
-TITLE BOX
+TEXT BOXES
 ===================== */
 
 
-.titleBox {
-
+.introScroll,
+.storyScroll{
 
 position:absolute;
 
-
 top:15%;
 
+left:15%;
 
-width:100%;
-
-
-text-align:center;
-
+right:15%;
 
 }
 
 
 
+.storyScroll{
 
-
-h1 {
-
-
-font-family:"Pirata One";
-
-
-font-size:80px;
-
-
-text-shadow:
-
-0 5px 20px black;
-
+top:20%;
 
 }
 
 
 
-
-.titleBox h2 {
-
-
-font-size:35px;
-
-
-}
-
-
-
-
-
-button {
-
-
-padding:
-
-15px 45px;
-
-
-margin-top:20px;
-
-
-border-radius:50px;
-
-
-border:
-
-3px solid #d9b45b;
-
-
-
-background:
-
-linear-gradient(
-
-#85551f,
-
-#351c08
-
-);
-
-
-
-color:white;
-
-
-
-font-family:"Pirata One";
-
-
+.storyScroll p,
+.introScroll p{
 
 font-size:28px;
 
-
-
-cursor:pointer;
-
-
-
-transition:.3s;
-
-
-}
-
-
-
-button:hover {
-
-
-transform:scale(1.1);
-
+line-height:1.6;
 
 }
 
@@ -980,142 +483,80 @@ transform:scale(1.1);
 
 
 /* =====================
-HARBOR
+HARBOR OBJECTS
 ===================== */
 
 
-.harborMessage,
-
-
-.mapTitle,
-
-
-.islandStory {
-
+.harborObject{
 
 position:absolute;
-
-
-top:15%;
-
-
-width:100%;
-
-
-text-align:center;
-
-
-}
-
-
-
-
-
-.harborObject {
-
-
-position:absolute;
-
 
 font-size:70px;
 
-
 cursor:pointer;
-
-
-text-align:center;
-
 
 animation:
 
-floatObject 3s infinite;
-
+float 3s infinite;
 
 }
 
 
 
-.harborObject span {
-
+.harborObject span{
 
 display:block;
 
-
 font-family:"Pirata One";
-
 
 font-size:25px;
 
-
 color:#ffd76b;
 
-
 }
 
 
 
-
-
-@keyframes floatObject {
-
-
-50% {
-
-
-transform:translateY(-15px);
-
-
-}
-
-
-}
-
-
-
-
-.crate {
-
+#crate{
 
 left:20%;
 
-
 bottom:20%;
-
 
 }
 
 
 
-
-
-.wheel {
-
+#wheel{
 
 right:25%;
 
-
 bottom:25%;
-
 
 }
 
 
 
-
-
-.mapClue {
-
+#mapClue{
 
 left:50%;
 
-
-bottom:35%;
-
+bottom:30%;
 
 }
 
 
 
+@keyframes float{
+
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+}
 
 
 
@@ -1128,734 +569,59 @@ CREW
 ===================== */
 
 
-.crewTitle {
-
-
-position:absolute;
-
-
-top:10%;
-
-
-width:100%;
-
-
-text-align:center;
-
-
-}
-
-
-
-
-.crewPortraits {
-
+.crewPortraits{
 
 position:absolute;
 
-
-bottom:28%;
-
+bottom:25%;
 
 width:100%;
-
 
 display:flex;
 
-
 justify-content:center;
 
-
-gap:40px;
-
+gap:35px;
 
 }
 
 
 
-
-
-.crewPortrait {
-
-
-text-align:center;
-
+.crewPortrait{
 
 cursor:pointer;
 
-
-transition:.3s;
-
+text-align:center;
 
 }
 
 
 
+.portraitFrame img{
 
+width:200px;
 
-.crewPortrait:hover {
-
-
-transform:
-
-translateY(-15px);
-
-
-}
-
-
-
-
-
-.portraitFrame {
-
-
-width:210px;
-
-
-height:240px;
-
-
-padding:10px;
-
-
-background:
-
-#351c08;
-
-
-
-border:
-
-8px solid #d9b45b;
-
-
-
-border-radius:20px;
-
-
-
-}
-
-
-
-
-
-.portraitFrame img {
-
-
-width:100%;
-
-
-height:100%;
-
+height:230px;
 
 object-fit:contain;
 
-
-}
-
-
-
-
-
-.crewPortrait h2 {
-
-
-font-family:"Pirata One";
-
-
-font-size:35px;
-
-
-}
-
-
-
-
-
-
-
-
-/* =====================
-DIALOGUE BOX
-===================== */
-
-
-.dialogueBox {
-
-
-position:absolute;
-
-
-bottom:5%;
-
-
-left:10%;
-
-
-right:10%;
-
-
-padding:30px;
-
-
-background:
-
-rgba(0,0,0,.85);
-
-
-
-border:
-
-5px solid #d9b45b;
-
-
-
-border-radius:25px;
-
-
-
-text-align:center;
-
-
-
-z-index:300;
-
-
-
-}
-
-
-
-
-.dialogueBox h2 {
-
-
-font-family:"Pirata One";
-
-
-font-size:45px;
-
-
-color:#ffd76b;
-
-
-}
-
-
-
-
-
-.dialogueBox p {
-
-
-font-size:28px;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================
-WORLD MAP
-===================== */
-
-
-.mapTitle {
-
-
-top:12%;
-
-
-}
-
-
-
-
-
-.islandButtons {
-
-
-position:absolute;
-
-
-top:45%;
-
-
-width:100%;
-
-
-display:flex;
-
-
-justify-content:center;
-
-
-gap:30px;
-
-
-}
-
-
-
-
-.islandButtons button:disabled {
-
-
-opacity:.5;
-
-
-cursor:not-allowed;
-
-
-}
-
-
-
-
-
-
-
-
-/* =====================
-ISLAND STORY
-===================== */
-
-
-.islandStory {
-
-
-background:
-
-rgba(0,0,0,.55);
-
-
-padding:30px;
-
-
-}
-
-
-
-.islandStory h2 {
-
-
-font-size:40px;
-
-
-color:#ffd76b;
-
-
-}
-
-/* =====================
-ISLAND PUZZLES
-===================== */
-
-
-.islandPuzzle {
-
-
-position:absolute;
-
-
-bottom:8%;
-
-
-left:10%;
-
-
-right:10%;
-
-
-
-background:
-
-rgba(0,0,0,.85);
-
-
-
-border:
-
-5px solid #d9b45b;
-
-
-
-border-radius:25px;
-
-
-
-padding:30px;
-
-
-
-text-align:center;
-
-
-
-z-index:100;
-
-
-
-box-shadow:
-
-0 0 40px black;
-
-
-
-}
-
-
-
-
-
-.islandPuzzle h2 {
-
-
-font-family:"Pirata One";
-
-
-font-size:45px;
-
-
-color:#ffd76b;
-
-
-margin-bottom:20px;
-
-
-}
-
-
-
-
-
-.islandPuzzle p {
-
-
-font-size:25px;
-
-
-}
-
-
-
-
-
-.islandPuzzle button {
-
-
-margin:10px;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================
-TREASURE SCENE
-===================== */
-
-
-#treasureScene {
-
-
-background:
-
-
-radial-gradient(
-
-circle,
-
-#ffeaa7,
-
-#000
-
-);
-
-
-}
-
-
-
-
-
-#treasureScene .endingBox {
-
-
-animation:
-
-treasureGlow 3s infinite alternate;
-
-
-
-}
-
-
-
-
-@keyframes treasureGlow {
-
-
-from {
-
-
-box-shadow:
-
-0 0 20px gold;
-
-
-}
-
-
-
-to {
-
-
-box-shadow:
-
-0 0 70px gold;
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================
-ENDING BOX
-===================== */
-
-
-.endingBox {
-
-
-position:absolute;
-
-
-top:20%;
-
-
-left:15%;
-
-
-right:15%;
-
-
-
-padding:45px;
-
-
-
-background:
-
-rgba(0,0,0,.85);
-
-
-
-border:
-
-6px solid #d9b45b;
-
-
-
-border-radius:30px;
-
-
-
-text-align:center;
-
-
-
-box-shadow:
-
-0 0 40px black;
-
-
-
-}
-
-
-
-
-
-.endingBox p {
-
-
-font-size:30px;
-
-
-line-height:1.8;
-
-
-}
-
-
-
-
-
-.endingBox h1 {
-
-
-color:#ffd76b;
-
-
-}
-
-
-
-
-
-
-
-
-
-
-/* =====================
-BIRTHDAY LETTER
-===================== */
-
-
-#letterScene {
-
-
-background:
-
-linear-gradient(
-
-135deg,
-
-#241000,
-
-#000
-
-);
-
-
-
-}
-
-
-
-
-
-#letterScene .endingBox {
-
-
-background:
-
-#fff2d0;
-
-
-
-color:#2b1605;
-
-
-
 border:
 
 8px solid #d9b45b;
 
+background:#351c08;
 
-
-animation:
-
-letterOpen 2s;
-
+border-radius:20px;
 
 }
 
 
 
+.crewPortrait h2{
 
+font-family:"Pirata One";
 
-#letterScene h1 {
-
-
-color:#7b4a18;
-
-
-}
-
-
-
-
-
-#letterScene p {
-
-
-font-family:
-
-"IM Fell English", serif;
-
-
-
-font-size:30px;
-
-
-
-line-height:1.8;
-
-
-}
-
-
-
-
-
-@keyframes letterOpen {
-
-
-from {
-
-
-opacity:0;
-
-
-transform:
-
-translateY(80px);
-
-
-}
-
-
-
-to {
-
-
-opacity:1;
-
-
-transform:
-
-translateY(0);
-
-
-}
-
-
+font-size:35px;
 
 }
 
@@ -1865,27 +631,25 @@ translateY(0);
 
 
 
+.dialogueBox{
 
+position:absolute;
 
+bottom:5%;
 
-/* =====================
-TREASURE BUTTON
-===================== */
+left:15%;
 
+right:15%;
 
-#birthdayButton {
+background:rgba(0,0,0,.85);
 
+border:5px solid #d9b45b;
 
-background:
+border-radius:25px;
 
-linear-gradient(
+padding:25px;
 
-#8b1e1e,
-
-#400000
-
-);
-
+text-align:center;
 
 }
 
@@ -1894,60 +658,23 @@ linear-gradient(
 
 
 /* =====================
-SPECIAL ITEMS
+MAP
 ===================== */
 
 
-#inventoryList li {
+.mapButtons{
 
+position:absolute;
 
-animation:
+top:45%;
 
-itemAppear .5s;
+width:100%;
 
+display:flex;
 
-}
-
-
-
-
-
-@keyframes itemAppear {
-
-
-from {
-
-
-opacity:0;
-
-
-transform:
-
-translateX(-20px);
-
+justify-content:center;
 
 }
-
-
-
-to {
-
-
-opacity:1;
-
-
-transform:
-
-translateX(0);
-
-
-}
-
-
-}
-
-
-
 
 
 
@@ -1955,202 +682,88 @@ translateX(0);
 
 
 /* =====================
-MOBILE SUPPORT
+ENDING
 ===================== */
+
+
+.endingScroll,
+.letterScroll{
+
+position:absolute;
+
+top:15%;
+
+left:15%;
+
+right:15%;
+
+}
+
+
+
+.birthdayMessage{
+
+margin-top:30px;
+
+border-top:
+
+3px solid #d9b45b;
+
+padding-top:25px;
+
+}
+
+
+
+.birthdayMessage p{
+
+font-size:27px;
+
+line-height:1.7;
+
+}
+
+
+
+
+
 
 
 @media(max-width:700px){
 
 
+#questPanel{
 
-#questPanel {
+width:220px;
 
-
-width:230px;
-
-
-padding:15px;
-
+font-size:14px;
 
 }
 
 
+h1,
+.scrollBox h1,
+.storyScroll h1{
 
-#questPanel h2 {
-
-
-font-size:28px;
-
-
-}
-
-
-
-
-#questPanel ul {
-
-
-font-size:15px;
-
+font-size:45px;
 
 }
 
 
-
-
-
-h1 {
-
-
-font-size:50px;
-
-
-}
-
-
-
-
-#lilyShip {
-
-
-width:300px;
-
-
-}
-
-
-
-
-
-.crewPortraits {
-
+.crewPortraits{
 
 gap:5px;
 
-
-bottom:35%;
-
-
 }
 
 
+.portraitFrame img{
 
+width:80px;
 
-.portraitFrame {
-
-
-width:90px;
-
-
-height:130px;
-
+height:120px;
 
 }
-
-
-
-
-.crewPortrait h2 {
-
-
-font-size:20px;
-
-
-}
-
-
-
-
-
-.dialogueBox {
-
-
-left:5%;
-
-
-right:5%;
-
-
-padding:20px;
-
-
-}
-
-
-
-
-
-.dialogueBox p {
-
-
-font-size:20px;
-
-
-}
-
-
-
-
-
-.islandPuzzle {
-
-
-left:5%;
-
-
-right:5%;
-
-
-}
-
-
-
-
-
-.islandPuzzle button {
-
-
-display:block;
-
-
-width:90%;
-
-
-margin:10px auto;
-
-
-}
-
-
-
-
-
-.endingBox {
-
-
-left:5%;
-
-
-right:5%;
-
-
-padding:25px;
-
-
-}
-
-
-
-
-
-.endingBox p {
-
-
-font-size:20px;
-
-
-}
-
 
 
 }
