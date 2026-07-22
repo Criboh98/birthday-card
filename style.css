@@ -573,7 +573,7 @@ CREW
 
 position:absolute;
 
-bottom:10%;
+bottom:20%;
 
 width:100%;
 
@@ -635,7 +635,7 @@ font-size:28px;
 
 position:absolute;
 
-bottom:4%;
+bottom:2%;
 
 left:28%;
 
@@ -882,3 +882,11 @@ opacity:1;
 }
 
 }
+
+#treasureScene{
+background-image:url("assets/backgrounds/sky.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+}
+
