@@ -224,11 +224,22 @@ document
 .addEventListener("click",()=>{
 
 
-changeScene("harborScene");
+changeScene("captainTitleScene");
 
 
 });
 
+
+
+document
+.getElementById("acceptCaptain")
+.addEventListener("click",()=>{
+
+
+changeScene("harborScene");
+
+
+});
 
 
 
