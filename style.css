@@ -53,7 +53,6 @@ display:block;
 
 
 
-
 .background {
 
 width:100%;
@@ -63,8 +62,6 @@ height:100%;
 object-fit:cover;
 
 }
-
-
 
 
 
@@ -83,40 +80,25 @@ top:25px;
 
 left:25px;
 
-width:270px;
-
+width:280px;
 
 background:
 
-linear-gradient(
-
-#d8b46a,
-
-#8b5a20
-
-);
+linear-gradient(#d8b46a,#8b5a20);
 
 
-border:
-
-5px solid #3b2108;
-
+border:5px solid #3b2108;
 
 border-radius:15px;
 
-
 padding:20px;
-
 
 color:#201000;
 
+z-index:100;
 
-z-index:50;
 
-
-box-shadow:
-
-0 10px 30px black;
+box-shadow:0 10px 30px black;
 
 
 }
@@ -131,19 +113,14 @@ font-size:35px;
 
 text-align:center;
 
-color:#2b1600;
-
 }
-
 
 
 #questPanel h3 {
 
-font-size:22px;
-
 text-align:center;
 
-margin:10px 0;
+font-size:20px;
 
 }
 
@@ -165,6 +142,77 @@ line-height:1.8;
 
 
 
+/* =====================
+MESSAGE BOX
+===================== */
+
+
+#messageBox {
+
+
+position:absolute;
+
+display:none;
+
+
+bottom:15%;
+
+left:20%;
+
+right:20%;
+
+
+background:
+
+rgba(0,0,0,.9);
+
+
+border:
+
+4px solid #d9b45b;
+
+
+border-radius:20px;
+
+
+padding:30px;
+
+
+text-align:center;
+
+
+z-index:200;
+
+
+}
+
+
+
+#messageText {
+
+
+font-size:28px;
+
+
+}
+
+
+
+#closeMessage {
+
+
+font-size:22px;
+
+margin-top:15px;
+
+}
+
+
+
+
+
+
+
 
 
 /* =====================
@@ -175,13 +223,18 @@ INTRO
 .sky,
 .ocean {
 
+
 position:absolute;
+
 
 width:100%;
 
+
 height:100%;
 
+
 object-fit:cover;
+
 
 }
 
@@ -189,7 +242,9 @@ object-fit:cover;
 
 .ocean {
 
+
 animation:oceanMove 8s infinite alternate;
+
 
 }
 
@@ -220,6 +275,7 @@ transform:translateX(-35px);
 
 .stars {
 
+
 position:absolute;
 
 inset:0;
@@ -232,7 +288,9 @@ radial-gradient(white 2px,transparent 2px);
 
 background-size:90px 90px;
 
+
 opacity:.5;
+
 
 }
 
@@ -241,6 +299,7 @@ opacity:.5;
 
 
 .fog {
+
 
 position:absolute;
 
@@ -295,6 +354,7 @@ transform:translateX(100%);
 
 
 
+
 /* =====================
 SHIP
 ===================== */
@@ -318,12 +378,9 @@ bottom:15%;
 left:-600px;
 
 
-
 animation:
 
-
 shipEnter 5s forwards,
-
 
 shipFloat 4s infinite 5s;
 
@@ -332,7 +389,6 @@ shipFloat 4s infinite 5s;
 filter:
 
 drop-shadow(0 0 25px gold);
-
 
 
 }
@@ -371,7 +427,9 @@ margin-bottom:20px;
 
 }
 
+
 }
+
 
 
 
@@ -382,7 +440,6 @@ margin-bottom:20px;
 /* =====================
 TEXT
 ===================== */
-
 
 
 .titleBox,
@@ -401,8 +458,8 @@ width:100%;
 text-align:center;
 
 
-
 }
+
 
 
 
@@ -441,17 +498,9 @@ border-radius:50px;
 border:3px solid #d9b45b;
 
 
-
 background:
 
-linear-gradient(
-
-#85551f,
-
-#351c08
-
-);
-
+linear-gradient(#85551f,#351c08);
 
 
 color:white;
@@ -488,8 +537,154 @@ transform:scale(1.1);
 
 
 
+
 /* =====================
-CREW RPG
+HARBOR OBJECTS
+===================== */
+
+
+.harborObject {
+
+
+position:absolute;
+
+
+font-size:70px;
+
+
+cursor:pointer;
+
+
+text-align:center;
+
+
+filter:
+
+drop-shadow(0 10px 10px black);
+
+
+animation:
+
+objectFloat 3s infinite;
+
+
+transition:.3s;
+
+
+z-index:20;
+
+
+}
+
+
+
+.harborObject span {
+
+
+display:block;
+
+
+font-family:"Pirata One";
+
+
+font-size:28px;
+
+
+color:#ffd76b;
+
+
+text-shadow:
+
+0 3px 8px black;
+
+
+}
+
+
+
+.harborObject:hover {
+
+
+transform:
+
+scale(1.25);
+
+
+filter:
+
+drop-shadow(0 0 25px gold);
+
+
+}
+
+
+
+
+@keyframes objectFloat {
+
+
+50% {
+
+
+transform:translateY(-10px);
+
+
+}
+
+
+}
+
+
+
+
+
+
+.crate {
+
+
+left:20%;
+
+bottom:20%;
+
+
+}
+
+
+
+.wheel {
+
+
+right:25%;
+
+bottom:25%;
+
+
+}
+
+
+
+.mapClue {
+
+
+left:50%;
+
+bottom:35%;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =====================
+CREW
 ===================== */
 
 
@@ -498,27 +693,20 @@ CREW RPG
 
 position:absolute;
 
-
 top:5%;
-
 
 width:100%;
 
-
 text-align:center;
-
 
 
 }
 
 
 
-
 .crewTitle h1 {
 
-
 font-size:75px;
-
 
 }
 
@@ -530,7 +718,6 @@ font-size:75px;
 
 
 position:absolute;
-
 
 bottom:25%;
 
@@ -569,26 +756,18 @@ transition:.4s;
 
 
 
+
 .portraitFrame {
 
 
 width:200px;
-
 
 height:230px;
 
 
 background:
 
-
-linear-gradient(
-
-#5b3515,
-
-#241205
-
-);
-
+linear-gradient(#5b3515,#241205);
 
 
 border:
@@ -630,6 +809,7 @@ object-fit:contain;
 
 
 
+
 .crewPortrait h2 {
 
 
@@ -639,12 +819,9 @@ font-family:"Pirata One";
 font-size:35px;
 
 
-text-shadow:
-
-0 4px 10px black;
-
-
 }
+
+
 
 
 
@@ -656,20 +833,6 @@ transform:
 translateY(-20px)
 
 scale(1.08);
-
-
-}
-
-
-
-
-
-.crewPortrait:hover .portraitFrame {
-
-
-box-shadow:
-
-0 0 35px gold;
 
 
 }
@@ -706,11 +869,9 @@ background:
 rgba(0,0,0,.85);
 
 
-
 border:
 
 4px solid #d9b45b;
-
 
 
 border-radius:20px;
@@ -766,15 +927,18 @@ font-size:55px;
 }
 
 
-
 #questPanel {
 
-width:180px;
-
-font-size:14px;
+width:190px;
 
 }
 
+
+.harborObject {
+
+font-size:45px;
+
+}
 
 
 .crewPortraits {
@@ -784,20 +948,11 @@ gap:5px;
 }
 
 
-
 .portraitFrame {
 
 width:80px;
 
 height:120px;
-
-}
-
-
-
-.crewPortrait h2 {
-
-font-size:20px;
 
 }
 
