@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded",()=>{
 
 
 // =====================
@@ -6,21 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
 // =====================
 
 
-const scenes = document.querySelectorAll(".scene");
+const scenes=document.querySelectorAll(".scene");
 
 
-function changeScene(sceneID){
+function changeScene(id){
 
-    scenes.forEach(scene => {
-        scene.classList.remove("active");
-    });
+scenes.forEach(scene=>{
+scene.classList.remove("active");
+});
 
 
-    document
-    .getElementById(sceneID)
-    .classList.add("active");
+document.getElementById(id).classList.add("active");
 
 }
+
 
 
 
@@ -31,44 +30,120 @@ function changeScene(sceneID){
 // =====================
 
 
-let inventory = [];
+let inventory=[];
 
 
-let progress = {
+let shipParts=0;
 
-    ship:false,
+let map1=false;
 
-    crew:false,
+let map2=false;
 
-    skondal:false,
+let bird=false;
 
-    map1:false,
+let lantern=false;
 
-    porto:false,
+let flower=false;
 
-    map2:false,
 
-    hokarangen:false,
-
-    treasure:false
-
-};
 
 
 
 
 
 // =====================
-// INVENTORY SYSTEM
+// LOADING
 // =====================
 
 
-const inventoryPanel =
-document.getElementById("inventoryPanel");
+let progress=0;
 
 
-const inventoryList =
+let loading=setInterval(()=>{
+
+
+progress+=20;
+
+
+document.getElementById("loadingProgress").style.width=
+progress+"%";
+
+
+if(progress>=100){
+
+clearInterval(loading);
+
+
+setTimeout(()=>{
+
+document.getElementById("loadingScreen").style.display="none";
+
+},800);
+
+
+}
+
+
+},400);
+
+
+
+
+
+
+
+// =====================
+// INVENTORY
+// =====================
+
+
+const inventoryList=
 document.getElementById("inventoryList");
+
+
+
+function addItem(item){
+
+
+if(!inventory.includes(item)){
+
+
+inventory.push(item);
+
+
+updateInventory();
+
+
+}
+
+
+}
+
+
+
+function updateInventory(){
+
+
+inventoryList.innerHTML="";
+
+
+inventory.forEach(item=>{
+
+
+let li=document.createElement("li");
+
+
+li.innerHTML="✨ "+item;
+
+
+inventoryList.appendChild(li);
+
+
+});
+
+
+}
+
 
 
 
@@ -77,87 +152,19 @@ document
 .addEventListener("click",()=>{
 
 
-    if(inventoryPanel.style.display==="block"){
+let panel=
+document.getElementById("inventoryPanel");
 
-        inventoryPanel.style.display="none";
 
-    }
-
-    else{
-
-        inventoryPanel.style.display="block";
-
-    }
+panel.style.display=
+panel.style.display==="block"
+?
+"none"
+:
+"block";
 
 
 });
-
-
-
-
-
-function addItem(item){
-
-
-    if(!inventory.includes(item)){
-
-
-        inventory.push(item);
-
-
-        updateInventory();
-
-
-        showMessage(
-        "You obtained:\n✨ "+item
-        );
-
-
-    }
-
-
-}
-
-
-
-
-function updateInventory(){
-
-
-    inventoryList.innerHTML="";
-
-
-    if(inventory.length===0){
-
-
-        inventoryList.innerHTML=
-        "<li>No items yet</li>";
-
-
-        return;
-
-    }
-
-
-
-    inventory.forEach(item=>{
-
-
-        let li=document.createElement("li");
-
-
-        li.innerHTML=
-        "✨ "+item;
-
-
-        inventoryList.appendChild(li);
-
-
-    });
-
-
-}
-
 
 
 
@@ -171,24 +178,20 @@ function updateInventory(){
 // =====================
 
 
-
-function showMessage(text){
-
-
-    document
-    .getElementById("messageText")
-    .innerText=text;
+function message(title,text){
 
 
+document.getElementById("messageTitle").innerText=title;
 
-    document
-    .getElementById("messageBox")
-    .style.display="block";
+
+document.getElementById("messageText").innerHTML=text;
+
+
+document.getElementById("messageBox")
+.style.display="block";
 
 
 }
-
-
 
 
 
@@ -197,95 +200,11 @@ document
 .addEventListener("click",()=>{
 
 
-    document
-    .getElementById("messageBox")
-    .style.display="none";
+document.getElementById("messageBox")
+.style.display="none";
 
 
 });
-
-
-
-
-
-
-
-
-
-// =====================
-// QUEST UPDATE
-// =====================
-
-
-
-function completeQuest(id,text){
-
-
-    document
-    .getElementById(id)
-    .innerHTML=
-    "☑ "+text;
-
-
-}
-
-
-
-
-
-
-
-
-
-// =====================
-// LOADING SCREEN
-// =====================
-
-
-
-let loading=0;
-
-
-
-let loadingTimer=setInterval(()=>{
-
-
-    loading+=20;
-
-
-
-    document
-    .getElementById("loadingProgress")
-    .style.width=
-    loading+"%";
-
-
-
-
-    if(loading>=100){
-
-
-        clearInterval(loadingTimer);
-
-
-
-        setTimeout(()=>{
-
-
-            document
-            .getElementById("loadingScreen")
-            .style.display="none";
-
-
-        },800);
-
-
-
-    }
-
-
-
-},500);
 
 
 
@@ -300,13 +219,12 @@ let loadingTimer=setInterval(()=>{
 // =====================
 
 
-
 document
 .getElementById("startButton")
 .addEventListener("click",()=>{
 
 
-    changeScene("harborScene");
+changeScene("harborScene");
 
 
 });
@@ -325,44 +243,29 @@ document
 
 
 
-let harborTasks = {
-
-    crate:false,
-
-    wheel:false,
-
-    map:false
-
-};
-
-
-
-
-
-
 document
 .getElementById("crate")
 .addEventListener("click",()=>{
 
 
-    if(!harborTasks.crate){
+if(!inventory.includes("Ship Supplies")){
 
 
-        harborTasks.crate=true;
+addItem("Ship Supplies");
+
+shipParts++;
 
 
-        addItem("Ship Supplies");
+message(
+"📦 Supplies Found",
+"The Lily has received new supplies."
+);
 
 
-        showMessage(
-        "The supplies are loaded aboard The Lily."
-        );
+checkShip();
 
 
-        checkShip();
-
-
-    }
+}
 
 
 });
@@ -378,24 +281,25 @@ document
 .addEventListener("click",()=>{
 
 
-    if(!harborTasks.wheel){
+if(!inventory.includes("Captain's Helm")){
 
 
-        harborTasks.wheel=true;
+addItem("Captain's Helm");
 
 
-        addItem("Prepared Helm");
+shipParts++;
 
 
-        showMessage(
-        "The Lily is ready to navigate the seas."
-        );
+message(
+"⚓ Helm Repaired",
+"The Lily can now follow Captain Eli's command."
+);
 
 
-        checkShip();
+checkShip();
 
 
-    }
+}
 
 
 });
@@ -411,24 +315,25 @@ document
 .addEventListener("click",()=>{
 
 
-    if(!harborTasks.map){
+if(!inventory.includes("Captain's Map")){
 
 
-        harborTasks.map=true;
+addItem("Captain's Map");
 
 
-        addItem("Captain's Note");
+shipParts++;
 
 
-        showMessage(
-        "The note reveals a legend about Eternal Happiness."
-        );
+message(
+"🗺️ Hidden Map",
+"A mysterious route appears on the map."
+);
 
 
-        checkShip();
+checkShip();
 
 
-    }
+}
 
 
 });
@@ -442,37 +347,18 @@ document
 function checkShip(){
 
 
-
-    if(
-        harborTasks.crate &&
-        harborTasks.wheel &&
-        harborTasks.map
-    ){
+if(shipParts===3){
 
 
-        progress.ship=true;
+document.getElementById("questShip")
+.innerHTML="☑ Prepare The Lily";
 
 
-
-        completeQuest(
-        "questShip",
-        "Prepare The Lily"
-        );
+document.getElementById("meetCrewButton")
+.style.display="block";
 
 
-        document
-        .getElementById("meetCrewButton")
-        .style.display="block";
-
-
-
-        showMessage(
-        "The Lily is ready to sail!\n\nMeet the crew before leaving the harbor."
-        );
-
-
-    }
-
+}
 
 
 }
@@ -482,8 +368,11 @@ function checkShip(){
 
 
 
+
+
+
 // =====================
-// MEET CREW
+// CREW
 // =====================
 
 
@@ -493,150 +382,72 @@ document
 .addEventListener("click",()=>{
 
 
-    changeScene("crewScene");
+changeScene("crewScene");
+
+
+document.getElementById("questCrew")
+.innerHTML=
+"☑ Gather The Crew";
 
 
 });
 
 
 
-});
-// =====================
-// CREW SYSTEM
-// =====================
-
-
-let crewMembers = {
-
-    nova:false,
-
-    mira:false,
-
-    kaito:false,
-
-    luna:false
-
-};
 
 
 
 
-
-
-const crewDialogue = {
+const dialogues={
 
 
 nova:
 
-"Captain Nova:\n\nA great pirate is not measured by treasure, but by the dream they follow.\n\nAre you ready to chase Eternal Happiness?",
+"Captain Eli, remember this:<br><br>A true voyage is not measured by how quickly you reach the island.<br><br>Sometimes the greatest treasures are found after the longest journeys.",
 
 
 
 mira:
 
-"Mira:\n\nThe sea has many paths.\nA true navigator must know where the journey begins.",
+"I will guide The Lily through unknown waters.<br><br>Every map hides a story waiting to be discovered.",
 
 
 
 kaito:
 
-"Kaito:\n\nThe smallest clues often reveal the biggest secrets.\nI found something near the harbor.",
+"Every island has secrets.<br><br>A true explorer never stops searching.",
 
 
 
 luna:
 
-"Luna:\n\nThe greatest adventures are the ones shared with people who matter."
-
-
+"The sea is strange, Captain Eli.<br><br>Sometimes two ships sail apart for a while...<br><br>but the same stars can guide them home again."
 
 };
 
 
 
-
-
-
-
-
-
-// =====================
-// CREW PORTRAITS
-// =====================
-
-
-
-Object.keys(crewDialogue)
-.forEach(member=>{
-
-
-    document
-    .getElementById(member)
-    .addEventListener("click",()=>{
-
-
-        document
-        .getElementById("characterName")
-        .innerText=
-        member.charAt(0).toUpperCase()+member.slice(1);
-
-
-
-        document
-        .getElementById("dialogueText")
-        .innerText=
-        crewDialogue[member];
-
-
-
-    });
-
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================
-// CREW QUESTS
-// =====================
-
+Object.keys(dialogues)
+.forEach(name=>{
 
 
 document
-.getElementById("nova")
+.getElementById(name)
 .addEventListener("click",()=>{
 
 
-    if(!crewMembers.nova){
+document.getElementById("characterName")
+.innerHTML=name;
 
 
-        crewMembers.nova=true;
-
-
-        addItem("Captain Nova's Trust");
-
-
-        showMessage(
-        "Captain Nova has joined the voyage."
-        );
-
-
-        checkCrew();
-
-
-    }
+document.getElementById("dialogueText")
+.innerHTML=dialogues[name];
 
 
 });
 
 
+});
 
 
 
@@ -644,53 +455,11 @@ document
 
 
 document
-.getElementById("mira")
+.getElementById("continueAdventure")
 .addEventListener("click",()=>{
 
 
-    if(!crewMembers.mira){
-
-
-        let answer =
-        prompt(
-        "Mira's navigation test:\n\nWhere does the sun rise?\n\nEast or West?"
-        );
-
-
-
-        if(answer &&
-        answer.toLowerCase()=="east"){
-
-
-            crewMembers.mira=true;
-
-
-            addItem("Navigator Mark");
-
-
-            showMessage(
-            "Correct! Mira trusts your navigation skills."
-            );
-
-
-            checkCrew();
-
-
-        }
-
-        else{
-
-
-            showMessage(
-            "The compass spins...\nTry again."
-            );
-
-
-        }
-
-
-    }
-
+changeScene("mapScene");
 
 
 });
@@ -702,169 +471,9 @@ document
 
 
 
-document
-.getElementById("kaito")
-.addEventListener("click",()=>{
-
-
-    if(!crewMembers.kaito){
-
-
-        crewMembers.kaito=true;
-
-
-        addItem("Explorer Badge");
-
-
-        showMessage(
-        "Kaito found an old pirate clue hidden in the harbor."
-        );
-
-
-        checkCrew();
-
-
-    }
-
-
-});
-
-
-
-
-
-
-
-
-document
-.getElementById("luna")
-.addEventListener("click",()=>{
-
-
-    if(!crewMembers.luna){
-
-
-        crewMembers.luna=true;
-
-
-        addItem("Friendship Charm");
-
-
-        showMessage(
-        "Luna reminds the crew why the journey matters."
-        );
-
-
-        checkCrew();
-
-
-    }
-
-
-});
-
-
-
-
-
-
-
-
-
-
-function checkCrew(){
-
-
-    if(
-        crewMembers.nova &&
-        crewMembers.mira &&
-        crewMembers.kaito &&
-        crewMembers.luna
-    ){
-
-
-        progress.crew=true;
-
-
-        completeQuest(
-        "questCrew",
-        "Gather the Crew"
-        );
-
-
-
-        document
-        .getElementById("questButton")
-        .innerText=
-        "🗺️ Set Sail";
-
-
-
-        showMessage(
-        "The crew of The Lily is complete!\n\nThe journey to Eternal Happiness begins."
-        );
-
-
-    }
-
-
-
-}
-
-
-
-
-
-
-
-
-
 // =====================
-// GO TO MAP
+// MAP
 // =====================
-
-
-
-document
-.getElementById("questButton")
-.addEventListener("click",()=>{
-
-
-    if(progress.crew){
-
-
-        changeScene("mapScene");
-
-
-    }
-
-
-    else{
-
-
-        showMessage(
-        "Captain Eli must meet the whole crew first."
-        );
-
-
-    }
-
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================
-// MAP TRAVEL
-// =====================
-
 
 
 document
@@ -872,13 +481,10 @@ document
 .addEventListener("click",()=>{
 
 
-    changeScene("skondalScene");
+changeScene("skondalScene");
 
 
 });
-
-
-
 
 
 
@@ -887,13 +493,10 @@ document
 .addEventListener("click",()=>{
 
 
-    changeScene("portoScene");
+changeScene("portoScene");
 
 
 });
-
-
-
 
 
 
@@ -902,60 +505,7 @@ document
 .addEventListener("click",()=>{
 
 
-    changeScene("hokarangenScene");
-
-
-});
-// =====================
-// SKÖNDAL ISLAND
-// TRIAL OF CURIOSITY
-// =====================
-
-
-document
-.getElementById("findTree")
-.addEventListener("click",()=>{
-
-
-    if(progress.map1)
-    return;
-
-
-
-    progress.map1=true;
-
-    progress.skondal=true;
-
-
-    addItem("Map Piece #1");
-
-
-
-    completeQuest(
-    "questIsland1",
-    "Complete Sköndal Island Trial"
-    );
-
-
-    completeQuest(
-    "questMap1",
-    "Recover Map Piece #1"
-    );
-
-
-
-    document
-    .getElementById("portoButton")
-    .disabled=false;
-
-
-
-    showMessage(
-    "You searched beneath the ancient tree and discovered Map Piece #1!\n\nThe path to Porto Badisco is now revealed."
-    );
-
-
-    changeScene("mapScene");
+changeScene("hokarangenScene");
 
 
 });
@@ -966,14 +516,50 @@ document
 
 
 
+
+// =====================
+// SKONDAL PUZZLE
+// =====================
+
+
 document
-.getElementById("findStone")
+.getElementById("treeSearch")
 .addEventListener("click",()=>{
 
 
-    showMessage(
-    "Only an old stone...\n\nThe pirates left no treasure here."
-    );
+if(!map1){
+
+
+map1=true;
+
+
+addItem("Map Piece #1");
+
+
+document.getElementById("questMap1")
+.innerHTML=
+"☑ Recover Map Piece #1";
+
+
+document.getElementById("questPorto")
+.innerHTML=
+"☑ Discover Porto Badisco";
+
+
+document.getElementById("portoButton")
+.disabled=false;
+
+
+message(
+"🏝️ Sköndal Complete",
+"The first map piece has been found!"
+);
+
+
+changeScene("mapScene");
+
+
+}
 
 
 });
@@ -985,13 +571,29 @@ document
 
 
 document
-.getElementById("findAnchor")
+.getElementById("stoneSearch")
 .addEventListener("click",()=>{
 
 
-    showMessage(
-    "A forgotten anchor from an ancient voyage."
-    );
+message(
+"🪨 Old Stone",
+"The wind whispers: Not here..."
+);
+
+
+});
+
+
+
+document
+.getElementById("windSearch")
+.addEventListener("click",()=>{
+
+
+message(
+"🌊 Wind Shrine",
+"The island tells you to look deeper..."
+);
 
 
 });
@@ -1003,132 +605,91 @@ document
 
 
 
-
-
-
-
 // =====================
-// PORTO BADISCO
-// TRIAL OF WISDOM
+// PORTO PUZZLE
 // =====================
 
 
-
-let portoSequence=[];
-
+let symbols=[];
 
 
 
-function checkPortoPuzzle(){
+function symbol(name){
 
 
-    let answer =
-    portoSequence.join(",");
+symbols.push(name);
 
 
-
-    if(answer==="star,moon,sea"){
-
+if(symbols.length===3){
 
 
-        progress.map2=true;
-
-        progress.porto=true;
-
-
-
-        addItem("Map Piece #2");
+if(
+symbols[0]=="star" &&
+symbols[1]=="moon" &&
+symbols[2]=="sea"
+){
 
 
-
-        completeQuest(
-        "questIsland2",
-        "Complete Porto Badisco Trial"
-        );
+map2=true;
 
 
-        completeQuest(
-        "questMap2",
-        "Recover Map Piece #2"
-        );
+addItem("Map Piece #2");
 
 
-
-        document
-        .getElementById("hokarangenButton")
-        .disabled=false;
-
+document.getElementById("questMap2")
+.innerHTML=
+"☑ Recover Map Piece #2";
 
 
-        showMessage(
-        "The ancient ruins open!\n\nYou found Map Piece #2.\n\nThe final island awaits."
-        );
+document.getElementById("hokarangenButton")
+.disabled=false;
 
 
+message(
+"🌊 Porto Badisco Complete",
+"The second map piece is yours!"
+);
 
-        changeScene("mapScene");
+
+changeScene("mapScene");
 
 
+}
+else{
 
-    }
 
+symbols=[];
+
+
+message(
+"❌ Wrong Order",
+"The ancient code resets."
+);
+
+
+}
+
+
+}
 
 
 }
 
 
 
-
-
-
+document
+.getElementById("starButton")
+.onclick=()=>symbol("star");
 
 
 document
-.getElementById("starSymbol")
-.addEventListener("click",()=>{
-
-
-    portoSequence.push("star");
-
-    checkPortoPuzzle();
-
-
-});
-
-
-
+.getElementById("moonButton")
+.onclick=()=>symbol("moon");
 
 
 document
-.getElementById("moonSymbol")
-.addEventListener("click",()=>{
-
-
-    portoSequence.push("moon");
-
-    checkPortoPuzzle();
-
-
-});
-
-
-
-
-
-document
-.getElementById("seaSymbol")
-.addEventListener("click",()=>{
-
-
-    portoSequence.push("sea");
-
-    checkPortoPuzzle();
-
-
-});
-
-
-
+.getElementById("seaButton")
+.onclick=()=>symbol("sea");
 
 
 
@@ -1139,20 +700,86 @@ document
 
 
 // =====================
-// HÖKARÄNGEN
-// TRIAL OF HEART
+// FINAL ISLAND
 // =====================
 
 
 
-let kindnessTasks={
+document
+.getElementById("birdQuest")
+.onclick=()=>{
 
 
-bird:false,
+bird=true;
 
-lantern:false,
 
-flower:false
+addItem("Feather of Hope");
+
+
+};
+
+
+
+document
+.getElementById("lanternQuest")
+.onclick=()=>{
+
+
+lantern=true;
+
+
+addItem("Guiding Light");
+
+
+};
+
+
+
+document
+.getElementById("flowerQuest")
+.onclick=()=>{
+
+
+flower=true;
+
+
+addItem("Bloom of Friendship");
+
+
+};
+
+
+
+
+
+
+document
+.getElementById("openTreasure")
+.onclick=()=>{
+
+
+if(bird&&lantern&&flower){
+
+
+document.getElementById("questTreasure")
+.innerHTML=
+"☑ Discover Eternal Happiness";
+
+
+changeScene("treasureScene");
+
+
+}
+else{
+
+
+message(
+"✨ Hökarängen",
+"The island asks for kindness first."
+);
+
+
+}
 
 
 };
@@ -1163,235 +790,23 @@ flower:false
 
 
 
-document
-.getElementById("helpBird")
-.addEventListener("click",()=>{
-
-
-    if(!kindnessTasks.bird){
-
-
-        kindnessTasks.bird=true;
-
-
-        addItem("Bird Feather");
-
-
-        showMessage(
-        "The lost bird returns home.\n\nA small act of kindness can change everything."
-        );
-
-
-        checkKindness();
-
-
-    }
-
-
-});
-
-
-
-
-
-
-
-
-document
-.getElementById("lightLantern")
-.addEventListener("click",()=>{
-
-
-    if(!kindnessTasks.lantern){
-
-
-        kindnessTasks.lantern=true;
-
-
-        addItem("Lantern Light");
-
-
-        showMessage(
-        "The lantern shines across Hökarängen."
-        );
-
-
-        checkKindness();
-
-
-    }
-
-
-});
-
-
-
-
-
-
-
-
-document
-.getElementById("waterFlower")
-.addEventListener("click",()=>{
-
-
-    if(!kindnessTasks.flower){
-
-
-        kindnessTasks.flower=true;
-
-
-        addItem("Blooming Flower");
-
-
-        showMessage(
-        "The flower blooms once again."
-        );
-
-
-        checkKindness();
-
-
-    }
-
-
-});
-
-
-
-
-
-
-
-
-
-function checkKindness(){
-
-
-    if(
-
-        kindnessTasks.bird &&
-        kindnessTasks.lantern &&
-        kindnessTasks.flower
-
-    ){
-
-
-        progress.hokarangen=true;
-
-
-
-        completeQuest(
-        "questIsland3",
-        "Reach Hökarängen"
-        );
-
-
-
-        document
-        .getElementById("openTreasure")
-        .style.display="block";
-
-
-
-        showMessage(
-        "The island accepts you.\n\nThe treasure of The Lily awaits."
-        );
-
-
-    }
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 // =====================
-// TREASURE
-// ETERNAL HAPPINESS
-// =====================
-
-
-
-document
-.getElementById("openTreasure")
-.addEventListener("click",()=>{
-
-
-    if(!progress.hokarangen){
-
-
-        showMessage(
-        "The treasure remains sealed."
-        );
-
-
-        return;
-
-
-    }
-
-
-
-
-    addItem("Eternal Happiness");
-
-
-
-    progress.treasure=true;
-
-
-
-    completeQuest(
-    "questTreasure",
-    "Discover Eternal Happiness"
-    );
-
-
-
-    changeScene("treasureScene");
-
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-// =====================
-// BIRTHDAY LETTER
-// ETERNAL LOVE
+// LETTER
 // =====================
 
 
 
 document
 .getElementById("birthdayButton")
-.addEventListener("click",()=>{
+.onclick=()=>{
 
 
-    changeScene("letterScene");
+changeScene("letterScene");
+
+
+};
+
+
 
 
 });
-
-
