@@ -8,7 +8,7 @@
 body {
 
     overflow:hidden;
-    background:black;
+    background:#000;
 
     color:white;
 
@@ -50,7 +50,6 @@ body {
 
 
 
-
 .background {
 
     width:100%;
@@ -65,21 +64,96 @@ body {
 
 
 
-/* =====================
+/* =========================
+LOADING
+========================= */
+
+
+#loadingScreen {
+
+position:fixed;
+
+inset:0;
+
+z-index:1000;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:
+
+radial-gradient(circle,#23415c,#02050a);
+
+}
+
+
+
+.loading-content {
+
+text-align:center;
+
+}
+
+
+
+.loading-content h1 {
+
+font-family:"Pirata One";
+
+font-size:80px;
+
+}
+
+
+
+.loading-bar {
+
+width:300px;
+
+height:20px;
+
+border:3px solid #d9b45b;
+
+margin:25px auto;
+
+background:#111;
+
+}
+
+
+
+#loadingProgress {
+
+height:100%;
+
+width:0%;
+
+background:#ffd76b;
+
+}
+
+
+
+
+
+/* =========================
 INTRO WORLD
-===================== */
+========================= */
 
 
 .sky,
 .ocean {
 
-    position:absolute;
+position:absolute;
 
-    width:100%;
+width:100%;
 
-    height:100%;
+height:100%;
 
-    object-fit:cover;
+object-fit:cover;
 
 }
 
@@ -87,7 +161,7 @@ INTRO WORLD
 
 .ocean {
 
-    animation:oceanMove 8s infinite alternate;
+animation:oceanMove 8s infinite alternate;
 
 }
 
@@ -95,13 +169,11 @@ INTRO WORLD
 
 @keyframes oceanMove {
 
-
 from {
 
 transform:translateX(0);
 
 }
-
 
 to {
 
@@ -109,9 +181,7 @@ transform:translateX(-35px);
 
 }
 
-
 }
-
 
 
 
@@ -123,6 +193,7 @@ position:absolute;
 inset:0;
 
 background-image:
+
 radial-gradient(white 2px,transparent 2px);
 
 background-size:90px 90px;
@@ -133,6 +204,8 @@ opacity:.5;
 
 
 
+
+
 .fog {
 
 position:absolute;
@@ -140,12 +213,19 @@ position:absolute;
 inset:0;
 
 background:
+
 linear-gradient(
+
 120deg,
+
 transparent,
+
 rgba(255,255,255,.2),
+
 transparent
+
 );
+
 
 animation:fogMove 12s infinite;
 
@@ -174,9 +254,10 @@ transform:translateX(100%);
 
 
 
-/* =====================
-THE LILY
-===================== */
+
+/* =========================
+SHIP
+========================= */
 
 
 #lilyShip {
@@ -199,8 +280,8 @@ shipFloat 4s infinite 5s;
 
 
 filter:
-drop-shadow(0 0 25px gold);
 
+drop-shadow(0 0 25px gold);
 
 }
 
@@ -224,6 +305,7 @@ transform:translateX(-50%);
 
 }
 
+
 }
 
 
@@ -243,9 +325,11 @@ margin-bottom:20px;
 
 
 
-/* =====================
+
+
+/* =========================
 TEXT
-===================== */
+========================= */
 
 
 .titleBox,
@@ -253,11 +337,11 @@ TEXT
 
 position:absolute;
 
+top:15%;
+
 width:100%;
 
 text-align:center;
-
-top:15%;
 
 }
 
@@ -279,23 +363,18 @@ text-shadow:
 
 button {
 
-
-margin-top:30px;
+margin-top:25px;
 
 padding:15px 45px;
 
 border-radius:50px;
-
 
 border:3px solid #d9b45b;
 
 
 background:
 
-linear-gradient(
-#85551f,
-#351c08
-);
+linear-gradient(#85551f,#351c08);
 
 
 color:white;
@@ -305,7 +384,6 @@ font-family:"Pirata One";
 font-size:28px;
 
 cursor:pointer;
-
 
 transition:.3s;
 
@@ -323,15 +401,13 @@ transform:scale(1.1);
 
 
 
+/* =========================
+RPG CREW SCREEN
+========================= */
 
-
-/* =====================
-CREW INTRO
-===================== */
 
 
 .crewTitle {
-
 
 position:absolute;
 
@@ -341,16 +417,13 @@ width:100%;
 
 text-align:center;
 
-
 }
 
 
 
 .crewTitle h1 {
 
-
 font-size:75px;
-
 
 }
 
@@ -358,88 +431,139 @@ font-size:75px;
 
 
 
-.crewMembers {
+.crewPortraits {
 
 
 position:absolute;
 
-
-bottom:22%;
-
+bottom:25%;
 
 width:100%;
 
-
 display:flex;
-
 
 justify-content:center;
 
-
-align-items:flex-end;
-
-
-gap:20px;
+gap:40px;
 
 
 }
 
 
 
-
-.crewCard {
-
-
-width:220px;
+.crewPortrait {
 
 
 text-align:center;
 
+cursor:pointer;
 
-position:relative;
+transition:.4s;
+
+
+animation:
+
+portraitAppear 1s forwards;
 
 
 opacity:0;
 
 
-animation:
+}
 
-crewAppear 1s forwards;
 
+
+.crewPortrait:nth-child(1){
+
+animation-delay:.5s;
+
+}
+
+
+
+.crewPortrait:nth-child(2){
+
+animation-delay:1s;
+
+}
+
+
+
+.crewPortrait:nth-child(3){
+
+animation-delay:1.5s;
+
+}
+
+
+
+.crewPortrait:nth-child(4){
+
+animation-delay:2s;
 
 }
 
 
 
 
-.crewCard img {
+.portraitFrame {
 
 
 width:200px;
 
-
-height:260px;
-
-
-object-fit:contain;
+height:230px;
 
 
-filter:
+background:
 
-drop-shadow(
-0 20px 15px black
+linear-gradient(
+
+#5b3515,
+
+#241205
+
 );
+
+
+border:
+
+8px solid #d9b45b;
+
+
+border-radius:15px;
+
+
+padding:10px;
+
+
+box-shadow:
+
+0 15px 30px black;
 
 
 }
 
 
 
-.crewCard h2 {
+
+.portraitFrame img {
+
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+
+}
+
+
+
+.crewPortrait h2 {
 
 
 font-family:"Pirata One";
-
 
 font-size:35px;
 
@@ -455,31 +579,14 @@ text-shadow:
 
 
 
-
-.crewCard:nth-child(1){
-
-animation-delay:.5s;
-
-}
+.crewPortrait:hover {
 
 
-.crewCard:nth-child(2){
+transform:
 
-animation-delay:1.5s;
+translateY(-20px)
+scale(1.08);
 
-}
-
-
-.crewCard:nth-child(3){
-
-animation-delay:2.5s;
-
-}
-
-
-.crewCard:nth-child(4){
-
-animation-delay:3.5s;
 
 }
 
@@ -487,79 +594,38 @@ animation-delay:3.5s;
 
 
 
+.crewPortrait:hover .portraitFrame {
 
 
-@keyframes crewAppear {
+box-shadow:
+
+0 0 35px gold;
+
+
+}
+
+
+
+
+
+@keyframes portraitAppear {
 
 
 from {
 
 opacity:0;
 
-transform:
-
-translateY(80px);
-
+transform:translateY(100px);
 
 }
+
 
 
 to {
 
-
 opacity:1;
 
-
-transform:
-
-translateY(0);
-
-
-}
-
-
-}
-
-
-
-
-
-
-.crewCard:hover {
-
-
-transform:translateY(-20px);
-
-}
-
-
-
-
-
-.crewCard img {
-
-
-animation:
-
-characterIdle 3s infinite;
-
-
-}
-
-
-
-
-
-@keyframes characterIdle {
-
-
-50% {
-
-
-transform:
-
-translateY(-8px);
-
+transform:translateY(0);
 
 }
 
@@ -572,9 +638,10 @@ translateY(-8px);
 
 
 
-/* =====================
-DIALOGUE BOX
-===================== */
+/* =========================
+DIALOGUE
+========================= */
+
 
 
 .dialogueBox {
@@ -582,30 +649,28 @@ DIALOGUE BOX
 
 position:absolute;
 
-
 bottom:3%;
 
 
 left:10%;
-
 
 right:10%;
 
 
 background:
 
-rgba(0,0,0,.8);
+rgba(0,0,0,.85);
 
 
 border:
 
-3px solid #d9b45b;
+4px solid #d9b45b;
 
 
 border-radius:20px;
 
 
-padding:20px;
+padding:25px;
 
 
 text-align:center;
@@ -621,7 +686,7 @@ text-align:center;
 font-family:"Pirata One";
 
 
-font-size:40px;
+font-size:42px;
 
 
 color:#ffd76b;
@@ -634,10 +699,11 @@ color:#ffd76b;
 .dialogueBox p {
 
 
-font-size:25px;
+font-size:26px;
 
 
 }
+
 
 
 
@@ -653,25 +719,28 @@ font-size:55px;
 }
 
 
-.crewMembers {
 
-gap:0;
+.crewPortraits {
 
-}
-
-
-.crewCard {
-
-width:90px;
+gap:5px;
 
 }
 
 
-.crewCard img {
 
-width:90px;
+.portraitFrame {
 
-height:150px;
+width:80px;
+
+height:120px;
+
+}
+
+
+
+.crewPortrait h2 {
+
+font-size:20px;
 
 }
 
