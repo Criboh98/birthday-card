@@ -1,18 +1,19 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 
 body {
 
-    overflow: hidden;
-    background: #000;
+    overflow:hidden;
 
-    font-family: "IM Fell English", serif;
+    background:#000;
 
-    color: white;
+    color:white;
+
+    font-family:"IM Fell English", serif;
 
 }
 
@@ -20,8 +21,8 @@ body {
 
 #game {
 
-    width: 100vw;
-    height: 100vh;
+    width:100vw;
+    height:100vh;
 
 }
 
@@ -34,22 +35,25 @@ LOADING SCREEN
 
 #loadingScreen {
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    background:
-    radial-gradient(circle,#20395a,#050914);
+    z-index:1000;
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
 
-    z-index:999;
+    align-items:center;
+
+    background:
+    radial-gradient(circle,#29496b,#050914);
+
+    transition:opacity 1s;
 
 }
+
 
 
 .loading-content {
@@ -57,6 +61,7 @@ LOADING SCREEN
     text-align:center;
 
 }
+
 
 
 .loading-content h1 {
@@ -70,9 +75,10 @@ LOADING SCREEN
 }
 
 
+
 .loading-content p {
 
-    font-size:24px;
+    font-size:25px;
 
 }
 
@@ -84,9 +90,9 @@ LOADING SCREEN
 
     height:20px;
 
-    border:2px solid #d8b35a;
-
     margin:30px auto;
+
+    border:3px solid #d8b35a;
 
     background:#111;
 
@@ -96,18 +102,13 @@ LOADING SCREEN
 
 #loadingProgress {
 
-    width:0%;
-
     height:100%;
 
-    background:
-    linear-gradient(
-    90deg,
-    #d9b35a,
-    #fff2a6
-    );
+    width:0%;
 
-    transition:width .3s;
+    background:#e8c56a;
+
+    transition:.3s;
 
 }
 
@@ -132,6 +133,7 @@ SCENES
 }
 
 
+
 .scene.active {
 
     display:block;
@@ -140,8 +142,10 @@ SCENES
 
 
 
+
+
 /* =========================
-INTRO WORLD
+WORLD
 ========================= */
 
 
@@ -154,8 +158,6 @@ INTRO WORLD
     height:100%;
 
     object-fit:cover;
-
-    animation:skyMove 30s infinite alternate;
 
 }
 
@@ -173,49 +175,31 @@ INTRO WORLD
 
     object-fit:cover;
 
-    animation:oceanMove 8s infinite alternate;
+    animation:oceanWave 8s infinite alternate;
 
 }
 
 
 
+@keyframes oceanWave {
 
-@keyframes skyMove {
 
-    from {
-        transform:scale(1);
-    }
+from {
 
-    to {
-        transform:scale(1.08);
-    }
+transform:translateX(0);
 
 }
 
 
+to {
 
-@keyframes oceanMove {
-
-    from {
-
-        transform:translateX(0);
-
-    }
-
-    to {
-
-        transform:translateX(-40px);
-
-    }
+transform:translateX(-40px);
 
 }
 
 
+}
 
-
-/* =========================
-STARS
-========================= */
 
 
 .stars {
@@ -225,41 +209,14 @@ STARS
     inset:0;
 
     background-image:
-
-    radial-gradient(
-    white 2px,
-    transparent 2px
-    );
+    radial-gradient(white 2px,transparent 2px);
 
     background-size:80px 80px;
 
-    opacity:.6;
-
-    animation:starsMove 8s infinite linear;
+    opacity:.5;
 
 }
 
-
-
-@keyframes starsMove {
-
-    from {
-        transform:translateY(0);
-    }
-
-    to {
-        transform:translateY(80px);
-    }
-
-}
-
-
-
-
-
-/* =========================
-FOG
-========================= */
 
 
 .fog {
@@ -269,34 +226,35 @@ FOG
     inset:0;
 
     background:
-
     linear-gradient(
     120deg,
     transparent,
-    rgba(255,255,255,.2),
+    rgba(255,255,255,.25),
     transparent
     );
 
-
-    animation:fogMove 12s infinite;
+    animation:fog 12s infinite;
 
 }
 
 
 
-@keyframes fogMove {
+@keyframes fog {
 
-    from {
 
-        transform:translateX(-100%);
+from {
 
-    }
+transform:translateX(-100%);
 
-    to {
+}
 
-        transform:translateX(100%);
 
-    }
+to {
+
+transform:translateX(100%);
+
+}
+
 
 }
 
@@ -305,7 +263,7 @@ FOG
 
 
 /* =========================
-THE LILY SHIP
+THE LILY
 ========================= */
 
 
@@ -324,15 +282,12 @@ THE LILY SHIP
 
     animation:
 
-    sailIn 6s forwards,
-    floatShip 4s infinite 6s;
+    sailIn 5s forwards,
+    shipFloat 4s infinite 5s;
 
 
     filter:
-
-    drop-shadow(
-    0 0 25px rgba(255,210,100,.8)
-    );
+    drop-shadow(0 0 25px gold);
 
 }
 
@@ -342,41 +297,35 @@ THE LILY SHIP
 @keyframes sailIn {
 
 
-    from {
+from {
 
-        left:-600px;
+left:-600px;
 
-    }
+}
 
 
-    to {
+to {
 
-        left:50%;
+left:50%;
 
-        transform:translateX(-50%);
+transform:translateX(-50%);
 
-    }
+}
+
 
 }
 
 
 
-
-@keyframes floatShip {
-
-
-    0%,100% {
-
-        margin-bottom:0;
-
-    }
+@keyframes shipFloat {
 
 
-    50% {
+50% {
 
-        margin-bottom:25px;
+transform:translate(-50%, -20px);
 
-    }
+}
+
 
 }
 
@@ -393,13 +342,11 @@ TITLE
 
     position:absolute;
 
-    top:12%;
+    top:10%;
 
     width:100%;
 
     text-align:center;
-
-    animation:fadeTitle 4s forwards;
 
 }
 
@@ -408,60 +355,37 @@ TITLE
 .titleBox h1 {
 
 
-    font-family:"Pirata One";
+font-family:"Pirata One";
 
-    font-size:110px;
+font-size:110px;
 
-    letter-spacing:8px;
+text-shadow:0 5px 20px black;
 
-    text-shadow:
-
-    0 5px 20px black;
 
 }
-
 
 
 
 .titleBox h2 {
 
-    font-size:35px;
+font-size:35px;
 
 }
-
-
-
-.titleBox p {
-
-    font-size:25px;
-
-    margin-top:15px;
-
-}
-
-
 
 
 
 button {
 
+    margin-top:35px;
 
-    margin-top:40px;
-
-    padding:18px 45px;
+    padding:15px 45px;
 
     border-radius:50px;
 
     border:3px solid #d8b35a;
 
-
     background:
-
-    linear-gradient(
-    #7c5525,
-    #3d2410
-    );
-
+    linear-gradient(#8b5a25,#3d220b);
 
     color:white;
 
@@ -471,14 +395,7 @@ button {
 
     cursor:pointer;
 
-
-    box-shadow:
-
-    0 0 20px rgba(255,200,80,.5);
-
-
     transition:.3s;
-
 
 }
 
@@ -487,34 +404,6 @@ button {
 button:hover {
 
     transform:scale(1.1);
-
-    background:#a87532;
-
-}
-
-
-
-
-
-@keyframes fadeTitle {
-
-
-    from {
-
-        opacity:0;
-
-        transform:translateY(-40px);
-
-    }
-
-
-    to {
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
 
 }
 
@@ -529,11 +418,11 @@ HARBOR
 
 .background {
 
-    width:100%;
+width:100%;
 
-    height:100%;
+height:100%;
 
-    object-fit:cover;
+object-fit:cover;
 
 }
 
@@ -541,15 +430,13 @@ HARBOR
 
 .harborMessage {
 
+position:absolute;
 
-    position:absolute;
+top:30%;
 
-    top:30%;
+width:100%;
 
-    width:100%;
-
-    text-align:center;
-
+text-align:center;
 
 }
 
@@ -557,51 +444,310 @@ HARBOR
 
 .harborMessage h1 {
 
+font-family:"Pirata One";
 
-    font-family:"Pirata One";
+font-size:80px;
 
-    font-size:80px;
-
-    text-shadow:0 5px 15px black;
+text-shadow:0 5px 20px black;
 
 }
+
+
+
+
+
+/* =========================
+CREW SCENE
+========================= */
+
+
+
+.crewTitle {
+
+position:absolute;
+
+top:5%;
+
+width:100%;
+
+text-align:center;
+
+}
+
+
+
+.crewTitle h1 {
+
+font-family:"Pirata One";
+
+font-size:75px;
+
+text-shadow:0 5px 20px black;
+
+}
+
+
+
+
+
+.crewMembers {
+
+position:absolute;
+
+bottom:25%;
+
+width:100%;
+
+display:flex;
+
+justify-content:center;
+
+gap:35px;
+
+}
+
+
+
+
+
+.crewCard {
+
+
+width:190px;
+
+padding:15px;
+
+text-align:center;
+
+
+background:
+
+linear-gradient(
+#fff0c2,
+#d3a85c
+);
+
+
+border:
+
+5px solid #7b4b16;
+
+
+border-radius:15px;
+
+
+color:#301b08;
+
+
+opacity:0;
+
+
+animation:
+
+crewEnter 1s forwards,
+crewIdle 3s infinite 2s;
+
+
+}
+
+
+
+
+.crewCard:nth-child(1){
+
+animation-delay:.5s;
+
+}
+
+
+
+.crewCard:nth-child(2){
+
+animation-delay:1.5s;
+
+}
+
+
+
+.crewCard:nth-child(3){
+
+animation-delay:2.5s;
+
+}
+
+
+
+.crewCard:nth-child(4){
+
+animation-delay:3.5s;
+
+}
+
+
+
+
+
+.crewCard img {
+
+width:150px;
+
+height:180px;
+
+object-fit:contain;
+
+}
+
+
+
+
+.crewCard h2 {
+
+font-family:"Pirata One";
+
+}
+
+
+
+
+
+@keyframes crewEnter {
+
+
+from {
+
+opacity:0;
+
+transform:translateX(-300px);
+
+}
+
+
+to {
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+
+}
+
+
+
+
+
+@keyframes crewIdle {
+
+
+50% {
+
+transform:translateY(-10px);
+
+}
+
+
+}
+
+
+
+
+
+/* =========================
+DIALOGUE
+========================= */
+
+
+.dialogueBox {
+
+position:absolute;
+
+bottom:3%;
+
+left:10%;
+
+right:10%;
+
+
+padding:20px;
+
+
+background:
+
+rgba(0,0,0,.8);
+
+
+border:
+
+3px solid #d8b35a;
+
+
+border-radius:20px;
+
+
+text-align:center;
+
+
+}
+
+
+
+.dialogueBox h2 {
+
+font-family:"Pirata One";
+
+font-size:40px;
+
+color:#ffd76b;
+
+}
+
+
+
+.dialogueBox p {
+
+font-size:25px;
+
+}
+
 
 
 
 
 /* MOBILE */
 
-
 @media(max-width:700px){
 
 
 .titleBox h1 {
 
-    font-size:60px;
+font-size:60px;
 
 }
 
 
-.titleBox h2 {
 
-    font-size:22px;
+.crewMembers {
 
-}
-
-
-#lilyShip {
-
-    width:350px;
+gap:5px;
 
 }
 
 
-button {
+.crewCard {
 
-    font-size:22px;
+width:90px;
 
 }
 
+
+.crewCard img {
+
+width:70px;
+
+height:100px;
+
+}
 
 
 }
