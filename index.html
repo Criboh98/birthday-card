@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Captain Eli's Grand Line Adventure</title>
+<title>Captain Eli - The Lily Adventure</title>
 
 
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Pirata+One&display=swap" rel="stylesheet">
@@ -21,14 +20,81 @@
 <body>
 
 
+<!-- MUSIC -->
 
-<!-- WANTED POSTER INTRO -->
+<audio id="oceanSound" loop>
+<source src="assets/audio/ocean.mp3">
+</audio>
 
 
-<section id="wanted" class="scene active">
+<audio id="adventureMusic" loop>
+<source src="assets/audio/adventure.mp3">
+</audio>
 
 
-<div class="wanted-poster">
+<audio id="treasureSound">
+<source src="assets/audio/treasure.mp3">
+</audio>
+
+
+
+
+
+<!-- INTRO CINEMATIC -->
+
+
+<section id="intro" class="screen active">
+
+
+<div class="darkOcean">
+
+
+<div class="moon">
+🌙
+</div>
+
+
+<div class="shipSilhouette">
+
+<img src="assets/ship/lily.png">
+
+</div>
+
+
+
+<h2 id="introText">
+
+Beyond every ocean...
+
+</h2>
+
+
+<button onclick="startIntro()">
+
+Enter the Legend
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- WANTED POSTER -->
+
+
+<section id="wanted" class="screen">
+
+
+<div class="poster">
 
 
 <h1>
@@ -42,22 +108,28 @@ CAPTAIN ELI
 
 
 <p>
+
 For:
+
+<br>
+
+Following dreams
+
+<br>
+
+Crossing oceans
+
+<br>
+
+Finding treasure
+
 </p>
 
-
-<p>
-✨ Chasing dreams
-<br>
-🌊 Exploring oceans
-<br>
-🏴‍☠️ Finding treasure
-</p>
 
 
 <button onclick="openPort()">
 
-Reveal Adventure
+Continue
 
 </button>
 
@@ -74,25 +146,19 @@ Reveal Adventure
 
 
 
-<!-- PIRATE PORT -->
+
+<!-- PORT -->
 
 
-<section id="port" class="scene">
+<section id="port" class="screen">
 
 
-<div class="sky">
+<div class="background">
 
 
-🌙 ⭐ ☁️ ⭐
+<img class="portImage"
+src="assets/backgrounds/port.png">
 
-
-</div>
-
-
-
-<div class="background-ship">
-
-⛵
 
 </div>
 
@@ -100,146 +166,117 @@ Reveal Adventure
 
 
 <h1>
-
-Welcome, Captain Eli...
-
+The Lily's Harbor
 </h1>
 
 
-
-<h2>
-
-The Grand Line awaits.
-
-</h2>
-
-
-
 <p>
-
-A mysterious treasure is hidden beyond the ocean.
-
+Welcome, Captain Eli.
+Your crew is waiting.
 </p>
 
 
-
-
-<!-- CREW -->
 
 
 <div class="crew">
 
 
-
 <div class="character" onclick="talk('nova')">
 
-🏴‍☠️
+<img src="assets/characters/captain-nova.png">
 
-<span>
+<p>
 Captain Nova
-</span>
+</p>
 
 </div>
+
 
 
 
 <div class="character" onclick="talk('mira')">
 
-🧭
+<img src="assets/characters/mira.png">
 
-<span>
+<p>
 Mira
-</span>
+</p>
 
 </div>
+
 
 
 
 <div class="character" onclick="talk('kaito')">
 
-🔨
+<img src="assets/characters/kaito.png">
 
-<span>
+<p>
 Kaito
-</span>
+</p>
 
 </div>
+
 
 
 
 <div class="character" onclick="talk('luna')">
 
-🍖
+<img src="assets/characters/luna.png">
 
-<span>
+<p>
 Luna
-</span>
+</p>
+
+</div>
+
 
 </div>
 
 
 
-</div>
 
 
-
-
-
-
-<!-- INTERACTIVE OBJECTS -->
 
 
 <div class="objects">
 
 
-<div onclick="discover('telescope')">
-
-🔭
-
-</div>
-
-
-
-<div onclick="discover('compass')">
-
+<button onclick="discover('compass')">
 🧭
-
-</div>
-
+</button>
 
 
-<div onclick="discover('chest')">
-
-📦
-
-</div>
-
-
-
-<div onclick="discover('map')">
-
+<button onclick="discover('map')">
 🗺️
+</button>
+
+
+<button onclick="discover('telescope')">
+🔭
+</button>
+
+
+<button onclick="discover('ship')">
+⛵
+</button>
+
 
 </div>
 
 
 
+<div id="dialogue">
+
+Explore the harbor, Captain.
+
 </div>
 
 
 
 
-<p id="dialogue">
 
-Explore the port, Captain.
-
-</p>
-
-
-
-
-
-<button id="startButton" onclick="startAdventure()" disabled>
+<button onclick="beginVoyage()">
 
 ⚓ Begin Voyage
 
@@ -247,7 +284,6 @@ Explore the port, Captain.
 
 
 
-
 </section>
 
 
@@ -258,75 +294,44 @@ Explore the port, Captain.
 
 
 
+<!-- GRAND LINE GAME -->
 
-<!-- MAP GAME -->
 
-
-<section id="mapScene" class="scene">
+<section id="game" class="screen">
 
 
 <h1>
-
-The Grand Line Map
-
+The Grand Line
 </h1>
 
 
 <p>
-
-Choose your route, Captain Eli.
-
+Guide The Lily through the ocean.
 </p>
 
 
+<div id="seaGame">
 
 
-<div class="map">
+<img id="playerShip"
+src="assets/ship/lily.png">
 
 
+<div id="treasureIsland">
 
-<div onclick="chooseRoute('storm')">
-
-🌪️
-
-<br>
-
-Storm Island
+🏝️
 
 </div>
-
-
-
-<div onclick="chooseRoute('paradise')">
-
-🌴
-
-<br>
-
-Paradise Island
-
-</div>
-
-
-
-<div onclick="chooseRoute('dream')">
-
-⭐
-
-<br>
-
-Dream Island
-
-</div>
-
 
 
 </div>
 
 
+<p id="gameMessage">
 
-<p id="routeMessage"></p>
+Reach the island!
 
+</p>
 
 
 </section>
@@ -342,24 +347,17 @@ Dream Island
 <!-- TREASURE -->
 
 
-<section id="treasureScene" class="scene">
+<section id="treasure" class="screen">
 
 
 <h1>
 
-Treasure Island
+The Hidden Treasure
 
 </h1>
 
 
-<p>
-
-The compass has found the hidden treasure.
-
-</p>
-
-
-<div class="big-chest" onclick="openChest()">
+<div onclick="openTreasure()" class="chest">
 
 📦
 
@@ -368,14 +366,12 @@ The compass has found the hidden treasure.
 
 <p>
 
-Open the treasure
+Something inside is waiting...
 
 </p>
 
 
-
 </section>
-
 
 
 
@@ -388,7 +384,7 @@ Open the treasure
 <!-- LETTER -->
 
 
-<section id="letterScene" class="scene">
+<section id="letter" class="screen">
 
 
 <div class="paper">
@@ -396,7 +392,7 @@ Open the treasure
 
 <h1>
 
-A Letter From Your Crew
+A Letter From Your Crew 💙
 
 </h1>
 
@@ -405,7 +401,6 @@ A Letter From Your Crew
 
 
 </div>
-
 
 
 </section>
@@ -418,30 +413,26 @@ A Letter From Your Crew
 
 
 
-<!-- END -->
+<!-- ENDING -->
 
 
-<section id="endingScene" class="scene">
+<section id="ending" class="screen">
 
 
-<div class="big-ship">
-
-⛵
-
-</div>
+<img class="finalShip"
+src="assets/ship/lily.png">
 
 
 <h1>
 
-Captain Eli's Journey Continues
+The Lily Sets Sail
 
 </h1>
 
 
-
 <p>
 
-Every person has their own ocean to cross.
+Every captain has a dream.
 
 <br><br>
 
@@ -460,16 +451,6 @@ Your adventure is only beginning.
 
 </section>
 
-
-
-
-
-
-<div class="ocean">
-
-🌊🌊🌊🌊🌊🌊🌊
-
-</div>
 
 
 
