@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,6 +17,7 @@
 
 <body>
 
+
 <!-- LOADING SCREEN -->
 
 <div id="loadingScreen">
@@ -26,9 +28,11 @@
 
         <p>An Original Pirate Adventure</p>
 
+
         <div class="loading-bar">
             <div id="loadingProgress"></div>
         </div>
+
 
         <span id="loadingText">
             Preparing the voyage...
@@ -39,117 +43,197 @@
 </div>
 
 
-<!-- GAME -->
+
 
 <div id="game">
 
 
-    <!-- INTRO SCENE -->
 
-    <section id="introScene" class="scene active">
+<!-- INTRO SCENE -->
 
-
-        <!-- BACKGROUND LAYERS -->
-
-        <img class="sky"
-        src="assets/backgrounds/sky.png">
-
-        <img class="ocean"
-        src="assets/backgrounds/ocean.png">
+<section id="introScene" class="scene active">
 
 
-        <div class="stars"></div>
-
-        <div class="fog"></div>
-
-
-        <!-- SHIP -->
-
-        <img id="lilyShip"
-        src="assets/ship/lily.png"
-        alt="The Lily Pirate Ship">
+<img class="sky"
+src="assets/backgrounds/sky.png">
 
 
-        <!-- TITLE -->
-
-        <div class="titleBox">
-
-            <h1>
-                THE LILY
-            </h1>
+<img class="ocean"
+src="assets/backgrounds/ocean.png">
 
 
-            <h2>
-                An Original Pirate Adventure
-            </h2>
+<div class="stars"></div>
 
-
-            <p>
-                Created for Captain Eli
-            </p>
-
-
-            <button id="startButton">
-                ⚓ Begin Adventure
-            </button>
-
-
-        </div>
-
-
-    </section>
+<div class="fog"></div>
 
 
 
-
-    <!-- HARBOR SCENE (NEXT CHAPTER) -->
-
-    <section id="harborScene" class="scene">
-
-
-        <img class="background"
-        src="assets/backgrounds/harbor.png">
+<img id="lilyShip"
+src="assets/ship/lily.png"
+alt="The Lily Pirate Ship">
 
 
-        <div class="harborMessage">
 
-            <h1>
-                The Harbor of The Lily
-            </h1>
-
-            <p>
-                A new adventure begins...
-            </p>
+<div class="titleBox">
 
 
-            <button id="meetCrewButton">
-                Meet the Crew
-            </button>
-
-        </div>
+<h1>
+THE LILY
+</h1>
 
 
-    </section>
+<h2>
+An Original Pirate Adventure
+</h2>
+
+
+<p>
+Created for Captain Eli
+</p>
+
+
+
+<button id="startButton">
+⚓ Begin Adventure
+</button>
+
+
+</div>
+
+
+</section>
 
 
 
 
-    <!-- FUTURE SCENES -->
 
-    <section id="crewScene" class="scene">
-    </section>
+<!-- HARBOR SCENE -->
 
-
-    <section id="islandScene" class="scene">
-    </section>
+<section id="harborScene" class="scene">
 
 
-    <section id="treasureScene" class="scene">
-    </section>
+<img class="background"
+src="assets/backgrounds/harbor.png">
 
 
-    <section id="letterScene" class="scene">
-    </section>
+
+<div class="harborMessage">
+
+
+<h1>
+The Harbor of The Lily
+</h1>
+
+
+<p>
+A new adventure begins...
+</p>
+
+
+
+<button id="meetCrewButton">
+Meet the Crew
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- CREW SCENE -->
+
+<section id="crewScene" class="scene">
+
+
+<img class="background"
+src="assets/backgrounds/harbor.png">
+
+
+
+
+
+<div class="crewTitle">
+
+
+<h1>
+The Crew of The Lily
+</h1>
+
+
+<p>
+Every great captain needs a legendary crew.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="crewMembers">
+
+
+
+<div class="crewCard" id="nova">
+
+<img src="assets/characters/captain-nova.png">
+
+<h2>
+Captain Nova
+</h2>
+
+</div>
+
+
+
+
+
+<div class="crewCard" id="mira">
+
+<img src="assets/characters/mira.png">
+
+<h2>
+Mira
+</h2>
+
+</div>
+
+
+
+
+
+<div class="crewCard" id="kaito">
+
+<img src="assets/characters/kaito.png">
+
+<h2>
+Kaito
+</h2>
+
+</div>
+
+
+
+
+
+<div class="crewCard" id="luna">
+
+<img src="assets/characters/luna.png">
+
+<h2>
+Luna
+</h2>
+
+</div>
 
 
 
@@ -157,7 +241,97 @@
 
 
 
+
+
+
+
+
+<div class="dialogueBox">
+
+
+<h2 id="characterName">
+Captain Nova
+</h2>
+
+
+
+<p id="dialogueText">
+
+Welcome aboard, Captain Eli.
+The Lily has been waiting for you.
+
+</p>
+
+
+
+<button id="questButton">
+
+🗺️ Begin Treasure Hunt
+
+</button>
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ISLAND SCENE -->
+
+<section id="islandScene" class="scene">
+
+
+<img class="background"
+src="assets/backgrounds/treasure-island.png">
+
+
+</section>
+
+
+
+
+
+
+
+<!-- TREASURE SCENE -->
+
+<section id="treasureScene" class="scene">
+
+</section>
+
+
+
+
+
+
+
+<!-- FINAL LETTER -->
+
+<section id="letterScene" class="scene">
+
+</section>
+
+
+
+
+
+</div>
+
+
+
+
+
 <script src="script.js"></script>
+
 
 </body>
 
