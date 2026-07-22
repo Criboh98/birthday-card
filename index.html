@@ -2,15 +2,12 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Captain Eli - The Lily Adventure</title>
 
-
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Pirata+One&display=swap" rel="stylesheet">
-
 
 <link rel="stylesheet" href="style.css">
 
@@ -19,444 +16,148 @@
 
 <body>
 
+<!-- LOADING SCREEN -->
 
-<!-- MUSIC -->
+<div id="loadingScreen">
 
-<audio id="oceanSound" loop>
-<source src="assets/audio/ocean.mp3">
-</audio>
+    <div class="loading-content">
 
+        <h1>THE LILY</h1>
 
-<audio id="adventureMusic" loop>
-<source src="assets/audio/adventure.mp3">
-</audio>
+        <p>An Original Pirate Adventure</p>
 
+        <div class="loading-bar">
+            <div id="loadingProgress"></div>
+        </div>
 
-<audio id="treasureSound">
-<source src="assets/audio/treasure.mp3">
-</audio>
+        <span id="loadingText">
+            Preparing the voyage...
+        </span>
 
-
-
-
-
-<!-- INTRO CINEMATIC -->
-
-
-<section id="intro" class="screen active">
-
-
-<div class="darkOcean">
-
-
-<div class="moon">
-🌙
-</div>
-
-
-<div class="shipSilhouette">
-
-<img src="assets/ship/lily.png">
+    </div>
 
 </div>
 
 
+<!-- GAME -->
 
-<h2 id="introText">
-
-Beyond every ocean...
-
-</h2>
+<div id="game">
 
 
-<button onclick="startIntro()">
+    <!-- INTRO SCENE -->
 
-Enter the Legend
+    <section id="introScene" class="scene active">
 
-</button>
+
+        <!-- BACKGROUND LAYERS -->
+
+        <img class="sky"
+        src="assets/backgrounds/sky.png">
+
+        <img class="ocean"
+        src="assets/backgrounds/ocean.png">
+
+
+        <div class="stars"></div>
+
+        <div class="fog"></div>
+
+
+        <!-- SHIP -->
+
+        <img id="lilyShip"
+        src="assets/ship/lily.png"
+        alt="The Lily Pirate Ship">
+
+
+        <!-- TITLE -->
+
+        <div class="titleBox">
+
+            <h1>
+                THE LILY
+            </h1>
+
+
+            <h2>
+                An Original Pirate Adventure
+            </h2>
+
+
+            <p>
+                Created for Captain Eli
+            </p>
+
+
+            <button id="startButton">
+                ⚓ Begin Adventure
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+    <!-- HARBOR SCENE (NEXT CHAPTER) -->
+
+    <section id="harborScene" class="scene">
+
+
+        <img class="background"
+        src="assets/backgrounds/harbor.png">
+
+
+        <div class="harborMessage">
+
+            <h1>
+                The Harbor of The Lily
+            </h1>
+
+            <p>
+                A new adventure begins...
+            </p>
+
+
+            <button id="meetCrewButton">
+                Meet the Crew
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+
+
+    <!-- FUTURE SCENES -->
+
+    <section id="crewScene" class="scene">
+    </section>
+
+
+    <section id="islandScene" class="scene">
+    </section>
+
+
+    <section id="treasureScene" class="scene">
+    </section>
+
+
+    <section id="letterScene" class="scene">
+    </section>
+
 
 
 </div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- WANTED POSTER -->
-
-
-<section id="wanted" class="screen">
-
-
-<div class="poster">
-
-
-<h1>
-WANTED
-</h1>
-
-
-<h2>
-CAPTAIN ELI
-</h2>
-
-
-<p>
-
-For:
-
-<br>
-
-Following dreams
-
-<br>
-
-Crossing oceans
-
-<br>
-
-Finding treasure
-
-</p>
-
-
-
-<button onclick="openPort()">
-
-Continue
-
-</button>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- PORT -->
-
-
-<section id="port" class="screen">
-
-
-<div class="background">
-
-
-<img class="portImage"
-src="assets/backgrounds/port.png">
-
-
-</div>
-
-
-
-
-<h1>
-The Lily's Harbor
-</h1>
-
-
-<p>
-Welcome, Captain Eli.
-Your crew is waiting.
-</p>
-
-
-
-
-<div class="crew">
-
-
-<div class="character" onclick="talk('nova')">
-
-<img src="assets/characters/captain-nova.png">
-
-<p>
-Captain Nova
-</p>
-
-</div>
-
-
-
-
-<div class="character" onclick="talk('mira')">
-
-<img src="assets/characters/mira.png">
-
-<p>
-Mira
-</p>
-
-</div>
-
-
-
-
-<div class="character" onclick="talk('kaito')">
-
-<img src="assets/characters/kaito.png">
-
-<p>
-Kaito
-</p>
-
-</div>
-
-
-
-
-<div class="character" onclick="talk('luna')">
-
-<img src="assets/characters/luna.png">
-
-<p>
-Luna
-</p>
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="objects">
-
-
-<button onclick="discover('compass')">
-🧭
-</button>
-
-
-<button onclick="discover('map')">
-🗺️
-</button>
-
-
-<button onclick="discover('telescope')">
-🔭
-</button>
-
-
-<button onclick="discover('ship')">
-⛵
-</button>
-
-
-</div>
-
-
-
-<div id="dialogue">
-
-Explore the harbor, Captain.
-
-</div>
-
-
-
-
-
-<button onclick="beginVoyage()">
-
-⚓ Begin Voyage
-
-</button>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- GRAND LINE GAME -->
-
-
-<section id="game" class="screen">
-
-
-<h1>
-The Grand Line
-</h1>
-
-
-<p>
-Guide The Lily through the ocean.
-</p>
-
-
-<div id="seaGame">
-
-
-<img id="playerShip"
-src="assets/ship/lily.png">
-
-
-<div id="treasureIsland">
-
-🏝️
-
-</div>
-
-
-</div>
-
-
-<p id="gameMessage">
-
-Reach the island!
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- TREASURE -->
-
-
-<section id="treasure" class="screen">
-
-
-<h1>
-
-The Hidden Treasure
-
-</h1>
-
-
-<div onclick="openTreasure()" class="chest">
-
-📦
-
-</div>
-
-
-<p>
-
-Something inside is waiting...
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- LETTER -->
-
-
-<section id="letter" class="screen">
-
-
-<div class="paper">
-
-
-<h1>
-
-A Letter From Your Crew 💙
-
-</h1>
-
-
-<p id="letterText"></p>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ENDING -->
-
-
-<section id="ending" class="screen">
-
-
-<img class="finalShip"
-src="assets/ship/lily.png">
-
-
-<h1>
-
-The Lily Sets Sail
-
-</h1>
-
-
-<p>
-
-Every captain has a dream.
-
-<br><br>
-
-Keep building your own One Piece.
-
-<br><br>
-
-Your adventure is only beginning.
-
-<br><br>
-
-🏴‍☠️❤️
-
-</p>
-
-
-</section>
-
-
 
 
 
 <script src="script.js"></script>
-
 
 </body>
 
