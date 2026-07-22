@@ -23,7 +23,6 @@ const questButton =
 document.getElementById("questButton");
 
 
-
 const scenes =
 document.querySelectorAll(".scene");
 
@@ -35,7 +34,6 @@ function changeScene(scene){
         s.classList.remove("active");
     });
 
-
     scene.classList.add("active");
 
 }
@@ -44,8 +42,9 @@ function changeScene(scene){
 
 
 
+
 // =========================
-// LOADING
+// LOADING SCREEN
 // =========================
 
 
@@ -89,7 +88,6 @@ if(progress >= 100){
 clearInterval(loadingTimer);
 
 
-
 setTimeout(()=>{
 
 
@@ -103,9 +101,7 @@ loadingScreen.style.display="none";
 },1000);
 
 
-
 },500);
-
 
 
 }
@@ -120,8 +116,9 @@ loadingScreen.style.display="none";
 
 
 
+
 // =========================
-// START VOYAGE
+// START ADVENTURE
 // =========================
 
 
@@ -143,8 +140,8 @@ document.getElementById("harborScene")
 },1500);
 
 
-
 });
+
 
 
 
@@ -166,10 +163,6 @@ document.getElementById("crewScene")
 );
 
 
-
-startCrewIntroduction();
-
-
 });
 
 
@@ -179,185 +172,141 @@ startCrewIntroduction();
 
 
 
+
 // =========================
-// CREW INTRODUCTION
+// CREW RPG DIALOGUE
 // =========================
 
 
-function startCrewIntroduction(){
 
-
-const name =
+const nameBox =
 document.getElementById("characterName");
 
 
-const text =
+const dialogueBox =
 document.getElementById("dialogueText");
 
 
 
-const dialogue = [
+
+const crewData = {
 
 
-{
+nova:{
 
 name:"Captain Nova",
 
 text:
-"Welcome aboard, Captain Eli. The Lily has been waiting for its captain."
+"Welcome aboard, Captain Eli. The Lily has been waiting for its new captain."
 
 },
 
 
-{
+mira:{
 
 name:"Mira",
 
 text:
-"I prepared the supplies. Every great adventure needs a careful planner!"
+"I prepared the supplies. Every great voyage needs a careful planner."
 
 },
 
 
-{
+kaito:{
 
 name:"Kaito",
 
 text:
-"I discovered a clue... the lost treasure map is somewhere across the sea."
+"I found a clue about the lost treasure map. Something is hidden beyond the sea."
 
 },
 
 
-{
+luna:{
 
 name:"Luna",
 
 text:
-"Adventure sounds great! But first... did anyone bring snacks?"
+"Adventure awaits! But first... I hope someone packed snacks."
 
 }
 
-
-];
-
-
-
-let index = 0;
-
-
-
-function nextDialogue(){
-
-
-if(index < dialogue.length){
-
-
-name.innerText =
-dialogue[index].name;
-
-
-text.innerText =
-dialogue[index].text;
-
-
-index++;
-
-
-}
-
-
-}
-
-
-
-nextDialogue();
-
-
-
-setTimeout(nextDialogue,4000);
-
-setTimeout(nextDialogue,8000);
-
-setTimeout(nextDialogue,12000);
-
-
-
-}
-
-
-
-
-
-
-
-
-// =========================
-// CREW CLICK INTERACTIONS
-// =========================
-
-
-
-const crewMembers =
-document.querySelectorAll(".crewCard");
-
-
-
-crewMembers.forEach(member=>{
-
-
-member.addEventListener("click",()=>{
-
-
-const name =
-member.querySelector("h2").innerText;
-
-
-
-const text =
-document.getElementById("dialogueText");
-
-const title =
-document.getElementById("characterName");
-
-
-
-title.innerText=name;
-
-
-
-const messages={
-
-
-"Captain Nova":
-"The sea rewards brave captains.",
-
-
-"Mira":
-"The supplies are ready for the journey!",
-
-
-"Kaito":
-"The map hides a secret location...",
-
-
-"Luna":
-"I packed enough snacks for the whole voyage!"
 
 };
 
 
 
-text.innerText =
-messages[name];
 
+
+
+function showCharacter(character){
+
+
+
+const data =
+crewData[character];
+
+
+
+nameBox.innerText =
+data.name;
+
+
+dialogueBox.innerText =
+data.text;
+
+
+
+
+
+document.querySelectorAll(".crewPortrait")
+.forEach(p=>{
+
+p.classList.remove("selected");
+
+});
+
+
+
+document.getElementById(character)
+.classList.add("selected");
+
+}
+
+
+
+
+
+document.querySelectorAll(".crewPortrait")
+.forEach(member=>{
+
+
+member.addEventListener("click",()=>{
+
+
+showCharacter(member.id);
+
+
+});
 
 
 });
 
 
 
-});
+
+
+
+// First greeting
+
+setTimeout(()=>{
+
+
+showCharacter("nova");
+
+
+},500);
+
 
 
 
@@ -367,7 +316,7 @@ messages[name];
 
 
 // =========================
-// QUEST BUTTON
+// QUEST
 // =========================
 
 
@@ -375,9 +324,10 @@ questButton.addEventListener("click",()=>{
 
 
 alert(
-"🗺️ Treasure Quest Started!\n\nFind the lost map of The Lily."
-);
 
+"🗺️ Treasure Quest Started!\n\nFind the lost map of The Lily."
+
+);
 
 
 });
