@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 
+
 const loadingScreen =
 document.getElementById("loadingScreen");
 
@@ -28,13 +29,25 @@ document.querySelectorAll(".scene");
 
 
 
+
+
+// =========================
+// SCENE CHANGE
+// =========================
+
+
 function changeScene(scene){
 
-    scenes.forEach(s=>{
-        s.classList.remove("active");
-    });
 
-    scene.classList.add("active");
+scenes.forEach(s=>{
+
+s.classList.remove("active");
+
+});
+
+
+scene.classList.add("active");
+
 
 }
 
@@ -43,8 +56,11 @@ function changeScene(scene){
 
 
 
+
+
+
 // =========================
-// LOADING SCREEN
+// LOADING
 // =========================
 
 
@@ -88,6 +104,7 @@ if(progress >= 100){
 clearInterval(loadingTimer);
 
 
+
 setTimeout(()=>{
 
 
@@ -96,12 +113,16 @@ loadingScreen.style.opacity="0";
 
 setTimeout(()=>{
 
+
 loadingScreen.style.display="none";
+
 
 },1000);
 
 
+
 },500);
+
 
 
 }
@@ -118,8 +139,50 @@ loadingScreen.style.display="none";
 
 
 // =========================
+// QUEST SYSTEM
+// =========================
+
+
+function completeQuest(id){
+
+
+const quest =
+document.getElementById(id);
+
+
+quest.innerHTML =
+quest.innerHTML.replace("☐","☑");
+
+
+}
+
+
+
+function startQuest(id){
+
+
+const quest =
+document.getElementById(id);
+
+
+quest.innerHTML =
+quest.innerHTML.replace("☑","☐");
+
+
+}
+
+
+
+
+
+
+
+
+
+// =========================
 // START ADVENTURE
 // =========================
+
 
 
 startButton.addEventListener("click",()=>{
@@ -129,15 +192,20 @@ startButton.innerHTML =
 "⛵ Sailing...";
 
 
+
 setTimeout(()=>{
 
 
 changeScene(
+
 document.getElementById("harborScene")
+
 );
 
 
+
 },1500);
+
 
 
 });
@@ -151,7 +219,7 @@ document.getElementById("harborScene")
 
 
 // =========================
-// MEET CREW
+// CREW
 // =========================
 
 
@@ -159,8 +227,15 @@ meetCrewButton.addEventListener("click",()=>{
 
 
 changeScene(
+
 document.getElementById("crewScene")
+
 );
+
+
+
+completeQuest("questCrew");
+
 
 
 });
@@ -174,22 +249,22 @@ document.getElementById("crewScene")
 
 
 // =========================
-// CREW RPG DIALOGUE
+// CREW DIALOGUE
 // =========================
 
 
-
-const nameBox =
+const characterName =
 document.getElementById("characterName");
 
 
-const dialogueBox =
+const dialogueText =
 document.getElementById("dialogueText");
 
 
 
 
-const crewData = {
+
+const crew = {
 
 
 nova:{
@@ -197,7 +272,8 @@ nova:{
 name:"Captain Nova",
 
 text:
-"Welcome aboard, Captain Eli. The Lily has been waiting for its new captain."
+
+"The Lily has been waiting for you, Captain Eli. Our adventure begins now."
 
 },
 
@@ -207,7 +283,8 @@ mira:{
 name:"Mira",
 
 text:
-"I prepared the supplies. Every great voyage needs a careful planner."
+
+"I prepared the supplies. A good captain always plans ahead."
 
 },
 
@@ -217,7 +294,8 @@ kaito:{
 name:"Kaito",
 
 text:
-"I found a clue about the lost treasure map. Something is hidden beyond the sea."
+
+"I found a clue about a lost treasure map hidden somewhere nearby."
 
 },
 
@@ -227,7 +305,8 @@ luna:{
 name:"Luna",
 
 text:
-"Adventure awaits! But first... I hope someone packed snacks."
+
+"I am ready for adventure! Also... I brought snacks."
 
 }
 
@@ -239,37 +318,37 @@ text:
 
 
 
-function showCharacter(character){
+function showCrew(id){
+
+
+const member =
+crew[id];
 
 
 
-const data =
-crewData[character];
+characterName.innerText =
+member.name;
 
 
-
-nameBox.innerText =
-data.name;
-
-
-dialogueBox.innerText =
-data.text;
-
-
+dialogueText.innerText =
+member.text;
 
 
 
 document.querySelectorAll(".crewPortrait")
 .forEach(p=>{
 
+
 p.classList.remove("selected");
+
 
 });
 
 
 
-document.getElementById(character)
+document.getElementById(id)
 .classList.add("selected");
+
 
 }
 
@@ -284,7 +363,7 @@ document.querySelectorAll(".crewPortrait")
 member.addEventListener("click",()=>{
 
 
-showCharacter(member.id);
+showCrew(member.id);
 
 
 });
@@ -296,16 +375,7 @@ showCharacter(member.id);
 
 
 
-
-// First greeting
-
-setTimeout(()=>{
-
-
-showCharacter("nova");
-
-
-},500);
+showCrew("nova");
 
 
 
@@ -316,21 +386,29 @@ showCharacter("nova");
 
 
 // =========================
-// QUEST
+// TREASURE QUEST BUTTON
 // =========================
 
 
 questButton.addEventListener("click",()=>{
 
 
+completeQuest("questHarbor");
+
+
+
 alert(
 
-"🗺️ Treasure Quest Started!\n\nFind the lost map of The Lily."
+"🗺️ Quest Started!\n\nSearch the harbor for clues about the Lost Map."
 
 );
 
 
+
 });
+
+
+
 
 
 
