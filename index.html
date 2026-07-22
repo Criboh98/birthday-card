@@ -18,17 +18,57 @@
 <body>
 
 
-<!-- =====================
-QUEST PANEL
-===================== -->
+<!-- =========================
+LOADING SCREEN
+========================= -->
 
+<div id="loadingScreen">
+
+<div class="scrollBox">
+
+<h1>
+⚓ THE LILY ⚓
+</h1>
+
+<h2>
+A Voyage Created For Captain Eli
+</h2>
+
+
+<p>
+Preparing the voyage...
+</p>
+
+
+<div class="loadingBar">
+
+<div id="loadingProgress"></div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- =========================
+QUEST PANEL
+========================= -->
 
 <div id="questPanel">
 
-<h2>📜 Captain's Log</h2>
+
+<h2>
+📜 Captain Eli's Voyage
+</h2>
+
 
 <h3>
-The Search for Eternal Happiness
+The Legend of The Lily
 </h3>
 
 
@@ -40,12 +80,12 @@ The Search for Eternal Happiness
 
 
 <li id="questCrew">
-☐ Gather the Crew
+☐ Gather The Crew
 </li>
 
 
-<li id="questIsland1">
-☐ Complete Sköndal Island Trial
+<li id="questSkondal">
+☐ Discover Sköndal Island
 </li>
 
 
@@ -54,8 +94,8 @@ The Search for Eternal Happiness
 </li>
 
 
-<li id="questIsland2">
-☐ Complete Porto Badisco Trial
+<li id="questPorto">
+☐ Discover Porto Badisco
 </li>
 
 
@@ -64,17 +104,18 @@ The Search for Eternal Happiness
 </li>
 
 
-<li id="questIsland3">
+<li id="questHokarangen">
 ☐ Reach Hökarängen
 </li>
 
 
 <li id="questTreasure">
-☐ Discover Eternal Happiness
+☐ Find Eternal Happiness
 </li>
 
 
 </ul>
+
 
 </div>
 
@@ -82,18 +123,21 @@ The Search for Eternal Happiness
 
 
 
-<!-- =====================
+<!-- =========================
 INVENTORY
-===================== -->
+========================= -->
 
 
 <button id="inventoryButton">
+
 🎒 Inventory
+
 </button>
 
 
 
 <div id="inventoryPanel">
+
 
 <h2>
 🎒 Captain Eli's Inventory
@@ -103,7 +147,7 @@ INVENTORY
 <ul id="inventoryList">
 
 <li>
-No items yet
+Empty
 </li>
 
 </ul>
@@ -116,71 +160,47 @@ No items yet
 
 
 
-<!-- =====================
-MESSAGE BOX
-===================== -->
+<!-- =========================
+MESSAGE / DIALOGUE
+========================= -->
 
 
 <div id="messageBox">
 
-<p id="messageText"></p>
+
+<div class="messageScroll">
+
+
+<h2 id="messageTitle">
+</h2>
+
+
+<p id="messageText">
+</p>
 
 
 <button id="closeMessage">
-Close
+Continue
 </button>
 
 
 </div>
 
 
-
-
-
-
-
-<!-- =====================
-LOADING SCREEN
-===================== -->
-
-
-<div id="loadingScreen">
-
-
-<div class="loading-content">
-
-
-<h1>
-THE LILY
-</h1>
-
-
-<p>
-An Original Pirate Adventure
-</p>
-
-
-<div class="loading-bar">
-
-<div id="loadingProgress"></div>
-
-</div>
-
-
-<span id="loadingText">
-Preparing the voyage...
-</span>
-
-
-</div>
-
-
 </div>
 
 
 
 
 
+
+
+
+
+
+<!-- =========================
+GAME
+========================= -->
 
 
 <div id="game">
@@ -191,9 +211,9 @@ Preparing the voyage...
 
 
 
-<!-- =====================
-INTRO SCENE
-===================== -->
+<!-- =========================
+INTRO
+========================= -->
 
 
 <section id="introScene" class="scene active">
@@ -208,10 +228,8 @@ src="assets/backgrounds/ocean.png">
 
 
 
-<div class="stars"></div>
-
-<div class="fog"></div>
-
+<div class="stars">
+</div>
 
 
 
@@ -222,34 +240,46 @@ src="assets/ship/lily.png">
 
 
 
-<div class="titleBox">
+<div class="introScroll">
 
 
 <h1>
-THE LILY
+⚓ THE LILY ⚓
 </h1>
 
 
 <h2>
-The Search for Eternal Happiness
+A Pirate Adventure For Captain Eli
 </h2>
 
 
+
 <p>
-A pirate adventure for Captain Eli
+
+Every great voyage has storms.<br><br>
+
+Every great captain faces unknown waters.<br><br>
+
+But some bonds are like the ocean...<br>
+
+even when the ships travel different paths,<br>
+
+the tides can bring them together again.
+
 </p>
 
 
 
 <button id="startButton">
 
-⚓ Begin Adventure
+Begin Adventure
 
 </button>
 
 
 
 </div>
+
 
 
 </section>
@@ -262,9 +292,9 @@ A pirate adventure for Captain Eli
 
 
 
-<!-- =====================
-HARBOR OF THE LILY
-===================== -->
+<!-- =========================
+HARBOR
+========================= -->
 
 
 <section id="harborScene" class="scene">
@@ -277,22 +307,30 @@ src="assets/backgrounds/harbor.png">
 
 
 
-<div class="harborMessage">
+<div class="storyScroll">
 
 
 <h1>
-The Harbor of The Lily
+The Harbor Of The Lily
 </h1>
 
 
-
 <p>
-Captain Nova is waiting for you...
+
+Captain Eli,<br>
+
+before we chase the horizon,<br>
+
+The Lily must be prepared.
+
 </p>
 
 
 <p>
-Prepare the ship before setting sail.
+
+Three forgotten treasures of the harbor
+will awaken the ship.
+
 </p>
 
 
@@ -303,16 +341,12 @@ Prepare the ship before setting sail.
 
 
 
-
-<!-- SHIP QUEST OBJECTS -->
-
-
-<div class="harborObject crate" id="crate">
+<div id="crate" class="harborObject">
 
 📦
 
 <span>
-Load Supplies
+Ship Supplies
 </span>
 
 </div>
@@ -321,12 +355,12 @@ Load Supplies
 
 
 
-<div class="harborObject wheel" id="wheel">
+<div id="wheel" class="harborObject">
 
 ⚓
 
 <span>
-Prepare Helm
+Broken Helm
 </span>
 
 </div>
@@ -335,12 +369,12 @@ Prepare Helm
 
 
 
-<div class="harborObject mapClue" id="mapClue">
+<div id="mapClue" class="harborObject">
 
 🗺️
 
 <span>
-Find Captain's Note
+Captain's Note
 </span>
 
 </div>
@@ -349,19 +383,28 @@ Find Captain's Note
 
 
 
-<button id="meetCrewButton">
 
-👥 Meet the Crew
+<button id="meetCrewButton"
+style="display:none;">
+
+Meet The Crew
 
 </button>
 
 
 
 
+
 </section>
-<!-- =====================
+
+
+
+
+
+<!-- END PART 1 -->
+<!-- =========================
 CREW SCENE
-===================== -->
+========================= -->
 
 
 <section id="crewScene" class="scene">
@@ -372,17 +415,17 @@ src="assets/backgrounds/harbor.png">
 
 
 
+<div class="storyScroll crewIntro">
 
-
-<div class="crewTitle">
 
 <h1>
-⚓ The Crew of The Lily ⚓
+⚓ The Crew Of The Lily ⚓
 </h1>
 
 
 <p>
-Meet the pirates who will sail beside you.
+Every captain needs a crew.<br>
+Every dream needs companions.
 </p>
 
 
@@ -393,15 +436,12 @@ Meet the pirates who will sail beside you.
 
 
 
-
-
 <div class="crewPortraits">
 
 
 
-
-
 <div class="crewPortrait" id="nova">
+
 
 <div class="portraitFrame">
 
@@ -409,13 +449,13 @@ Meet the pirates who will sail beside you.
 
 </div>
 
+
 <h2>
 Captain Nova
 </h2>
 
+
 </div>
-
-
 
 
 
@@ -423,19 +463,20 @@ Captain Nova
 
 <div class="crewPortrait" id="mira">
 
+
 <div class="portraitFrame">
 
 <img src="assets/characters/mira.png">
 
 </div>
 
+
 <h2>
 Mira
 </h2>
 
+
 </div>
-
-
 
 
 
@@ -443,19 +484,20 @@ Mira
 
 <div class="crewPortrait" id="kaito">
 
+
 <div class="portraitFrame">
 
 <img src="assets/characters/kaito.png">
 
 </div>
 
+
 <h2>
 Kaito
 </h2>
 
+
 </div>
-
-
 
 
 
@@ -463,26 +505,25 @@ Kaito
 
 <div class="crewPortrait" id="luna">
 
+
 <div class="portraitFrame">
 
 <img src="assets/characters/luna.png">
 
 </div>
 
+
 <h2>
 Luna
 </h2>
 
-</div>
-
-
-
-
 
 </div>
 
 
 
+
+</div>
 
 
 
@@ -499,6 +540,7 @@ Captain Nova
 </h2>
 
 
+
 <p id="dialogueText">
 
 Welcome aboard, Captain Eli.
@@ -507,18 +549,15 @@ Welcome aboard, Captain Eli.
 
 
 
+<button id="continueAdventure">
 
-
-<button id="questButton">
-
-🗺️ Set Sail
+🗺️ Continue Adventure
 
 </button>
 
 
 
 </div>
-
 
 
 
@@ -532,16 +571,12 @@ Welcome aboard, Captain Eli.
 
 
 
-
-
-
-<!-- =====================
+<!-- =========================
 WORLD MAP
-===================== -->
+========================= -->
 
 
 <section id="mapScene" class="scene">
-
 
 
 <img class="background"
@@ -551,8 +586,7 @@ src="assets/backgrounds/map.png">
 
 
 
-
-<div class="mapTitle">
+<div class="storyScroll">
 
 
 <h1>
@@ -561,7 +595,7 @@ The Lily World Map
 
 
 <p>
-Three islands hide the path to Eternal Happiness.
+Three islands await Captain Eli.
 </p>
 
 
@@ -573,10 +607,7 @@ Three islands hide the path to Eternal Happiness.
 
 
 
-<div class="islandButtons">
-
-
-
+<div class="mapButtons">
 
 
 <button id="skondalButton">
@@ -584,8 +615,6 @@ Three islands hide the path to Eternal Happiness.
 🏝️ Sköndal Island
 
 </button>
-
-
 
 
 
@@ -597,8 +626,6 @@ Three islands hide the path to Eternal Happiness.
 
 
 
-
-
 <button id="hokarangenButton" disabled>
 
 ✨ Hökarängen 🔒
@@ -607,16 +634,23 @@ Three islands hide the path to Eternal Happiness.
 
 
 
-
-
 </div>
 
 
 
 </section>
-<!-- =====================
+
+
+
+
+
+
+
+
+
+<!-- =========================
 SKÖNDAL ISLAND
-===================== -->
+========================= -->
 
 
 <section id="skondalScene" class="scene">
@@ -629,7 +663,7 @@ src="assets/backgrounds/harbor.png">
 
 
 
-<div class="islandStory">
+<div class="storyScroll">
 
 
 <h1>
@@ -638,39 +672,26 @@ src="assets/backgrounds/harbor.png">
 
 
 <h2>
-The Trial of Curiosity
+The Island Of First Winds
 </h2>
 
 
 <p>
-The first map piece is hidden somewhere on the island.
+
+The first map piece sleeps where
+the island remembers its first breath.
+
 </p>
+
 
 
 <p>
-Search carefully, Captain Eli.
+Choose where to search:
 </p>
 
 
 
-</div>
-
-
-
-
-
-
-
-<div class="islandPuzzle">
-
-
-<h2>
-Where is the hidden map piece?
-</h2>
-
-
-
-<button id="findTree">
+<button id="treeSearch">
 
 🌳 Ancient Tree
 
@@ -678,25 +699,23 @@ Where is the hidden map piece?
 
 
 
-<button id="findStone">
+<button id="stoneSearch">
 
-🪨 Ancient Stone
+🪨 Old Stone
 
 </button>
 
 
 
-<button id="findAnchor">
+<button id="windSearch">
 
-⚓ Forgotten Anchor
+🌊 Wind Shrine
 
 </button>
 
 
 
 </div>
-
-
 
 
 
@@ -710,13 +729,12 @@ Where is the hidden map piece?
 
 
 
-<!-- =====================
+<!-- =========================
 PORTO BADISCO
-===================== -->
+========================= -->
 
 
 <section id="portoScene" class="scene">
-
 
 
 <img class="background"
@@ -726,7 +744,7 @@ src="assets/backgrounds/ocean.png">
 
 
 
-<div class="islandStory">
+<div class="storyScroll">
 
 
 <h1>
@@ -735,69 +753,48 @@ src="assets/backgrounds/ocean.png">
 
 
 <h2>
-The Trial of Wisdom
+The Island Of Forgotten Memories
 </h2>
 
 
+<p>
+
+Ancient pirates left behind a secret code.
+
+</p>
+
 
 <p>
-Ancient ruins protect the second map piece.
+
+Choose the correct order:
+
 </p>
 
 
 
-<p>
-"The stars guide the moon.
-The moon guides the sea."
-</p>
+<div class="symbolButtons">
 
 
-
-</div>
-
-
-
-
-
-
-
-<div class="islandPuzzle">
-
-
-<h2>
-Unlock the ancient ruins
-</h2>
-
-
-
-<button id="starSymbol">
-
+<button id="starButton">
 ⭐ Star
-
 </button>
 
 
-
-
-<button id="moonSymbol">
-
+<button id="moonButton">
 🌙 Moon
-
 </button>
 
 
-
-
-<button id="seaSymbol">
-
+<button id="seaButton">
 🌊 Sea
-
 </button>
-
 
 
 </div>
 
+
+
+</div>
 
 
 
@@ -811,15 +808,12 @@ Unlock the ancient ruins
 
 
 
-
-
-<!-- =====================
+<!-- =========================
 HÖKARÄNGEN
-===================== -->
+========================= -->
 
 
 <section id="hokarangenScene" class="scene">
-
 
 
 <img class="background"
@@ -829,7 +823,7 @@ src="assets/backgrounds/treasure-island.png">
 
 
 
-<div class="islandStory">
+<div class="storyScroll">
 
 
 <h1>
@@ -837,144 +831,123 @@ src="assets/backgrounds/treasure-island.png">
 </h1>
 
 
-
 <h2>
-The Trial of Heart
+The Eternal Isle
 </h2>
 
 
+<p>
+
+This island does not test strength.
+
+</p>
+
 
 <p>
-The final island tests the true meaning of treasure.
+
+It tests the heart of a true captain.
+
 </p>
 
 
 
-</div>
+<button id="birdQuest">
 
-
-
-
-
-
-
-<div class="islandPuzzle">
-
-
-<h2>
-Help the island before claiming the treasure.
-</h2>
-
-
-
-<button id="helpBird">
-
-🐦 Help the Lost Bird
+🐦 Help The Lost Bird
 
 </button>
 
 
 
+<button id="lanternQuest">
 
-<button id="lightLantern">
-
-🏮 Light the Lantern
+🏮 Light The Forgotten Lantern
 
 </button>
 
 
 
+<button id="flowerQuest">
 
-<button id="waterFlower">
+🌸 Restore The Flower
 
-🌸 Water the Flower
+</button>
+
+
+
+<button id="openTreasure">
+
+💎 Open The Treasure
 
 </button>
 
 
 
 </div>
-
-
-
 
 
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- =====================
-TREASURE ENDING
-===================== -->
+<!-- =========================
+TREASURE REVEAL
+========================= -->
 
 
 <section id="treasureScene" class="scene">
 
 
-
-<div class="endingBox">
-
+<div class="endingScroll">
 
 
 <h1>
-✨ THE TREASURE OF THE LILY ✨
+💎 THE TREASURE OF THE LILY 💎
 </h1>
 
 
 
 <p>
 
-Captain Eli opened the legendary chest...
+Captain Eli discovered that the greatest treasure was never hidden on an island.
 
 <br><br>
 
-But inside there was no gold.
-<br>
-No jewels.
-<br>
-No crown.
+It was the promise that no matter how far the journey goes,
+someone can still believe in you.
 
 </p>
 
 
 
 <h2>
-
-The greatest treasure was never something you could own...
-
+💎 Eternal Happiness 💎
 </h2>
 
 
 
+<p>
 
-<h1>
-💎 Eternal Happiness 💎
-</h1>
+The treasure was never gold.
 
+<br>
+
+It was hope.
+Memories.
+Support.
+And the courage to keep sailing.
+
+</p>
 
 
 
 <button id="birthdayButton">
 
-❤️ Open Birthday Gift
+📜 Open Captain's Letter
 
 </button>
 
 
 
-
 </div>
-
 
 
 </section>
@@ -987,20 +960,15 @@ The greatest treasure was never something you could own...
 
 
 
-
-
-
-<!-- =====================
-BIRTHDAY LETTER
-===================== -->
+<!-- =========================
+CAPTAIN LETTER
+========================= -->
 
 
 <section id="letterScene" class="scene">
 
 
-
-<div class="endingBox">
-
+<div class="letterScroll">
 
 
 <h1>
@@ -1009,15 +977,67 @@ BIRTHDAY LETTER
 
 
 
-
 <p>
 
 
-<strong>
-Grattis på födelsedagen! ❤️
-</strong>
+Dear Captain Eli,
 
 <br><br>
+
+
+The ocean is wide, and sometimes life takes us through unexpected currents.
+
+<br><br>
+
+
+Some journeys are straight, and some travel in circles before finding the right shore again.
+
+<br><br>
+
+
+But The Lily will always sail beside you.
+
+<br><br>
+
+
+Even from far away, this ship will guard your dreams,
+cheer for your victories,
+and remind you that you are never sailing alone.
+
+<br><br>
+
+
+The sea is strange, Captain Eli.
+
+<br><br>
+
+
+Sometimes two ships sail apart for a while...
+
+<br><br>
+
+
+but the same stars can guide them home again.
+
+<br><br>
+
+
+</p>
+
+
+
+<div class="birthdayMessage">
+
+
+<h2>
+
+Grattis på födelsedagen! ❤️
+
+</h2>
+
+
+
+<p>
 
 
 Det här kortet kommer lite i förväg eftersom jag reser bort och inte ville riskera att missa din dag.
@@ -1027,9 +1047,6 @@ Det här kortet kommer lite i förväg eftersom jag reser bort och inte ville ri
 
 Jag hoppas att den lilla presenten kan göra dig glad och hjälpa dig att fortsätta “bygga” din One Piece.
 
-<br><br>
-
-
 Jag kommer alltid att heja på dig och hoppas att du hittar det du söker.
 
 <br><br>
@@ -1037,36 +1054,43 @@ Jag kommer alltid att heja på dig och hoppas att du hittar det du söker.
 
 Och du vet ju…
 
-<br><br>
+<br>
 
-
-<strong>
 il mio cielo in una stanza. 💙
-</strong>
-
 
 <br><br>
 
 
 Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.
 
-
 </p>
-
-
-
-
-
-<h1>
-
-❤️ Eternal Love ❤️
-
-</h1>
 
 
 
 </div>
 
+
+
+
+<h1>
+❤️ Eternal Love ❤️
+</h1>
+
+
+
+<p>
+
+For Captain Eli.
+
+<br>
+
+From someone who will always believe in your voyage.
+
+</p>
+
+
+
+</div>
 
 
 </section>
@@ -1079,6 +1103,8 @@ Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.
 
 
 </div>
+
+
 
 
 
@@ -1089,5 +1115,6 @@ Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.
 
 
 </body>
+
 
 </html>
