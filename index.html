@@ -4,9 +4,10 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Captain Eli's Grand Line Adventure 🏴‍☠️</title>
+<title>Captain Eli's Grand Line Adventure</title>
 
 
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Pirata+One&display=swap" rel="stylesheet">
@@ -20,78 +21,230 @@
 <body>
 
 
-<!-- SKY -->
 
-<div class="stars">
-⭐ ✨ ⭐ ✨ ⭐ ✨ ⭐
-</div>
+<!-- WANTED POSTER INTRO -->
 
 
-<div class="moon">
-🌙
-</div>
+<section id="wanted" class="scene active">
 
 
-<div class="cloud cloud1">
-☁️
-</div>
-
-
-<div class="cloud cloud2">
-☁️
-</div>
-
-
-
-<!-- SCENE 1 -->
-
-
-<section id="port" class="scene active">
-
-
-<div class="pirate-background pirate-one">
-🏴‍☠️
-</div>
-
-
-<div class="pirate-background pirate-two">
-⚔️
-</div>
-
+<div class="wanted-poster">
 
 
 <h1>
-Captain Eli
+WANTED
 </h1>
 
 
 <h2>
-Welcome to the Grand Line...
+CAPTAIN ELI
 </h2>
 
 
 <p>
-A mysterious treasure has been waiting beyond the ocean.
+For:
 </p>
 
 
 <p>
-Your adventure begins now.
+✨ Chasing dreams
+<br>
+🌊 Exploring oceans
+<br>
+🏴‍☠️ Finding treasure
 </p>
 
 
+<button onclick="openPort()">
 
-<div class="ship-port">
-⛵
+Reveal Adventure
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PIRATE PORT -->
+
+
+<section id="port" class="scene">
+
+
+<div class="sky">
+
+
+🌙 ⭐ ☁️ ⭐
+
+
 </div>
 
 
 
-<button onclick="startAdventure()">
+<div class="background-ship">
 
-⚓ Start Adventure
+⛵
+
+</div>
+
+
+
+
+<h1>
+
+Welcome, Captain Eli...
+
+</h1>
+
+
+
+<h2>
+
+The Grand Line awaits.
+
+</h2>
+
+
+
+<p>
+
+A mysterious treasure is hidden beyond the ocean.
+
+</p>
+
+
+
+
+<!-- CREW -->
+
+
+<div class="crew">
+
+
+
+<div class="character" onclick="talk('nova')">
+
+🏴‍☠️
+
+<span>
+Captain Nova
+</span>
+
+</div>
+
+
+
+<div class="character" onclick="talk('mira')">
+
+🧭
+
+<span>
+Mira
+</span>
+
+</div>
+
+
+
+<div class="character" onclick="talk('kaito')">
+
+🔨
+
+<span>
+Kaito
+</span>
+
+</div>
+
+
+
+<div class="character" onclick="talk('luna')">
+
+🍖
+
+<span>
+Luna
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- INTERACTIVE OBJECTS -->
+
+
+<div class="objects">
+
+
+<div onclick="discover('telescope')">
+
+🔭
+
+</div>
+
+
+
+<div onclick="discover('compass')">
+
+🧭
+
+</div>
+
+
+
+<div onclick="discover('chest')">
+
+📦
+
+</div>
+
+
+
+<div onclick="discover('map')">
+
+🗺️
+
+</div>
+
+
+
+</div>
+
+
+
+
+<p id="dialogue">
+
+Explore the port, Captain.
+
+</p>
+
+
+
+
+
+<button id="startButton" onclick="startAdventure()" disabled>
+
+⚓ Begin Voyage
 
 </button>
+
 
 
 
@@ -102,31 +255,40 @@ Your adventure begins now.
 
 
 
-<!-- SCENE 2 -->
+
+
+
+
+<!-- MAP GAME -->
 
 
 <section id="mapScene" class="scene">
 
 
-<h2>
-🗺️ The Grand Line Map
-</h2>
+<h1>
+
+The Grand Line Map
+
+</h1>
 
 
 <p>
-Every dream has a path.
+
 Choose your route, Captain Eli.
+
 </p>
+
 
 
 
 <div class="map">
 
 
-<div class="route storm"
-onclick="chooseRoute('storm')">
+
+<div onclick="chooseRoute('storm')">
 
 🌪️
+
 <br>
 
 Storm Island
@@ -135,10 +297,10 @@ Storm Island
 
 
 
-<div class="route paradise"
-onclick="chooseRoute('paradise')">
+<div onclick="chooseRoute('paradise')">
 
 🌴
+
 <br>
 
 Paradise Island
@@ -147,10 +309,10 @@ Paradise Island
 
 
 
-<div class="route dream"
-onclick="chooseRoute('dream')">
+<div onclick="chooseRoute('dream')">
 
 ⭐
+
 <br>
 
 Dream Island
@@ -166,6 +328,7 @@ Dream Island
 <p id="routeMessage"></p>
 
 
+
 </section>
 
 
@@ -175,32 +338,28 @@ Dream Island
 
 
 
-<!-- SCENE 3 -->
+
+<!-- TREASURE -->
 
 
 <section id="treasureScene" class="scene">
 
 
-<div class="sunset">
-
-☀️
-
-</div>
-
-
 <h1>
+
 Treasure Island
+
 </h1>
 
 
 <p>
-The compass has found the hidden treasure...
+
+The compass has found the hidden treasure.
+
 </p>
 
 
-
-<div class="treasure-chest"
-onclick="openChest()">
+<div class="big-chest" onclick="openChest()">
 
 📦
 
@@ -208,7 +367,9 @@ onclick="openChest()">
 
 
 <p>
-✨ Open the treasure ✨
+
+Open the treasure
+
 </p>
 
 
@@ -223,7 +384,8 @@ onclick="openChest()">
 
 
 
-<!-- SCENE 4 -->
+
+<!-- LETTER -->
 
 
 <section id="letterScene" class="scene">
@@ -232,10 +394,11 @@ onclick="openChest()">
 <div class="paper">
 
 
-<h2>
-💙 A Letter From Your Crew 💙
-</h2>
+<h1>
 
+A Letter From Your Crew
+
+</h1>
 
 
 <p id="letterText"></p>
@@ -255,73 +418,44 @@ onclick="openChest()">
 
 
 
-<!-- SCENE 5 -->
+<!-- END -->
 
 
 <section id="endingScene" class="scene">
 
 
-<div class="final-ship">
+<div class="big-ship">
 
 ⛵
 
 </div>
 
 
-<div class="compass">
-
-🧭
-
-</div>
-
-
-
 <h1>
-Your Journey Continues...
+
+Captain Eli's Journey Continues
+
 </h1>
 
 
 
 <p>
 
-
 Every person has their own ocean to cross.
 
-
 <br><br>
-
-
-Some search for treasure.
-
-<br>
-
-Some search for dreams.
-
-<br>
-
-Some search for where they belong.
-
-
-<br><br>
-
 
 Keep building your own One Piece.
 
-
 <br><br>
-
 
 Your adventure is only beginning.
 
-
 <br><br>
-
 
 🏴‍☠️❤️
 
-
 </p>
-
 
 
 </section>
@@ -331,12 +465,9 @@ Your adventure is only beginning.
 
 
 
-<!-- OCEAN -->
-
-
 <div class="ocean">
 
-🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🌊🌊🌊🌊🌊🌊🌊
 
 </div>
 
