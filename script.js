@@ -1,73 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded",()=>{
 
 
-// =========================
-// ELEMENTS
-// =========================
+// =====================
+// SCENES
+// =====================
 
 
-const loadingScreen =
-document.getElementById("loadingScreen");
+const scenes=document.querySelectorAll(".scene");
 
 
-const loadingProgress =
-document.getElementById("loadingProgress");
+function changeScene(id){
 
-
-const loadingText =
-document.getElementById("loadingText");
-
-
-const startButton =
-document.getElementById("startButton");
-
-
-const meetCrewButton =
-document.getElementById("meetCrewButton");
-
-
-const questButton =
-document.getElementById("questButton");
-
-
-const scenes =
-document.querySelectorAll(".scene");
-
-
-
-const messageBox =
-document.getElementById("messageBox");
-
-
-const messageText =
-document.getElementById("messageText");
-
-
-const closeMessage =
-document.getElementById("closeMessage");
-
-
-
-
-
-
-// =========================
-// SCENE SYSTEM
-// =========================
-
-
-function changeScene(scene){
-
-
-scenes.forEach(s=>{
-
-s.classList.remove("active");
-
+scenes.forEach(scene=>{
+scene.classList.remove("active");
 });
 
 
-scene.classList.add("active");
-
+document.getElementById(id).classList.add("active");
 
 }
 
@@ -76,348 +25,23 @@ scene.classList.add("active");
 
 
 
+// =====================
+// GAME DATA
+// =====================
 
 
-// =========================
-// LOADING
-// =========================
+let inventory=[];
 
 
-let progress = 0;
+let progress={
 
+crew:false,
 
-const messages = [
+map1:false,
 
-"Preparing the ship...",
+map2:false,
 
-"Raising the sails...",
-
-"Gathering the crew...",
-
-"Finding the treasure map...",
-
-"The Lily is ready..."
-
-];
-
-
-
-const loadingTimer = setInterval(()=>{
-
-
-progress += 20;
-
-
-loadingProgress.style.width =
-progress + "%";
-
-
-loadingText.innerText =
-messages[(progress/20)-1];
-
-
-
-if(progress >= 100){
-
-
-clearInterval(loadingTimer);
-
-
-
-setTimeout(()=>{
-
-
-loadingScreen.style.opacity="0";
-
-
-setTimeout(()=>{
-
-
-loadingScreen.style.display="none";
-
-
-},1000);
-
-
-},500);
-
-
-}
-
-
-},700);
-
-
-
-
-
-
-
-
-
-// =========================
-// QUEST SYSTEM
-// =========================
-
-
-function completeQuest(id){
-
-
-const quest =
-document.getElementById(id);
-
-
-if(quest){
-
-quest.innerHTML =
-quest.innerHTML.replace("☐","☑");
-
-}
-
-
-}
-
-
-
-
-
-
-// =========================
-// MESSAGE SYSTEM
-// =========================
-
-
-function showMessage(text){
-
-
-messageText.innerText=text;
-
-
-messageBox.style.display="block";
-
-
-}
-
-
-
-closeMessage.addEventListener("click",()=>{
-
-
-messageBox.style.display="none";
-
-
-});
-
-
-
-
-
-
-
-
-
-// =========================
-// START GAME
-// =========================
-
-
-startButton.addEventListener("click",()=>{
-
-
-startButton.innerHTML =
-"⛵ Sailing...";
-
-
-
-setTimeout(()=>{
-
-
-changeScene(
-
-document.getElementById("harborScene")
-
-);
-
-
-},1500);
-
-
-
-});
-
-
-
-
-
-
-
-
-
-// =========================
-// HARBOR QUEST
-// =========================
-
-
-
-const crate =
-document.getElementById("crate");
-
-
-const wheel =
-document.getElementById("wheel");
-
-
-const mapClue =
-document.getElementById("mapClue");
-
-
-
-
-
-crate.addEventListener("click",()=>{
-
-
-completeQuest("questHarbor");
-
-
-showMessage(
-
-"📦 Inside the old crate you find a strange pirate symbol. It may be connected to the Lost Map."
-
-);
-
-
-});
-
-
-
-
-
-
-
-wheel.addEventListener("click",()=>{
-
-
-showMessage(
-
-"⚓ The Lily is ready to sail. But the treasure map is still incomplete."
-
-);
-
-
-});
-
-
-
-
-
-
-
-mapClue.addEventListener("click",()=>{
-
-
-completeQuest("questMap");
-
-
-showMessage(
-
-"🗺️ You found a piece of the Lost Map! The path to Treasure Island is becoming clear."
-
-);
-
-
-});
-
-
-
-
-
-
-
-
-
-// =========================
-// CREW
-// =========================
-
-
-meetCrewButton.addEventListener("click",()=>{
-
-
-changeScene(
-
-document.getElementById("crewScene")
-
-);
-
-
-completeQuest("questCrew");
-
-
-});
-
-
-
-
-
-
-
-const characterName =
-document.getElementById("characterName");
-
-
-const dialogueText =
-document.getElementById("dialogueText");
-
-
-
-
-const crew = {
-
-
-nova:{
-
-name:"Captain Nova",
-
-text:
-
-"The Lily has been waiting for you, Captain Eli. Our adventure begins now."
-
-},
-
-
-mira:{
-
-name:"Mira",
-
-text:
-
-"I prepared the supplies. A clever captain always plans ahead."
-
-},
-
-
-kaito:{
-
-name:"Kaito",
-
-text:
-
-"I found a clue about the lost treasure map."
-
-},
-
-
-luna:{
-
-name:"Luna",
-
-text:
-
-"I am ready for adventure! And I brought snacks."
-
-}
-
+treasure:false
 
 };
 
@@ -426,33 +50,74 @@ text:
 
 
 
-function showCrew(id){
+// =====================
+// INVENTORY
+// =====================
 
 
-const member =
-crew[id];
+const inventoryPanel=
+document.getElementById("inventoryPanel");
 
 
-characterName.innerText =
-member.name;
+const inventoryList=
+document.getElementById("inventoryList");
 
 
-dialogueText.innerText =
-member.text;
+document
+.getElementById("inventoryButton")
+.addEventListener("click",()=>{
 
 
+inventoryPanel.style.display=
+inventoryPanel.style.display==="block"
+?
+"none"
+:
+"block";
 
-document.querySelectorAll(".crewPortrait")
-.forEach(p=>{
-
-p.classList.remove("selected");
 
 });
 
 
 
-document.getElementById(id)
-.classList.add("selected");
+
+
+function addItem(item){
+
+
+if(!inventory.includes(item)){
+
+
+inventory.push(item);
+
+
+updateInventory();
+
+
+}
+
+}
+
+
+
+function updateInventory(){
+
+
+inventoryList.innerHTML="";
+
+
+inventory.forEach(item=>{
+
+
+let li=document.createElement("li");
+
+li.innerHTML="✨ "+item;
+
+
+inventoryList.appendChild(li);
+
+
+});
 
 
 }
@@ -462,14 +127,144 @@ document.getElementById(id)
 
 
 
-document.querySelectorAll(".crewPortrait")
-.forEach(member=>{
+
+// =====================
+// LOADING
+// =====================
 
 
-member.addEventListener("click",()=>{
+let loading=0;
 
 
-showCrew(member.id);
+let timer=setInterval(()=>{
+
+
+loading+=20;
+
+
+document.getElementById("loadingProgress").style.width=
+loading+"%";
+
+
+
+if(loading>=100){
+
+
+clearInterval(timer);
+
+
+setTimeout(()=>{
+
+
+document.getElementById("loadingScreen").style.display="none";
+
+
+},800);
+
+
+}
+
+
+},500);
+
+
+
+
+
+
+
+
+
+// =====================
+// START
+// =====================
+
+
+document
+.getElementById("startButton")
+.addEventListener("click",()=>{
+
+
+changeScene("harborScene");
+
+
+});
+
+
+
+
+
+
+
+
+// =====================
+// CREW
+// =====================
+
+
+document
+.getElementById("meetCrewButton")
+.addEventListener("click",()=>{
+
+
+changeScene("crewScene");
+
+
+progress.crew=true;
+
+
+document
+.getElementById("questCrew")
+.innerHTML=
+"☑ Meet the crew";
+
+
+});
+
+
+
+
+
+
+
+const crewMessages={
+
+
+nova:
+"Captain Nova: The Lily is ready. Our adventure begins!",
+
+
+mira:
+"Mira: I will guide us through the hidden paths.",
+
+
+kaito:
+"Kaito: I will search for secrets across the islands.",
+
+
+luna:
+"Luna: Every adventure needs a little happiness!"
+
+};
+
+
+
+Object.keys(crewMessages)
+.forEach(id=>{
+
+
+document
+.getElementById(id)
+.addEventListener("click",()=>{
+
+
+document.getElementById("characterName")
+.innerText=id;
+
+
+document.getElementById("dialogueText")
+.innerText=
+crewMessages[id];
 
 
 });
@@ -481,7 +276,17 @@ showCrew(member.id);
 
 
 
-showCrew("nova");
+
+
+document
+.getElementById("questButton")
+.addEventListener("click",()=>{
+
+
+changeScene("mapScene");
+
+
+});
 
 
 
@@ -491,23 +296,236 @@ showCrew("nova");
 
 
 
-// =========================
-// QUEST BUTTON
-// =========================
+// =====================
+// HARBOR SEARCH
+// =====================
 
 
-questButton.addEventListener("click",()=>{
+
+document
+.getElementById("mapClue")
+.addEventListener("click",()=>{
 
 
-showMessage(
+document.getElementById("messageBox").style.display="block";
 
-"🗺️ Your first mission: Search the harbor and find the missing piece of the Lost Map."
 
+document.getElementById("messageText")
+.innerText=
+"You discovered a clue leading to Sköndal Island!";
+
+
+});
+
+
+
+
+document
+.getElementById("closeMessage")
+.addEventListener("click",()=>{
+
+
+document.getElementById("messageBox")
+.style.display="none";
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================
+// MAP
+// =====================
+
+
+
+document
+.getElementById("skondalButton")
+.addEventListener("click",()=>{
+
+
+changeScene("skondalScene");
+
+
+});
+
+
+
+
+document
+.getElementById("portoButton")
+.addEventListener("click",()=>{
+
+
+changeScene("portoScene");
+
+
+});
+
+
+
+
+document
+.getElementById("hokarangenButton")
+.addEventListener("click",()=>{
+
+
+changeScene("hokarangenScene");
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================
+// ISLAND 1
+// =====================
+
+
+document
+.getElementById("findMapOne")
+.addEventListener("click",()=>{
+
+
+addItem("Map Piece #1");
+
+
+progress.map1=true;
+
+
+document.getElementById("questMap1")
+.innerHTML=
+"☑ Find Map Piece #1";
+
+
+document.getElementById("portoButton")
+.disabled=false;
+
+
+
+alert(
+"🏝️ Sköndal complete!\nPorto Badisco unlocked!"
 );
 
 
+
+changeScene("mapScene");
+
+
 });
 
+
+
+
+
+
+
+
+
+// =====================
+// ISLAND 2
+// =====================
+
+
+document
+.getElementById("findMapTwo")
+.addEventListener("click",()=>{
+
+
+addItem("Map Piece #2");
+
+
+progress.map2=true;
+
+
+document.getElementById("questMap2")
+.innerHTML=
+"☑ Find Map Piece #2";
+
+
+document.getElementById("hokarangenButton")
+.disabled=false;
+
+
+
+alert(
+"🌊 Porto Badisco complete!\nHökarängen unlocked!"
+);
+
+
+
+changeScene("mapScene");
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================
+// FINAL ISLAND
+// =====================
+
+
+document
+.getElementById("openTreasure")
+.addEventListener("click",()=>{
+
+
+addItem("Eternal Happiness");
+
+
+progress.treasure=true;
+
+
+document.getElementById("questTreasure")
+.innerHTML=
+"☑ Discover Eternal Happiness";
+
+
+changeScene("treasureScene");
+
+
+});
+
+
+
+
+
+
+
+
+// =====================
+// BIRTHDAY ENDING
+// =====================
+
+
+document
+.getElementById("birthdayButton")
+.addEventListener("click",()=>{
+
+
+changeScene("letterScene");
+
+
+});
 
 
 
