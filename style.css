@@ -889,4 +889,15 @@ background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
 }
+#treasureScene{
+background:
+linear-gradient(
+rgba(0,0,0,.30),
+rgba(0,0,0,.30)
+),
+url("assets/backgrounds/ocean.png");
 
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+}
