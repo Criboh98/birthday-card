@@ -806,7 +806,46 @@ changeScene("letterScene");
 
 };
 
+// =====================
+// FORCE HARBOR COMPLETION FIX
+// =====================
 
+function checkHarborReady(){
+
+if(
+inventory.includes("Ship Supplies") &&
+inventory.includes("Captain's Helm") &&
+inventory.includes("Captain's Map")
+){
+
+document.getElementById("questShip").innerHTML =
+"☑ Prepare The Lily";
+
+
+document.getElementById("meetCrewButton").style.display =
+"block";
+
+
+message(
+"⚓ The Lily Is Ready!",
+"All preparations are complete.<br><br>Captain Eli, the crew awaits your command."
+);
+
+}
+
+}
+
+
+const oldAddItem = addItem;
+
+
+addItem=function(item){
+
+oldAddItem(item);
+
+checkHarborReady();
+
+};
 
 
 });
