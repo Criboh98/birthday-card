@@ -12,60 +12,26 @@ Ta hand om dig, och hoppas att du får en riktigt fin födelsedag.`;
 
 
 
-let letterPosition = 0;
-
-
-
-function openTreasure(){
-
-
-    let chest = document.querySelector(".chest");
-
-
-    chest.classList.add("open");
-
-
-
-    setTimeout(()=>{
-
-
-        document
-        .getElementById("intro")
-        .classList.remove("active");
-
-
-
-        document
-        .getElementById("treasure")
-        .classList.add("active");
-
-
-
-    },800);
+let letterIndex = 0;
 
 
 
 
-    setTimeout(()=>{
+// START ADVENTURE
 
 
-        document
-        .getElementById("treasure")
-        .classList.remove("active");
+function startAdventure(){
 
 
-
-        document
-        .getElementById("letterScene")
-        .classList.add("active");
+document
+.getElementById("port")
+.classList.remove("active");
 
 
 
-        startTyping();
-
-
-
-    },3500);
+document
+.getElementById("mapScene")
+.classList.add("active");
 
 
 
@@ -77,49 +43,39 @@ function openTreasure(){
 
 
 
-function startTyping(){
+// ROUTE CHOICE
 
 
-    let textBox =
-    document.getElementById("letterText");
+function chooseRoute(route){
 
 
-
-    if(letterPosition < birthdayMessage.length){
-
-
-
-        textBox.innerHTML += 
-        birthdayMessage.charAt(letterPosition);
+let message =
+document.getElementById("routeMessage");
 
 
 
-        letterPosition++;
+
+if(route === "storm"){
 
 
+message.innerHTML = `
 
-        setTimeout(
-            startTyping,
-            40
-        );
+🌪️ The Storm Route
 
+<br><br>
 
+The waves were too strong!
 
-    }
+<br>
 
-    else{
+Even the greatest captains must choose wisely.
 
+<br><br>
 
-        setTimeout(()=>{
+Try another path ⚓
 
+`;
 
-            showEnding();
-
-
-        },5000);
-
-
-    }
 
 
 }
@@ -128,20 +84,216 @@ function startTyping(){
 
 
 
+
+if(route === "paradise"){
+
+
+message.innerHTML = `
+
+🌴 Paradise Island
+
+<br><br>
+
+A beautiful place...
+
+but your treasure is still waiting.
+
+<br><br>
+
+The journey continues.
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+if(route === "dream"){
+
+
+message.innerHTML = `
+
+⭐ The Dream Route!
+
+<br><br>
+
+The compass begins to glow...
+
+<br>
+
+The Grand Line has revealed your path.
+
+`;
+
+
+
+setTimeout(()=>{
+
+
+document
+.getElementById("mapScene")
+.classList.remove("active");
+
+
+
+document
+.getElementById("treasureScene")
+.classList.add("active");
+
+
+
+},2500);
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+// OPEN TREASURE
+
+
+function openChest(){
+
+
+
+let chest =
+document.querySelector(".treasure-chest");
+
+
+
+chest.style.animation =
+"none";
+
+
+
+chest.innerHTML="✨📦✨";
+
+
+
+setTimeout(()=>{
+
+
+document
+.getElementById("treasureScene")
+.classList.remove("active");
+
+
+
+document
+.getElementById("letterScene")
+.classList.add("active");
+
+
+
+typeLetter();
+
+
+
+},1500);
+
+
+
+}
+
+
+
+
+
+
+
+
+// LETTER EFFECT
+
+
+function typeLetter(){
+
+
+let box =
+document.getElementById("letterText");
+
+
+
+if(letterIndex < birthdayMessage.length){
+
+
+box.innerHTML +=
+birthdayMessage.charAt(letterIndex);
+
+
+
+letterIndex++;
+
+
+
+setTimeout(
+
+typeLetter,
+
+45
+
+);
+
+
+
+}
+
+else{
+
+
+setTimeout(()=>{
+
+
+showEnding();
+
+
+},6000);
+
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+// END
 
 
 function showEnding(){
 
 
-    document
-    .getElementById("letterScene")
-    .classList.remove("active");
+
+document
+.getElementById("letterScene")
+.classList.remove("active");
 
 
 
-    document
-    .getElementById("ending")
-    .classList.add("active");
+document
+.getElementById("endingScene")
+.classList.add("active");
 
 
 
